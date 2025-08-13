@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Apostila_experimentacao"
+  author: "Norah Jones"
+  date: "13/08/2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
