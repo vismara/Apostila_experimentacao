@@ -6,7 +6,7 @@ format: html
 ---
 
 # 🌱 Bem-vindo(a)!
-
+ 
 Este ebook foi criado para estudantes de **Engenharia Florestal** que desejam aprender **Estatística Experimental** usando o software **R** de forma prática e contextualizada.
 
 ::: {.callout-note}
