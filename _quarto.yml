@@ -3,7 +3,7 @@ project:
 
 book:
   title: "📚 Estatística Experimental Aplicada à Engenharia Florestal com R"
-  author: "Seu Nome"
+  author: "Edgar de Souza Vismara"
   date: today
   chapters:
     - index.qmd
