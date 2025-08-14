@@ -1,0 +1,165 @@
+---
+title: "🌱 Módulo 1 – Introdução e Motivação"
+---
+
+*(Módulo 1 – Semana 1)*
+
+```{r}
+#| label: setup
+#| include: false
+# Silencia mensagens/avisos de todos os chunks por padrão
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+---
+
+## 🌱 Cenário inicial
+
+Imagine que você está iniciando a disciplina de **Estatística Experimental** e nunca utilizou o R antes.
+Agora, pense que você trabalha como engenheiro(a) florestal em um viveiro que produz mudas para **restauração de áreas degradadas**.
+Um fornecedor oferece um novo substrato *“revolucionário”* que promete aumentar o crescimento das mudas em **20%**.
+
+Você precisa decidir se vale a pena trocar o substrato atual — mas como saber se essa promessa é real ou apenas marketing?
+
+💡 É aqui que a **Estatística Experimental** entra em cena: ela permite **planejar** um teste, **coletar** dados e **analisar** resultados para concluir, com segurança, se a diferença observada é de fato causada pelo tratamento ou apenas fruto do acaso.
+
+---
+
+## 🎯 Objetivos de Aprendizagem
+
+Ao final deste capítulo, você será capaz de:
+
+* ✅ Diferenciar estudo observacional de experimento controlado.
+* ✅ Reconhecer a importância da experimentação na Engenharia Florestal.
+* ✅ Criar e interpretar seu **primeiro gráfico no R**, usando o Google Colab.
+
+---
+
+## 🛠️ Ambiente de Trabalho: Google Colab (R)
+
+**Passos iniciais (para estudantes):**
+
+1. Acesse [https://colab.research.google.com](https://colab.research.google.com) e entre com sua conta Google.
+2. **Ambiente de execução → Alterar tipo de ambiente de execução → Linguagem: R**.
+3. No painel lateral (ícone de pasta), faça **upload** de:
+
+* [`crescimento_mudas.csv`](dados/crescimento_mudas.csv)
+* [`cedrela_irrigacao.csv`](dados/cedrela_irrigacao.csv)`
+
+::: {.callout-note}
+💡 **Instalação de pacotes no Colab (rode apenas no Colab):**
+O bloco abaixo **não** é executado ao compilar o ebook (serve apenas para consulta). No Colab, selecione a célula e rode-a.
+:::
+
+```{r}
+#| label: install-colab
+#| eval: false
+#| echo: true
+# Instalação no Colab (rode manualmente lá, se necessário)
+options(repos = "https://cloud.r-project.org")
+install.packages(c("readr","ggplot2","dplyr","agricolae","emmeans","multcompView"))
+```
+
+---
+
+## 🌳 Contexto Florestal Aplicado
+
+Na Engenharia Florestal, **decisões técnicas e econômicas** dependem de dados:
+
+* 🌱 **Escolha de espécies ou clones** para plantio comercial.
+* 📅 **Determinação da melhor época** de semeadura.
+* ✂️ **Avaliação de técnicas de manejo** (podas, desbastes, irrigação).
+* 🐛 **Seleção de métodos de controle fitossanitário**.
+
+Essas decisões não podem se basear apenas em **experiência** ou **intuição** — precisam ser sustentadas por **evidências experimentais** obtidas em experimentos bem planejados.
+
+---
+
+## 📌 Conceitos-Chave
+
+* **Experimento** 🧪 — investigação planejada, com manipulação de fatores (ex.: tipo de adubação) e observação dos efeitos em variáveis de interesse (ex.: altura das mudas).
+* **Estudo observacional** 👀 — coleta de dados sem manipular variáveis; útil para levantar hipóteses, mas com menos capacidade de inferir causalidade.
+* **Tratamento** 🔍 — combinação específica de condições aplicadas às unidades experimentais.
+* **Unidade experimental** 🌿 — menor porção física ou biológica à qual se aplica um tratamento (ex.: uma muda, uma parcela de campo).
+
+---
+
+## 💻 Exemplo Prático no R
+
+Vamos visualizar dados de crescimento de mudas sob três tratamentos diferentes de substrato.
+
+
+::: {.callout-note}
+💡 **Usando no Colab:**
+Após fazer **upload** do CSV, troque o caminho por `"/content/nome_do_arquivo.csv"`.
+No ebook/Quarto local, mantenha o caminho relativo `dados/nome_do_arquivo.csv`.
+:::
+
+```{r}
+# Carregar pacotes sem mensagens de inicialização
+suppressPackageStartupMessages({
+  library(readr)
+  library(ggplot2)
+})
+
+# Ebook/Quarto (caminho relativo)
+dados <- read_csv("dados/crescimento_mudas.csv", show_col_types = FALSE)
+
+# Para Colab, use:
+# dados <- read_csv("/content/crescimento_mudas.csv", show_col_types = FALSE)
+
+# Visualizar amostra (sem mensagens de leitura)
+head(dados)
+
+# Criar boxplot
+ggplot(dados, aes(x = Tratamento, y = Altura_cm, fill = Tratamento)) +
+  geom_boxplot() +
+  labs(title = "Crescimento de mudas sob diferentes substratos",
+       x = "Tratamento", y = "Altura (cm)") +
+  theme_minimal()
+```
+
+---
+
+## 🔍 Interpretação dos Resultados
+
+O **boxplot** mostra a distribuição das alturas em cada tratamento.
+
+* 📊 Podemos observar diferenças visuais entre os grupos.
+* ⚠️ **Atenção:** diferenças visíveis **não significam** que sejam estatisticamente significativas — aprenderemos a verificar isso com **ANOVA** nos próximos capítulos.
+* 👀 Mesmo sem análise estatística, já é possível **levantar hipóteses**.
+
+---
+
+## 📝 Exercício Final Aplicado
+
+Você recebeu dados de um experimento de irrigação em mudas de *Cedrela fissilis*, com três regimes hídricos (**Baixo**, **Médio**, **Alto**).
+
+
+::: {.callout-note}
+💡 **No Colab:** após o upload, use `"/content/cedrela_irrigacao.csv"`.
+:::
+
+**Tarefas:**
+
+1. Importe o arquivo no R.
+2. Crie um boxplot para comparar as alturas entre os regimes de irrigação.
+3. Escreva uma breve interpretação visual (**2 a 3 frases**) sobre o padrão observado.
+
+
+
+::: {.callout-tip}
+✅ **Dica para o relatório (Colab):**
+Inclua no notebook:
+
+* O **código** (com caminho `/content/...`)
+* O **gráfico**
+* A **interpretação** em texto
+
+Assim, você já inicia o relatório final da disciplina desde a primeira semana.
+:::
+
+```
+
+
+```

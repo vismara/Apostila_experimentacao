@@ -1,9 +1,18 @@
-# Preface {.unnumbered}
+---
+title: "📚 Estatística Experimental Aplicada à Engenharia Florestal com R"
+subtitle: "Do experimento à decisão"
+author: "Edgar de Souza Vismara"
+format: html
+---
 
-This is a Quarto book.
+# 🌱 Bem-vindo(a)!
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Este ebook foi criado para estudantes de **Engenharia Florestal** que desejam aprender **Estatística Experimental** usando o software **R** de forma prática e contextualizada.
 
-```{r}
-1 + 1
-```
+::: {.callout-note}
+💡 **Como usar este ebook:**  
+Cada capítulo traz conceitos-chave, exemplos aplicados e scripts R prontos para execução. Use os **datasets fornecidos** e siga as orientações passo a passo.
+:::
+
+📌 **Ferramenta recomendada:** Google Colab (ambiente R) ou RStudio.
+
