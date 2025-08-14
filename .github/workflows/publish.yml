@@ -21,7 +21,7 @@ jobs:
 
       - name: Install R Packages
         run: |
-          install.packages(c("rmarkdown", "knitr", "ggplot2", "dplyr", "readxl")) # <--- IMPORTANTE: COLOQUE AQUI OS PACOTES QUE VOCÊ USA
+          install.packages(c("rmarkdown", "knitr", "ggplot2", "dplyr", "readr")) # <--- IMPORTANTE: COLOQUE AQUI OS PACOTES QUE VOCÊ USA
         shell: Rscript {0}
       # --- FIM DA SEÇÃO NOVA ---
 
