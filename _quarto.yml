@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs 
 
 book:
   title: "📚 Estatística Experimental Aplicada à Engenharia Florestal com R"

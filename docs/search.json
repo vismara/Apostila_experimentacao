@@ -1,0 +1,92 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "📚 Estatística Experimental Aplicada à Engenharia Florestal com R",
+    "section": "",
+    "text": "1 🌱 Bem-vindo(a)!\nEste ebook foi criado para estudantes de Engenharia Florestal que desejam aprender Estatística Experimental usando o software R de forma prática e contextualizada.\n\n\n\n\n\n\nNote\n\n\n\n💡 Como usar este ebook:\nCada capítulo traz conceitos-chave, exemplos aplicados e scripts R prontos para execução. Use os datasets fornecidos e siga as orientações passo a passo.\n\n\n📌 Ferramenta recomendada: Google Colab (ambiente R) ou RStudio.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>📚 Estatística Experimental Aplicada à Engenharia Florestal com R</span>"
+    ]
+  },
+  {
+    "objectID": "cap01-introducao.html",
+    "href": "cap01-introducao.html",
+    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "section": "",
+    "text": "2.1 🌱 Cenário inicial\n(Módulo 1 – Semana 1)\nImagine que você está iniciando a disciplina de Estatística Experimental e nunca utilizou o R antes. Agora, pense que você trabalha como engenheiro(a) florestal em um viveiro que produz mudas para restauração de áreas degradadas. Um fornecedor oferece um novo substrato “revolucionário” que promete aumentar o crescimento das mudas em 20%.\nVocê precisa decidir se vale a pena trocar o substrato atual — mas como saber se essa promessa é real ou apenas marketing?\n💡 É aqui que a Estatística Experimental entra em cena: ela permite planejar um teste, coletar dados e analisar resultados para concluir, com segurança, se a diferença observada é de fato causada pelo tratamento ou apenas fruto do acaso.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "cap01-introducao.html#objetivos-de-aprendizagem",
+    "href": "cap01-introducao.html#objetivos-de-aprendizagem",
+    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "section": "2.2 🎯 Objetivos de Aprendizagem",
+    "text": "2.2 🎯 Objetivos de Aprendizagem\nAo final deste capítulo, você será capaz de:\n\n✅ Diferenciar estudo observacional de experimento controlado.\n✅ Reconhecer a importância da experimentação na Engenharia Florestal.\n✅ Criar e interpretar seu primeiro gráfico no R, usando o Google Colab.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "cap01-introducao.html#ambiente-de-trabalho-google-colab-r",
+    "href": "cap01-introducao.html#ambiente-de-trabalho-google-colab-r",
+    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "section": "2.3 🛠️ Ambiente de Trabalho: Google Colab (R)",
+    "text": "2.3 🛠️ Ambiente de Trabalho: Google Colab (R)\nPassos iniciais (para estudantes):\n\nAcesse https://colab.research.google.com e entre com sua conta Google.\nAmbiente de execução → Alterar tipo de ambiente de execução → Linguagem: R.\nNo painel lateral (ícone de pasta), faça upload de:\n\n\ncrescimento_mudas.csv\ncedrela_irrigacao.csv`\n\n\n\n\n\n\n\nNote\n\n\n\n💡 Instalação de pacotes no Colab (rode apenas no Colab): O bloco abaixo não é executado ao compilar o ebook (serve apenas para consulta). No Colab, selecione a célula e rode-a.\n\n\n\n\nCode\n# Instalação no Colab (rode manualmente lá, se necessário)\noptions(repos = \"https://cloud.r-project.org\")\ninstall.packages(c(\"readr\",\"ggplot2\",\"dplyr\",\"agricolae\",\"emmeans\",\"multcompView\"))",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "cap01-introducao.html#contexto-florestal-aplicado",
+    "href": "cap01-introducao.html#contexto-florestal-aplicado",
+    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "section": "2.4 🌳 Contexto Florestal Aplicado",
+    "text": "2.4 🌳 Contexto Florestal Aplicado\nNa Engenharia Florestal, decisões técnicas e econômicas dependem de dados:\n\n🌱 Escolha de espécies ou clones para plantio comercial.\n📅 Determinação da melhor época de semeadura.\n✂️ Avaliação de técnicas de manejo (podas, desbastes, irrigação).\n🐛 Seleção de métodos de controle fitossanitário.\n\nEssas decisões não podem se basear apenas em experiência ou intuição — precisam ser sustentadas por evidências experimentais obtidas em experimentos bem planejados.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "cap01-introducao.html#conceitos-chave",
+    "href": "cap01-introducao.html#conceitos-chave",
+    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "section": "2.5 📌 Conceitos-Chave",
+    "text": "2.5 📌 Conceitos-Chave\n\nExperimento 🧪 — investigação planejada, com manipulação de fatores (ex.: tipo de adubação) e observação dos efeitos em variáveis de interesse (ex.: altura das mudas).\nEstudo observacional 👀 — coleta de dados sem manipular variáveis; útil para levantar hipóteses, mas com menos capacidade de inferir causalidade.\nTratamento 🔍 — combinação específica de condições aplicadas às unidades experimentais.\nUnidade experimental 🌿 — menor porção física ou biológica à qual se aplica um tratamento (ex.: uma muda, uma parcela de campo).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "cap01-introducao.html#exemplo-prático-no-r",
+    "href": "cap01-introducao.html#exemplo-prático-no-r",
+    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "section": "2.6 💻 Exemplo Prático no R",
+    "text": "2.6 💻 Exemplo Prático no R\nVamos visualizar dados de crescimento de mudas sob três tratamentos diferentes de substrato.\n\n\n\n\n\n\nNote\n\n\n\n💡 Usando no Colab: Após fazer upload do CSV, troque o caminho por \"/content/nome_do_arquivo.csv\". No ebook/Quarto local, mantenha o caminho relativo dados/nome_do_arquivo.csv.\n\n\n\n\nCode\n# Carregar pacotes sem mensagens de inicialização\nsuppressPackageStartupMessages({\n  library(readr)\n  library(ggplot2)\n})\n\n# Ebook/Quarto (caminho relativo)\ndados &lt;- read_csv(\"dados/crescimento_mudas.csv\", show_col_types = FALSE)\n\n# Para Colab, use:\n# dados &lt;- read_csv(\"/content/crescimento_mudas.csv\", show_col_types = FALSE)\n\n# Visualizar amostra (sem mensagens de leitura)\nhead(dados)\n\n\n# A tibble: 6 × 6\n  ID             Tratamento  Altura_cm Diametro_mm Biomassa_g Dias_pos_semeadura\n  &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;              &lt;dbl&gt;\n1 Substrato_A_01 Substrato_A      12.3        3.5        9.13                 80\n2 Substrato_A_02 Substrato_A      21.0        4         13.0                  82\n3 Substrato_A_03 Substrato_A      16.7        3.94      12.0                  92\n4 Substrato_A_04 Substrato_A      16.6        3.81      10.2                  83\n5 Substrato_A_05 Substrato_A      19.5        3.97      15.3                  97\n6 Substrato_A_06 Substrato_A      16.1        4         11.1                  80\n\n\nCode\n# Criar boxplot\nggplot(dados, aes(x = Tratamento, y = Altura_cm, fill = Tratamento)) +\n  geom_boxplot() +\n  labs(title = \"Crescimento de mudas sob diferentes substratos\",\n       x = \"Tratamento\", y = \"Altura (cm)\") +\n  theme_minimal()",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "cap01-introducao.html#interpretação-dos-resultados",
+    "href": "cap01-introducao.html#interpretação-dos-resultados",
+    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "section": "2.7 🔍 Interpretação dos Resultados",
+    "text": "2.7 🔍 Interpretação dos Resultados\nO boxplot mostra a distribuição das alturas em cada tratamento.\n\n📊 Podemos observar diferenças visuais entre os grupos.\n⚠️ Atenção: diferenças visíveis não significam que sejam estatisticamente significativas — aprenderemos a verificar isso com ANOVA nos próximos capítulos.\n👀 Mesmo sem análise estatística, já é possível levantar hipóteses.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "cap01-introducao.html#exercício-final-aplicado",
+    "href": "cap01-introducao.html#exercício-final-aplicado",
+    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "section": "2.8 📝 Exercício Final Aplicado",
+    "text": "2.8 📝 Exercício Final Aplicado\nVocê recebeu dados de um experimento de irrigação em mudas de Cedrela fissilis, com três regimes hídricos (Baixo, Médio, Alto).\n\n\n\n\n\n\nNote\n\n\n\n💡 No Colab: após o upload, use \"/content/cedrela_irrigacao.csv\".\n\n\nTarefas:\n\nImporte o arquivo no R.\nCrie um boxplot para comparar as alturas entre os regimes de irrigação.\nEscreva uma breve interpretação visual (2 a 3 frases) sobre o padrão observado.\n\n\n\n\n\n\n\nTip\n\n\n\n✅ Dica para o relatório (Colab): Inclua no notebook:\n\nO código (com caminho /content/...)\nO gráfico\nA interpretação em texto\n\nAssim, você já inicia o relatório final da disciplina desde a primeira semana.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+    ]
+  }
+]
