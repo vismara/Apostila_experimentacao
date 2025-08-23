@@ -12,81 +12,161 @@
   {
     "objectID": "cap01-introducao.html",
     "href": "cap01-introducao.html",
-    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
     "section": "",
     "text": "2.1 🌱 Cenário inicial\n(Módulo 1 – Semana 1)\nImagine que você está iniciando a disciplina de Estatística Experimental e nunca utilizou o R antes. Agora, pense que você trabalha como engenheiro(a) florestal em um viveiro que produz mudas para restauração de áreas degradadas. Um fornecedor oferece um novo substrato “revolucionário” que promete aumentar o crescimento das mudas em 20%.\nVocê precisa decidir se vale a pena trocar o substrato atual — mas como saber se essa promessa é real ou apenas marketing?\n💡 É aqui que a Estatística Experimental entra em cena: ela permite planejar um teste, coletar dados e analisar resultados para concluir, com segurança, se a diferença observada é de fato causada pelo tratamento ou apenas fruto do acaso.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#objetivos-de-aprendizagem",
     "href": "cap01-introducao.html#objetivos-de-aprendizagem",
-    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
     "section": "2.2 🎯 Objetivos de Aprendizagem",
     "text": "2.2 🎯 Objetivos de Aprendizagem\nAo final deste capítulo, você será capaz de:\n\n✅ Diferenciar estudo observacional de experimento controlado.\n✅ Reconhecer a importância da experimentação na Engenharia Florestal.\n✅ Criar e interpretar seu primeiro gráfico no R, usando o Google Colab.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#ambiente-de-trabalho-google-colab-r",
     "href": "cap01-introducao.html#ambiente-de-trabalho-google-colab-r",
-    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
     "section": "2.3 🛠️ Ambiente de Trabalho: Google Colab (R)",
     "text": "2.3 🛠️ Ambiente de Trabalho: Google Colab (R)\nPassos iniciais (para estudantes):\n\nAcesse https://colab.research.google.com e entre com sua conta Google.\nAmbiente de execução → Alterar tipo de ambiente de execução → Linguagem: R.\nNo painel lateral (ícone de pasta), faça upload de:\n\n\ncrescimento_mudas.csv\ncedrela_irrigacao.csv`\n\n\n\n\n\n\n\nNote\n\n\n\n💡 Instalação de pacotes no Colab (rode apenas no Colab): O bloco abaixo não é executado ao compilar o ebook (serve apenas para consulta). No Colab, selecione a célula e rode-a.\n\n\n\n\nCode\n# Instalação no Colab (rode manualmente lá, se necessário)\noptions(repos = \"https://cloud.r-project.org\")\ninstall.packages(c(\"readr\",\"ggplot2\",\"dplyr\",\"agricolae\",\"emmeans\",\"multcompView\"))",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#contexto-florestal-aplicado",
     "href": "cap01-introducao.html#contexto-florestal-aplicado",
-    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
     "section": "2.4 🌳 Contexto Florestal Aplicado",
     "text": "2.4 🌳 Contexto Florestal Aplicado\nNa Engenharia Florestal, decisões técnicas e econômicas dependem de dados:\n\n🌱 Escolha de espécies ou clones para plantio comercial.\n📅 Determinação da melhor época de semeadura.\n✂️ Avaliação de técnicas de manejo (podas, desbastes, irrigação).\n🐛 Seleção de métodos de controle fitossanitário.\n\nEssas decisões não podem se basear apenas em experiência ou intuição — precisam ser sustentadas por evidências experimentais obtidas em experimentos bem planejados.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#conceitos-chave",
     "href": "cap01-introducao.html#conceitos-chave",
-    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
     "section": "2.5 📌 Conceitos-Chave",
     "text": "2.5 📌 Conceitos-Chave\n\nExperimento 🧪 — investigação planejada, com manipulação de fatores (ex.: tipo de adubação) e observação dos efeitos em variáveis de interesse (ex.: altura das mudas).\nEstudo observacional 👀 — coleta de dados sem manipular variáveis; útil para levantar hipóteses, mas com menos capacidade de inferir causalidade.\nTratamento 🔍 — combinação específica de condições aplicadas às unidades experimentais.\nUnidade experimental 🌿 — menor porção física ou biológica à qual se aplica um tratamento (ex.: uma muda, uma parcela de campo).",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#exemplo-prático-no-r",
     "href": "cap01-introducao.html#exemplo-prático-no-r",
-    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
     "section": "2.6 💻 Exemplo Prático no R",
     "text": "2.6 💻 Exemplo Prático no R\nVamos visualizar dados de crescimento de mudas sob três tratamentos diferentes de substrato.\n\n\n\n\n\n\nNote\n\n\n\n💡 Usando no Colab: Após fazer upload do CSV, troque o caminho por \"/content/nome_do_arquivo.csv\". No ebook/Quarto local, mantenha o caminho relativo dados/nome_do_arquivo.csv.\n\n\n\n\nCode\n# Carregar pacotes sem mensagens de inicialização\nsuppressPackageStartupMessages({\n  library(readr)\n  library(ggplot2)\n})\n\n# Ebook/Quarto (caminho relativo)\ndados &lt;- read_csv(\"dados/crescimento_mudas.csv\", show_col_types = FALSE)\n\n# Para Colab, use:\n# dados &lt;- read_csv(\"/content/crescimento_mudas.csv\", show_col_types = FALSE)\n\n# Visualizar amostra (sem mensagens de leitura)\nhead(dados)\n\n\n# A tibble: 6 × 6\n  ID             Tratamento  Altura_cm Diametro_mm Biomassa_g Dias_pos_semeadura\n  &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;              &lt;dbl&gt;\n1 Substrato_A_01 Substrato_A      12.3        3.5        9.13                 80\n2 Substrato_A_02 Substrato_A      21.0        4         13.0                  82\n3 Substrato_A_03 Substrato_A      16.7        3.94      12.0                  92\n4 Substrato_A_04 Substrato_A      16.6        3.81      10.2                  83\n5 Substrato_A_05 Substrato_A      19.5        3.97      15.3                  97\n6 Substrato_A_06 Substrato_A      16.1        4         11.1                  80\n\n\nCode\n# Criar boxplot\nggplot(dados, aes(x = Tratamento, y = Altura_cm, fill = Tratamento)) +\n  geom_boxplot() +\n  labs(title = \"Crescimento de mudas sob diferentes substratos\",\n       x = \"Tratamento\", y = \"Altura (cm)\") +\n  theme_minimal()",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#interpretação-dos-resultados",
     "href": "cap01-introducao.html#interpretação-dos-resultados",
-    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
     "section": "2.7 🔍 Interpretação dos Resultados",
     "text": "2.7 🔍 Interpretação dos Resultados\nO boxplot mostra a distribuição das alturas em cada tratamento.\n\n📊 Podemos observar diferenças visuais entre os grupos.\n⚠️ Atenção: diferenças visíveis não significam que sejam estatisticamente significativas — aprenderemos a verificar isso com ANOVA nos próximos capítulos.\n👀 Mesmo sem análise estatística, já é possível levantar hipóteses.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#exercício-final-aplicado",
     "href": "cap01-introducao.html#exercício-final-aplicado",
-    "title": "2  🌱 Módulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
     "section": "2.8 📝 Exercício Final Aplicado",
     "text": "2.8 📝 Exercício Final Aplicado\nVocê recebeu dados de um experimento de irrigação em mudas de Cedrela fissilis, com três regimes hídricos (Baixo, Médio, Alto).\n\n\n\n\n\n\nNote\n\n\n\n💡 No Colab: após o upload, use \"/content/cedrela_irrigacao.csv\".\n\n\nTarefas:\n\nImporte o arquivo no R.\nCrie um boxplot para comparar as alturas entre os regimes de irrigação.\nEscreva uma breve interpretação visual (2 a 3 frases) sobre o padrão observado.\n\n\n\n\n\n\n\nTip\n\n\n\n✅ Dica para o relatório (Colab): Inclua no notebook:\n\nO código (com caminho /content/...)\nO gráfico\nA interpretação em texto\n\nAssim, você já inicia o relatório final da disciplina desde a primeira semana.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Módulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "cap02-variaveis-fatores.html",
+    "href": "cap02-variaveis-fatores.html",
+    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "section": "",
+    "text": "3.1 🌱 Cenário inicial\n(Módulo 1 – Semana 2)\nImagine que você está em um experimento florestal avaliando o crescimento de mudas de Cedrela fissilis sob diferentes regimes de irrigação: Baixo, Médio e Alto.\nAntes de aplicar qualquer análise estatística, precisamos organizar o raciocínio experimental:",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+    ]
+  },
+  {
+    "objectID": "cap02-variaveis-fatores.html#cenário-inicial",
+    "href": "cap02-variaveis-fatores.html#cenário-inicial",
+    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "section": "",
+    "text": "O que é variável resposta?\nO que é fator?\nO que significa nível do fator?\nQuem é a unidade experimental?",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+    ]
+  },
+  {
+    "objectID": "cap02-variaveis-fatores.html#objetivos-de-aprendizagem",
+    "href": "cap02-variaveis-fatores.html#objetivos-de-aprendizagem",
+    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "section": "3.2 🎯 Objetivos de aprendizagem",
+    "text": "3.2 🎯 Objetivos de aprendizagem\nAo final deste capítulo, você será capaz de:\n\nDistinguir variáveis quantitativas e qualitativas.\nIdentificar fatores e seus níveis em experimentos florestais.\nRelacionar variáveis explicativas (fatores) e variáveis resposta.\nReconhecer a unidade experimental como elemento central.\nCriar resumos e gráficos exploratórios no R (Colab).\nElaborar uma tabela de planejamento experimental.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+    ]
+  },
+  {
+    "objectID": "cap02-variaveis-fatores.html#parte-1-conceitos-fundamentais",
+    "href": "cap02-variaveis-fatores.html#parte-1-conceitos-fundamentais",
+    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "section": "3.3 🌳 Parte 1 – Conceitos fundamentais",
+    "text": "3.3 🌳 Parte 1 – Conceitos fundamentais\nVariável. Característica que pode variar entre indivíduos/unidades.\n\nQuantitativas contínuas: altura da muda, diâmetro, biomassa.\nQuantitativas discretas: número de folhas, número de sementes germinadas.\nQualitativas/categóricas: espécie, regime de irrigação, tipo de substrato.\n\nFator. Variável controlada pelo pesquisador (ex.: regime de irrigação).\nNíveis do fator. Categorias/condições do fator (ex.: Baixo, Médio, Alto).\nUnidade experimental. Menor porção que recebe o tratamento (ex.: cada muda em tubete).\nVariável resposta. O que se mede para avaliar o efeito do fator (ex.: altura, diâmetro, biomassa).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+    ]
+  },
+  {
+    "objectID": "cap02-variaveis-fatores.html#parte-2-exemplos-florestais",
+    "href": "cap02-variaveis-fatores.html#parte-2-exemplos-florestais",
+    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "section": "3.4 🌳 Parte 2 – Exemplos florestais",
+    "text": "3.4 🌳 Parte 2 – Exemplos florestais\nExemplo 1 – Irrigação em Cedrela fissilis\n\nFator: Regime hídrico\nNíveis: Baixo, Médio, Alto\nUnidade experimental: cada planta em tubete\nVariáveis resposta: altura, diâmetro, biomassa\n\nExemplo 2 – Ensaio em campo com Pinus\n\nFatores: adubação e espaçamento\nNíveis:\n\nAdubação: com e sem\nEspaçamento: 2x2m, 3x2m, 3x3m\n\nUnidade experimental: parcela (10 árvores)\nVariáveis resposta: sobrevivência, altura, volume de madeira",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+    ]
+  },
+  {
+    "objectID": "cap02-variaveis-fatores.html#parte-3-exploração-prática-no-r-colab",
+    "href": "cap02-variaveis-fatores.html#parte-3-exploração-prática-no-r-colab",
+    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "section": "3.5 💻 Parte 3 – Exploração prática no R (Colab)",
+    "text": "3.5 💻 Parte 3 – Exploração prática no R (Colab)\n\nCaminhos dos arquivos - No ebook/local: dados/cedrela_irrigacao.csv e dados/crescimento_mudas.csv - No Colab (após upload): /content/cedrela_irrigacao.csv e /content/crescimento_mudas.csv\n\n\n3.5.1 3.1 Importar dataset Cedrela fissilis\n\n\nCode\nlibrary(readr); library(dplyr)\n\n# Ebook/local (caminho relativo)\ncedrela &lt;- read_csv(\"dados/cedrela_irrigacao.csv\", show_col_types = FALSE)\n\n# Para Colab, use:\n# cedrela &lt;- read_csv(\"/content/cedrela_irrigacao.csv\", show_col_types = FALSE)\n\n# Estrutura dos dados e amostra\nstr(cedrela)\n\n\nspc_tbl_ [75 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Planta              : chr [1:75] \"Baixo_01\" \"Baixo_02\" \"Baixo_03\" \"Baixo_04\" ...\n $ Regime              : chr [1:75] \"Baixo\" \"Baixo\" \"Baixo\" \"Baixo\" ...\n $ Altura_cm           : num [1:75] 11.6 12.3 14.8 11.8 15.2 ...\n $ Diametro_mm         : num [1:75] 2.78 2.72 3.01 3.57 3.43 2.42 2.9 3.31 3.37 3.19 ...\n $ Biomassa_g          : num [1:75] 6.78 5.98 11.62 4.8 7.88 ...\n $ Especie             : chr [1:75] \"Cedrela fissilis\" \"Cedrela fissilis\" \"Cedrela fissilis\" \"Cedrela fissilis\" ...\n $ Dias_pos_transplante: num [1:75] 74 88 78 84 74 86 90 76 71 90 ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Planta = col_character(),\n  ..   Regime = col_character(),\n  ..   Altura_cm = col_double(),\n  ..   Diametro_mm = col_double(),\n  ..   Biomassa_g = col_double(),\n  ..   Especie = col_character(),\n  ..   Dias_pos_transplante = col_double()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt; \n\n\nCode\nhead(cedrela)\n\n\n# A tibble: 6 × 7\n  Planta   Regime Altura_cm Diametro_mm Biomassa_g Especie  Dias_pos_transplante\n  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt;\n1 Baixo_01 Baixo       11.6        2.78       6.78 Cedrela…                   74\n2 Baixo_02 Baixo       12.3        2.72       5.98 Cedrela…                   88\n3 Baixo_03 Baixo       14.8        3.01      11.6  Cedrela…                   78\n4 Baixo_04 Baixo       11.8        3.57       4.8  Cedrela…                   84\n5 Baixo_05 Baixo       15.2        3.43       7.88 Cedrela…                   74\n6 Baixo_06 Baixo       13.4        2.42       5.72 Cedrela…                   86\n\n\n\n\n3.5.2 3.2 Resumos estatísticos\n\n\nCode\ncedrela %&gt;%\n  group_by(Regime) %&gt;%\n  summarise(\n    n = n(),\n    media_altura = mean(Altura_cm),\n    desvio_altura = sd(Altura_cm),\n    media_diam = mean(Diametro_mm),\n    media_biomassa = mean(Biomassa_g)\n  )\n\n\n# A tibble: 3 × 6\n  Regime     n media_altura desvio_altura media_diam media_biomassa\n  &lt;chr&gt;  &lt;int&gt;        &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;\n1 Alto      25         20.1          2.28       3.84          12.4 \n2 Baixo     25         14.4          1.83       2.98           7.78\n3 Medio     25         16.1          2.00       3.30           9.80\n\n\n\n\n3.5.3 3.3 Gráficos exploratórios\n\n\nCode\nlibrary(ggplot2)\n\n# Boxplot de altura por regime\nggplot(cedrela, aes(x = Regime, y = Altura_cm, fill = Regime)) +\n  geom_boxplot() +\n  labs(title = \"Altura por regime de irrigação\",\n       x = \"Regime hídrico\", y = \"Altura (cm)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nCode\n# Pontos das médias de altura por regime\ncedrela %&gt;%\n  group_by(Regime) %&gt;%\n  summarise(media_altura = mean(Altura_cm)) %&gt;%\n  ggplot(aes(x = Regime, y = media_altura)) +\n  geom_point(size = 4) +\n  labs(title = \"Médias de altura por regime de irrigação\",\n       x = \"Regime hídrico\", y = \"Altura média (cm)\") +\n  theme_minimal()",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+    ]
+  },
+  {
+    "objectID": "cap02-variaveis-fatores.html#parte-4-discussão-guiada-com-cedrela-fissilis",
+    "href": "cap02-variaveis-fatores.html#parte-4-discussão-guiada-com-cedrela-fissilis",
+    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "section": "3.6 🤔 Parte 4 – Discussão guiada (com Cedrela fissilis)",
+    "text": "3.6 🤔 Parte 4 – Discussão guiada (com Cedrela fissilis)\nUse os resultados exploratórios do item 3 para discutir em grupo:\n\nQual é o fator do experimento? Quais são seus níveis?\nQuem é a unidade experimental e por que defini-la corretamente é crucial?\nAs médias e boxplots sugerem diferenças entre os regimes? Isso já é evidência conclusiva?\nQuais variáveis resposta (altura, diâmetro, biomassa) parecem mais sensíveis ao tratamento?\nSe você pudesse repetir esse experimento no futuro, o que faria diferente para ter mais confiança nos resultados?",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+    ]
+  },
+  {
+    "objectID": "cap02-variaveis-fatores.html#exercício-integrador-dataset-de-mudas",
+    "href": "cap02-variaveis-fatores.html#exercício-integrador-dataset-de-mudas",
+    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "section": "3.7 📝 Exercício integrador (dataset de mudas)",
+    "text": "3.7 📝 Exercício integrador (dataset de mudas)\nDataset: dados/crescimento_mudas.csv (ou /content/crescimento_mudas.csv no Colab).\nTarefas:\n\nImporte o dataset no Colab.\nIdentifique:\n\nFator e seus níveis;\nUnidade experimental;\nVariáveis resposta.\n\nCrie boxplots de Altura e Biomassa por tratamento.\nConstrua uma tabela resumo com as colunas: Fator | Níveis | Unidade experimental | Variáveis resposta.\nExplique em um parágrafo:\n\na diferença entre variável explicativa (fator) e variável resposta;\na importância de definir corretamente a unidade experimental.\n\n\n\n\nCode\n# Leitura para iniciar o exercício integrador\nmudas &lt;- read_csv(\"dados/crescimento_mudas.csv\", show_col_types = FALSE)\n\nstr(mudas)\n\n\nspc_tbl_ [90 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ ID                : chr [1:90] \"Substrato_A_01\" \"Substrato_A_02\" \"Substrato_A_03\" \"Substrato_A_04\" ...\n $ Tratamento        : chr [1:90] \"Substrato_A\" \"Substrato_A\" \"Substrato_A\" \"Substrato_A\" ...\n $ Altura_cm         : num [1:90] 12.3 21 16.7 16.6 19.5 ...\n $ Diametro_mm       : num [1:90] 3.5 4 3.94 3.81 3.97 4 2.88 4.23 4 4.46 ...\n $ Biomassa_g        : num [1:90] 9.13 12.97 12.02 10.2 15.29 ...\n $ Dias_pos_semeadura: num [1:90] 80 82 92 83 97 80 93 93 86 86 ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   ID = col_character(),\n  ..   Tratamento = col_character(),\n  ..   Altura_cm = col_double(),\n  ..   Diametro_mm = col_double(),\n  ..   Biomassa_g = col_double(),\n  ..   Dias_pos_semeadura = col_double()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt; \n\n\n\n\n\n\n\n\nTip\n\n\n\n✅ Dica para o relatório:\nA tabela resumo (Fatores, Níveis, Unidade experimental, Variáveis resposta) deve ser incluída em cada relatório.\nEla funciona como um mapa conceitual que orienta todas as análises posteriores.\n🗂️ Como montar sua tabela no Colab usando Markdown\nNo Colab/Quarto, escreva tabelas em Markdown.\nUse | para separar colunas e - para indicar o cabeçalho.\nExemplo:\n| Fator               | Níveis             | Unidade experimental | Variáveis resposta         |\n| ------------------- | ------------------ | -------------------- | -------------------------- |\n| Regime de irrigação | Baixo, Médio, Alto | Cada muda em tubete  | Altura, Diâmetro, Biomassa |\n💡 Tarefa: substitua os conteúdos da tabela conforme o seu experimento.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
     ]
   }
 ]
