@@ -9,7 +9,7 @@ book:
   chapters:
     - index.qmd
     - cap01-introducao.qmd
-    #- cap02-variaveis-fatores.qmd
+    - cap02-variaveis-fatores.qmd
     #- cap03-anova.qmd
     #- cap04-comparacoes.qmd
     #- cap05-pressupostos.qmd

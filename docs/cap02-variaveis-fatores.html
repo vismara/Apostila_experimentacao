@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; 🌱 Capítulo 1 – Introdução e Motivação – 📚 Estatística Experimental Aplicada à Engenharia Florestal com R</title>
+<title>3&nbsp; 📖 Capítulo 2 – Variáveis, Fatores e Níveis – 📚 Estatística Experimental Aplicada à Engenharia Florestal com R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cap02-variaveis-fatores.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./cap01-introducao.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -116,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap01-introducao.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">🌱 Capítulo 1 – Introdução e Motivação</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap02-variaveis-fatores.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">📖 Capítulo 2 – Variáveis, Fatores e Níveis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,13 +148,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cap01-introducao.html" class="sidebar-item-text sidebar-link active">
+  <a href="./cap01-introducao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">🌱 Capítulo 1 – Introdução e Motivação</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cap02-variaveis-fatores.html" class="sidebar-item-text sidebar-link">
+  <a href="./cap02-variaveis-fatores.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">📖 Capítulo 2 – Variáveis, Fatores e Níveis</span></span></a>
   </div>
 </li>
@@ -169,14 +168,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#cenário-inicial" id="toc-cenário-inicial" class="nav-link active" data-scroll-target="#cenário-inicial"><span class="header-section-number">2.1</span> 🌱 Cenário inicial</a></li>
-  <li><a href="#objetivos-de-aprendizagem" id="toc-objetivos-de-aprendizagem" class="nav-link" data-scroll-target="#objetivos-de-aprendizagem"><span class="header-section-number">2.2</span> 🎯 Objetivos de Aprendizagem</a></li>
-  <li><a href="#ambiente-de-trabalho-google-colab-r" id="toc-ambiente-de-trabalho-google-colab-r" class="nav-link" data-scroll-target="#ambiente-de-trabalho-google-colab-r"><span class="header-section-number">2.3</span> 🛠️ Ambiente de Trabalho: Google Colab (R)</a></li>
-  <li><a href="#contexto-florestal-aplicado" id="toc-contexto-florestal-aplicado" class="nav-link" data-scroll-target="#contexto-florestal-aplicado"><span class="header-section-number">2.4</span> 🌳 Contexto Florestal Aplicado</a></li>
-  <li><a href="#conceitos-chave" id="toc-conceitos-chave" class="nav-link" data-scroll-target="#conceitos-chave"><span class="header-section-number">2.5</span> 📌 Conceitos-Chave</a></li>
-  <li><a href="#exemplo-prático-no-r" id="toc-exemplo-prático-no-r" class="nav-link" data-scroll-target="#exemplo-prático-no-r"><span class="header-section-number">2.6</span> 💻 Exemplo Prático no R</a></li>
-  <li><a href="#interpretação-dos-resultados" id="toc-interpretação-dos-resultados" class="nav-link" data-scroll-target="#interpretação-dos-resultados"><span class="header-section-number">2.7</span> 🔍 Interpretação dos Resultados</a></li>
-  <li><a href="#exercício-final-aplicado" id="toc-exercício-final-aplicado" class="nav-link" data-scroll-target="#exercício-final-aplicado"><span class="header-section-number">2.8</span> 📝 Exercício Final Aplicado</a></li>
+  <li><a href="#cenário-inicial" id="toc-cenário-inicial" class="nav-link active" data-scroll-target="#cenário-inicial"><span class="header-section-number">3.1</span> 🌱 Cenário inicial</a></li>
+  <li><a href="#objetivos-de-aprendizagem" id="toc-objetivos-de-aprendizagem" class="nav-link" data-scroll-target="#objetivos-de-aprendizagem"><span class="header-section-number">3.2</span> 🎯 Objetivos de aprendizagem</a></li>
+  <li><a href="#parte-1-conceitos-fundamentais" id="toc-parte-1-conceitos-fundamentais" class="nav-link" data-scroll-target="#parte-1-conceitos-fundamentais"><span class="header-section-number">3.3</span> 🌳 Parte 1 – Conceitos fundamentais</a></li>
+  <li><a href="#parte-2-exemplos-florestais" id="toc-parte-2-exemplos-florestais" class="nav-link" data-scroll-target="#parte-2-exemplos-florestais"><span class="header-section-number">3.4</span> 🌳 Parte 2 – Exemplos florestais</a></li>
+  <li><a href="#parte-3-exploração-prática-no-r-colab" id="toc-parte-3-exploração-prática-no-r-colab" class="nav-link" data-scroll-target="#parte-3-exploração-prática-no-r-colab"><span class="header-section-number">3.5</span> 💻 Parte 3 – Exploração prática no R (Colab)</a>
+  <ul class="collapse">
+  <li><a href="#importar-dataset-cedrela-fissilis" id="toc-importar-dataset-cedrela-fissilis" class="nav-link" data-scroll-target="#importar-dataset-cedrela-fissilis"><span class="header-section-number">3.5.1</span> 3.1 Importar dataset <em>Cedrela fissilis</em></a></li>
+  <li><a href="#resumos-estatísticos" id="toc-resumos-estatísticos" class="nav-link" data-scroll-target="#resumos-estatísticos"><span class="header-section-number">3.5.2</span> 3.2 Resumos estatísticos</a></li>
+  <li><a href="#gráficos-exploratórios" id="toc-gráficos-exploratórios" class="nav-link" data-scroll-target="#gráficos-exploratórios"><span class="header-section-number">3.5.3</span> 3.3 Gráficos exploratórios</a></li>
+  </ul></li>
+  <li><a href="#parte-4-discussão-guiada-com-cedrela-fissilis" id="toc-parte-4-discussão-guiada-com-cedrela-fissilis" class="nav-link" data-scroll-target="#parte-4-discussão-guiada-com-cedrela-fissilis"><span class="header-section-number">3.6</span> 🤔 Parte 4 – Discussão guiada (com <em>Cedrela fissilis</em>)</a></li>
+  <li><a href="#exercício-integrador-dataset-de-mudas" id="toc-exercício-integrador-dataset-de-mudas" class="nav-link" data-scroll-target="#exercício-integrador-dataset-de-mudas"><span class="header-section-number">3.7</span> 📝 Exercício integrador (dataset de mudas)</a></li>
   </ul>
 </nav>
     </div>
@@ -185,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">🌱 Capítulo 1 – Introdução e Motivação</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">📖 Capítulo 2 – Variáveis, Fatores e Níveis</span></h1>
 </div>
 
 
@@ -202,178 +205,250 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><em>(Módulo 1 – Semana 1)</em></p>
-<hr>
-<section id="cenário-inicial" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="cenário-inicial"><span class="header-section-number">2.1</span> 🌱 Cenário inicial</h2>
-<p>Imagine que você está iniciando a disciplina de <strong>Estatística Experimental</strong> e nunca utilizou o R antes. Agora, pense que você trabalha como engenheiro(a) florestal em um viveiro que produz mudas para <strong>restauração de áreas degradadas</strong>. Um fornecedor oferece um novo substrato <em>“revolucionário”</em> que promete aumentar o crescimento das mudas em <strong>20%</strong>.</p>
-<p>Você precisa decidir se vale a pena trocar o substrato atual — mas como saber se essa promessa é real ou apenas marketing?</p>
-<p>💡 É aqui que a <strong>Estatística Experimental</strong> entra em cena: ela permite <strong>planejar</strong> um teste, <strong>coletar</strong> dados e <strong>analisar</strong> resultados para concluir, com segurança, se a diferença observada é de fato causada pelo tratamento ou apenas fruto do acaso.</p>
-<hr>
+<p><em>(Módulo 1 – Semana 2)</em></p>
+<section id="cenário-inicial" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="cenário-inicial"><span class="header-section-number">3.1</span> 🌱 Cenário inicial</h2>
+<p>Imagine que você está em um <strong>experimento florestal</strong> avaliando o crescimento de mudas de <em>Cedrela fissilis</em> sob diferentes regimes de irrigação: <strong>Baixo</strong>, <strong>Médio</strong> e <strong>Alto</strong>.</p>
+<p>Antes de aplicar qualquer análise estatística, precisamos <strong>organizar o raciocínio experimental</strong>:</p>
+<ul>
+<li><p>O que é <strong>variável resposta</strong>?</p></li>
+<li><p>O que é <strong>fator</strong>?</p></li>
+<li><p>O que significa <strong>nível do fator</strong>?</p></li>
+<li><p>Quem é a <strong>unidade experimental</strong>?</p></li>
+</ul>
 </section>
-<section id="objetivos-de-aprendizagem" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="objetivos-de-aprendizagem"><span class="header-section-number">2.2</span> 🎯 Objetivos de Aprendizagem</h2>
+<section id="objetivos-de-aprendizagem" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="objetivos-de-aprendizagem"><span class="header-section-number">3.2</span> 🎯 Objetivos de aprendizagem</h2>
 <p>Ao final deste capítulo, você será capaz de:</p>
 <ul>
-<li>✅ Diferenciar estudo observacional de experimento controlado.</li>
-<li>✅ Reconhecer a importância da experimentação na Engenharia Florestal.</li>
-<li>✅ Criar e interpretar seu <strong>primeiro gráfico no R</strong>, usando o Google Colab.</li>
+<li><p>Distinguir variáveis <strong>quantitativas</strong> e <strong>qualitativas</strong>.</p></li>
+<li><p>Identificar <strong>fatores</strong> e seus <strong>níveis</strong> em experimentos florestais.</p></li>
+<li><p>Relacionar variáveis explicativas (<strong>fatores</strong>) e <strong>variáveis resposta</strong>.</p></li>
+<li><p>Reconhecer a <strong>unidade experimental</strong> como elemento central.</p></li>
+<li><p>Criar resumos e gráficos exploratórios no <strong>R (Colab)</strong>.</p></li>
+<li><p>Elaborar uma <strong>tabela de planejamento experimental</strong>.</p></li>
 </ul>
-<hr>
 </section>
-<section id="ambiente-de-trabalho-google-colab-r" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="ambiente-de-trabalho-google-colab-r"><span class="header-section-number">2.3</span> 🛠️ Ambiente de Trabalho: Google Colab (R)</h2>
-<p><strong>Passos iniciais (para estudantes):</strong></p>
-<ol type="1">
-<li>Acesse <a href="https://colab.research.google.com">https://colab.research.google.com</a> e entre com sua conta Google.</li>
-<li><strong>Ambiente de execução → Alterar tipo de ambiente de execução → Linguagem: R</strong>.</li>
-<li>No painel lateral (ícone de pasta), faça <strong>upload</strong> de:</li>
-</ol>
+<section id="parte-1-conceitos-fundamentais" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="parte-1-conceitos-fundamentais"><span class="header-section-number">3.3</span> 🌳 Parte 1 – Conceitos fundamentais</h2>
+<p><strong>Variável.</strong> Característica que pode variar entre indivíduos/unidades.</p>
 <ul>
-<li><a href="dados/crescimento_mudas.csv"><code>crescimento_mudas.csv</code></a></li>
-<li><a href="dados/cedrela_irrigacao.csv"><code>cedrela_irrigacao.csv</code></a>`</li>
+<li><p><em>Quantitativas contínuas</em>: altura da muda, diâmetro, biomassa.</p></li>
+<li><p><em>Quantitativas discretas</em>: número de folhas, número de sementes germinadas.</p></li>
+<li><p><em>Qualitativas/categóricas</em>: espécie, regime de irrigação, tipo de substrato.</p></li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>💡 <strong>Instalação de pacotes no Colab (rode apenas no Colab):</strong> O bloco abaixo <strong>não</strong> é executado ao compilar o ebook (serve apenas para consulta). No Colab, selecione a célula e rode-a.</p>
-</div>
-</div>
+<p><strong>Fator.</strong> Variável controlada pelo pesquisador (ex.: regime de irrigação).</p>
+<p><strong>Níveis do fator.</strong> Categorias/condições do fator (ex.: Baixo, Médio, Alto).</p>
+<p><strong>Unidade experimental.</strong> Menor porção que recebe o tratamento (ex.: cada muda em tubete).</p>
+<p><strong>Variável resposta.</strong> O que se mede para avaliar o efeito do fator (ex.: altura, diâmetro, biomassa).</p>
+</section>
+<section id="parte-2-exemplos-florestais" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="parte-2-exemplos-florestais"><span class="header-section-number">3.4</span> 🌳 Parte 2 – Exemplos florestais</h2>
+<p><strong>Exemplo 1 – Irrigação em <em>Cedrela fissilis</em></strong></p>
+<ul>
+<li><p>Fator: Regime hídrico</p></li>
+<li><p>Níveis: Baixo, Médio, Alto</p></li>
+<li><p>Unidade experimental: cada planta em tubete</p></li>
+<li><p>Variáveis resposta: altura, diâmetro, biomassa</p></li>
+</ul>
+<p><strong>Exemplo 2 – Ensaio em campo com <em>Pinus</em></strong></p>
+<ul>
+<li><p>Fatores: adubação e espaçamento</p></li>
+<li><p>Níveis:</p>
+<ul>
+<li><p>Adubação: com e sem</p></li>
+<li><p>Espaçamento: 2x2m, 3x2m, 3x3m</p></li>
+</ul></li>
+<li><p>Unidade experimental: parcela (10 árvores)</p></li>
+<li><p>Variáveis resposta: sobrevivência, altura, volume de madeira</p></li>
+</ul>
+</section>
+<section id="parte-3-exploração-prática-no-r-colab" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="parte-3-exploração-prática-no-r-colab"><span class="header-section-number">3.5</span> 💻 Parte 3 – Exploração prática no R (Colab)</h2>
+<blockquote class="blockquote">
+<p><strong>Caminhos dos arquivos</strong> - No ebook/local: <code>dados/cedrela_irrigacao.csv</code> e <code>dados/crescimento_mudas.csv</code> - No Colab (após upload): <code>/content/cedrela_irrigacao.csv</code> e <code>/content/crescimento_mudas.csv</code></p>
+</blockquote>
+<section id="importar-dataset-cedrela-fissilis" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="importar-dataset-cedrela-fissilis"><span class="header-section-number">3.5.1</span> 3.1 Importar dataset <em>Cedrela fissilis</em></h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalação no Colab (rode manualmente lá, se necessário)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="st">"https://cloud.r-project.org"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"readr"</span>,<span class="st">"ggplot2"</span>,<span class="st">"dplyr"</span>,<span class="st">"agricolae"</span>,<span class="st">"emmeans"</span>,<span class="st">"multcompView"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<hr>
-</section>
-<section id="contexto-florestal-aplicado" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="contexto-florestal-aplicado"><span class="header-section-number">2.4</span> 🌳 Contexto Florestal Aplicado</h2>
-<p>Na Engenharia Florestal, <strong>decisões técnicas e econômicas</strong> dependem de dados:</p>
-<ul>
-<li>🌱 <strong>Escolha de espécies ou clones</strong> para plantio comercial.</li>
-<li>📅 <strong>Determinação da melhor época</strong> de semeadura.</li>
-<li>✂️ <strong>Avaliação de técnicas de manejo</strong> (podas, desbastes, irrigação).</li>
-<li>🐛 <strong>Seleção de métodos de controle fitossanitário</strong>.</li>
-</ul>
-<p>Essas decisões não podem se basear apenas em <strong>experiência</strong> ou <strong>intuição</strong> — precisam ser sustentadas por <strong>evidências experimentais</strong> obtidas em experimentos bem planejados.</p>
-<hr>
-</section>
-<section id="conceitos-chave" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="conceitos-chave"><span class="header-section-number">2.5</span> 📌 Conceitos-Chave</h2>
-<ul>
-<li><strong>Experimento</strong> 🧪 — investigação planejada, com manipulação de fatores (ex.: tipo de adubação) e observação dos efeitos em variáveis de interesse (ex.: altura das mudas).</li>
-<li><strong>Estudo observacional</strong> 👀 — coleta de dados sem manipular variáveis; útil para levantar hipóteses, mas com menos capacidade de inferir causalidade.</li>
-<li><strong>Tratamento</strong> 🔍 — combinação específica de condições aplicadas às unidades experimentais.</li>
-<li><strong>Unidade experimental</strong> 🌿 — menor porção física ou biológica à qual se aplica um tratamento (ex.: uma muda, uma parcela de campo).</li>
-</ul>
-<hr>
-</section>
-<section id="exemplo-prático-no-r" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="exemplo-prático-no-r"><span class="header-section-number">2.6</span> 💻 Exemplo Prático no R</h2>
-<p>Vamos visualizar dados de crescimento de mudas sob três tratamentos diferentes de substrato.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>💡 <strong>Usando no Colab:</strong> Após fazer <strong>upload</strong> do CSV, troque o caminho por <code>"/content/nome_do_arquivo.csv"</code>. No ebook/Quarto local, mantenha o caminho relativo <code>dados/nome_do_arquivo.csv</code>.</p>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar pacotes sem mensagens de inicialização</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(readr)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ebook/Quarto (caminho relativo)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/crescimento_mudas.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Para Colab, use:</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># dados &lt;- read_csv("/content/crescimento_mudas.csv", show_col_types = FALSE)</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar amostra (sem mensagens de leitura)</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ebook/local (caminho relativo)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>cedrela <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/cedrela_irrigacao.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Para Colab, use:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># cedrela &lt;- read_csv("/content/cedrela_irrigacao.csv", show_col_types = FALSE)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Estrutura dos dados e amostra</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cedrela)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
-  ID             Tratamento  Altura_cm Diametro_mm Biomassa_g Dias_pos_semeadura
-  &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;              &lt;dbl&gt;
-1 Substrato_A_01 Substrato_A      12.3        3.5        9.13                 80
-2 Substrato_A_02 Substrato_A      21.0        4         13.0                  82
-3 Substrato_A_03 Substrato_A      16.7        3.94      12.0                  92
-4 Substrato_A_04 Substrato_A      16.6        3.81      10.2                  83
-5 Substrato_A_05 Substrato_A      19.5        3.97      15.3                  97
-6 Substrato_A_06 Substrato_A      16.1        4         11.1                  80</code></pre>
+<pre><code>spc_tbl_ [75 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ Planta              : chr [1:75] "Baixo_01" "Baixo_02" "Baixo_03" "Baixo_04" ...
+ $ Regime              : chr [1:75] "Baixo" "Baixo" "Baixo" "Baixo" ...
+ $ Altura_cm           : num [1:75] 11.6 12.3 14.8 11.8 15.2 ...
+ $ Diametro_mm         : num [1:75] 2.78 2.72 3.01 3.57 3.43 2.42 2.9 3.31 3.37 3.19 ...
+ $ Biomassa_g          : num [1:75] 6.78 5.98 11.62 4.8 7.88 ...
+ $ Especie             : chr [1:75] "Cedrela fissilis" "Cedrela fissilis" "Cedrela fissilis" "Cedrela fissilis" ...
+ $ Dias_pos_transplante: num [1:75] 74 88 78 84 74 86 90 76 71 90 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   Planta = col_character(),
+  ..   Regime = col_character(),
+  ..   Altura_cm = col_double(),
+  ..   Diametro_mm = col_double(),
+  ..   Biomassa_g = col_double(),
+  ..   Especie = col_character(),
+  ..   Dias_pos_transplante = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar boxplot</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> Tratamento, <span class="at">y =</span> Altura_cm, <span class="at">fill =</span> Tratamento)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Crescimento de mudas sob diferentes substratos"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Tratamento"</span>, <span class="at">y =</span> <span class="st">"Altura (cm)"</span>) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cedrela)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  Planta   Regime Altura_cm Diametro_mm Biomassa_g Especie  Dias_pos_transplante
+  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt;
+1 Baixo_01 Baixo       11.6        2.78       6.78 Cedrela…                   74
+2 Baixo_02 Baixo       12.3        2.72       5.98 Cedrela…                   88
+3 Baixo_03 Baixo       14.8        3.01      11.6  Cedrela…                   78
+4 Baixo_04 Baixo       11.8        3.57       4.8  Cedrela…                   84
+5 Baixo_05 Baixo       15.2        3.43       7.88 Cedrela…                   74
+6 Baixo_06 Baixo       13.4        2.42       5.72 Cedrela…                   86</code></pre>
+</div>
+</div>
+</section>
+<section id="resumos-estatísticos" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="resumos-estatísticos"><span class="header-section-number">3.5.2</span> 3.2 Resumos estatísticos</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cedrela <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Regime) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_altura =</span> <span class="fu">mean</span>(Altura_cm),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">desvio_altura =</span> <span class="fu">sd</span>(Altura_cm),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_diam =</span> <span class="fu">mean</span>(Diametro_mm),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_biomassa =</span> <span class="fu">mean</span>(Biomassa_g)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  Regime     n media_altura desvio_altura media_diam media_biomassa
+  &lt;chr&gt;  &lt;int&gt;        &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;
+1 Alto      25         20.1          2.28       3.84          12.4 
+2 Baixo     25         14.4          1.83       2.98           7.78
+3 Medio     25         16.1          2.00       3.30           9.80</code></pre>
+</div>
+</div>
+</section>
+<section id="gráficos-exploratórios" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="gráficos-exploratórios"><span class="header-section-number">3.5.3</span> 3.3 Gráficos exploratórios</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot de altura por regime</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cedrela, <span class="fu">aes</span>(<span class="at">x =</span> Regime, <span class="at">y =</span> Altura_cm, <span class="at">fill =</span> Regime)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Altura por regime de irrigação"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Regime hídrico"</span>, <span class="at">y =</span> <span class="st">"Altura (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cap01-introducao_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cap02-variaveis-fatores_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pontos das médias de altura por regime</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cedrela <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Regime) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media_altura =</span> <span class="fu">mean</span>(Altura_cm)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Regime, <span class="at">y =</span> media_altura)) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Médias de altura por regime de irrigação"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Regime hídrico"</span>, <span class="at">y =</span> <span class="st">"Altura média (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02-variaveis-fatores_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<hr>
 </section>
-<section id="interpretação-dos-resultados" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="interpretação-dos-resultados"><span class="header-section-number">2.7</span> 🔍 Interpretação dos Resultados</h2>
-<p>O <strong>boxplot</strong> mostra a distribuição das alturas em cada tratamento.</p>
-<ul>
-<li>📊 Podemos observar diferenças visuais entre os grupos.</li>
-<li>⚠️ <strong>Atenção:</strong> diferenças visíveis <strong>não significam</strong> que sejam estatisticamente significativas — aprenderemos a verificar isso com <strong>ANOVA</strong> nos próximos capítulos.</li>
-<li>👀 Mesmo sem análise estatística, já é possível <strong>levantar hipóteses</strong>.</li>
-</ul>
-<hr>
 </section>
-<section id="exercício-final-aplicado" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="exercício-final-aplicado"><span class="header-section-number">2.8</span> 📝 Exercício Final Aplicado</h2>
-<p>Você recebeu dados de um experimento de irrigação em mudas de <em>Cedrela fissilis</em>, com três regimes hídricos (<strong>Baixo</strong>, <strong>Médio</strong>, <strong>Alto</strong>).</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>💡 <strong>No Colab:</strong> após o upload, use <code>"/content/cedrela_irrigacao.csv"</code>.</p>
-</div>
-</div>
-<p><strong>Tarefas:</strong></p>
+<section id="parte-4-discussão-guiada-com-cedrela-fissilis" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="parte-4-discussão-guiada-com-cedrela-fissilis"><span class="header-section-number">3.6</span> 🤔 Parte 4 – Discussão guiada (com <em>Cedrela fissilis</em>)</h2>
+<p>Use os resultados exploratórios do item 3 para discutir em grupo:</p>
 <ol type="1">
-<li>Importe o arquivo no R.</li>
-<li>Crie um boxplot para comparar as alturas entre os regimes de irrigação.</li>
-<li>Escreva uma breve interpretação visual (<strong>2 a 3 frases</strong>) sobre o padrão observado.</li>
+<li><p>Qual é o <strong>fator</strong> do experimento? Quais são seus <strong>níveis</strong>?</p></li>
+<li><p>Quem é a <strong>unidade experimental</strong> e por que defini-la corretamente é crucial?</p></li>
+<li><p>As médias e boxplots sugerem diferenças entre os regimes? Isso já é <strong>evidência conclusiva</strong>?</p></li>
+<li><p>Quais variáveis resposta (altura, diâmetro, biomassa) parecem mais <strong>sensíveis ao tratamento</strong>?</p></li>
+<li><p>Se você pudesse repetir esse experimento no futuro, o que faria diferente para ter mais confiança nos resultados?</p></li>
 </ol>
+</section>
+<section id="exercício-integrador-dataset-de-mudas" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="exercício-integrador-dataset-de-mudas"><span class="header-section-number">3.7</span> 📝 Exercício integrador (dataset de mudas)</h2>
+<p><strong>Dataset:</strong> <code>dados/crescimento_mudas.csv</code> (ou <code>/content/crescimento_mudas.csv</code> no Colab).</p>
+<p>Tarefas:</p>
+<ol type="1">
+<li><p>Importe o dataset no Colab.</p></li>
+<li><p>Identifique:</p>
+<ul>
+<li><p>Fator e seus níveis;</p></li>
+<li><p>Unidade experimental;</p></li>
+<li><p>Variáveis resposta.</p></li>
+</ul></li>
+<li><p>Crie boxplots de <strong>Altura</strong> e <strong>Biomassa</strong> por tratamento.</p></li>
+<li><p>Construa uma tabela resumo com as colunas: <strong>Fator | Níveis | Unidade experimental | Variáveis resposta</strong>.</p></li>
+<li><p>Explique em <strong>um parágrafo</strong>:</p>
+<ul>
+<li>a diferença entre <strong>variável explicativa (fator)</strong> e <strong>variável resposta</strong>;</li>
+<li>a importância de definir corretamente a <strong>unidade experimental</strong>.</li>
+</ul></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura para iniciar o exercício integrador</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mudas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/crescimento_mudas.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mudas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [90 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ ID                : chr [1:90] "Substrato_A_01" "Substrato_A_02" "Substrato_A_03" "Substrato_A_04" ...
+ $ Tratamento        : chr [1:90] "Substrato_A" "Substrato_A" "Substrato_A" "Substrato_A" ...
+ $ Altura_cm         : num [1:90] 12.3 21 16.7 16.6 19.5 ...
+ $ Diametro_mm       : num [1:90] 3.5 4 3.94 3.81 3.97 4 2.88 4.23 4 4.46 ...
+ $ Biomassa_g        : num [1:90] 9.13 12.97 12.02 10.2 15.29 ...
+ $ Dias_pos_semeadura: num [1:90] 80 82 92 83 97 80 93 93 86 86 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   ID = col_character(),
+  ..   Tratamento = col_character(),
+  ..   Altura_cm = col_double(),
+  ..   Diametro_mm = col_double(),
+  ..   Biomassa_g = col_double(),
+  ..   Dias_pos_semeadura = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -384,17 +459,19 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>✅ <strong>Dica para o relatório (Colab):</strong> Inclua no notebook:</p>
-<ul>
-<li>O <strong>código</strong> (com caminho <code>/content/...</code>)</li>
-<li>O <strong>gráfico</strong></li>
-<li>A <strong>interpretação</strong> em texto</li>
-</ul>
-<p>Assim, você já inicia o relatório final da disciplina desde a primeira semana.</p>
+<p>✅ <strong>Dica para o relatório:</strong><br>
+A tabela resumo (Fatores, Níveis, Unidade experimental, Variáveis resposta) deve ser incluída em cada relatório.<br>
+Ela funciona como um <strong>mapa conceitual</strong> que orienta todas as análises posteriores.</p>
+<p>🗂️ <strong>Como montar sua tabela no Colab usando Markdown</strong></p>
+<p>No Colab/Quarto, escreva tabelas em <strong>Markdown</strong>.<br>
+Use <code>|</code> para separar colunas e <code>-</code> para indicar o cabeçalho.</p>
+<p>Exemplo:</p>
+<pre><code>| Fator               | Níveis             | Unidade experimental | Variáveis resposta         |
+| ------------------- | ------------------ | -------------------- | -------------------------- |
+| Regime de irrigação | Baixo, Médio, Alto | Cada muda em tubete  | Altura, Diâmetro, Biomassa |</code></pre>
+<p>💡 <strong>Tarefa:</strong> substitua os conteúdos da tabela conforme o seu experimento.</p>
 </div>
 </div>
-<pre><code>
-</code></pre>
 
 
 </section>
@@ -819,14 +896,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="📚 Estatística Experimental Aplicada à Engenharia Florestal com R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">📚 Estatística Experimental Aplicada à Engenharia Florestal com R</span></span>
+      <a href="./cap01-introducao.html" class="pagination-link" aria-label="🌱 Capítulo 1 – Introdução e Motivação">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">🌱 Capítulo 1 – Introdução e Motivação</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cap02-variaveis-fatores.html" class="pagination-link" aria-label="📖 Capítulo 2 – Variáveis, Fatores e Níveis">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">📖 Capítulo 2 – Variáveis, Fatores e Níveis</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
