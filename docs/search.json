@@ -168,5 +168,85 @@
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
     ]
+  },
+  {
+    "objectID": "cap03A-anova.html",
+    "href": "cap03A-anova.html",
+    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "section": "",
+    "text": "4.1 🌱 Narrativa inicial\nMódulo 1 – Semana 3\nVocê é o(a) engenheiro(a) florestal de um viveiro de Eucalyptus grandis. Sua decisão afeta custos e qualidade das mudas que irão para campo.\nPara recomendar o tipo de adubação, foi conduzido um teste com três tratamentos:\nForam avaliadas 10 mudas por tratamento e medidas Altura (cm), Diâmetro (mm) e Biomassa (g).\n👉 Decisão profissional: qual adubação recomendar com base em evidências?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+    ]
+  },
+  {
+    "objectID": "cap03A-anova.html#narrativa-inicial",
+    "href": "cap03A-anova.html#narrativa-inicial",
+    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "section": "",
+    "text": "Controle (sem adubo) – referência de custo zero.\n\nOrgânica (composto local) – menor custo, possível ganho gradual.\n\nQuímica (NPK 06-30-06) – maior custo, promessa de ganho rápido.\n\n\n\n\n\n\n\n\nImportant\n\n\n\n⚠️ Erro comum: escolher pelo “olhômetro”. Diferenças visuais podem ocorrer ao acaso. A ANOVA formaliza essa comparação de médias.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+    ]
+  },
+  {
+    "objectID": "cap03A-anova.html#objetivos-de-aprendizagem",
+    "href": "cap03A-anova.html#objetivos-de-aprendizagem",
+    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "section": "4.2 🎯 Objetivos de aprendizagem",
+    "text": "4.2 🎯 Objetivos de aprendizagem\n\nEntender a lógica da ANOVA (variação entre vs. dentro dos grupos).\n\nLer e interpretar a tabela de ANOVA.\n\nAplicar ANOVA no R com dados florestais contextualizados.\n\nConectar gráficos e resumos (Cap. 2) com o teste formal.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+    ]
+  },
+  {
+    "objectID": "cap03A-anova.html#intuição-da-anova",
+    "href": "cap03A-anova.html#intuição-da-anova",
+    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "section": "4.3 🧠 Intuição da ANOVA",
+    "text": "4.3 🧠 Intuição da ANOVA\nA ANOVA verifica se as diferenças entre as médias dos grupos são maiores do que esperaríamos por acaso.\n- Entre grupos (tratamentos): efeito potencial da adubação.\n- Dentro dos grupos (erro): variabilidade natural entre mudas do mesmo tratamento.\n- Estatística F = QM_trat / QM_erro → quanto maior, maior a evidência de diferença.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+    ]
+  },
+  {
+    "objectID": "cap03A-anova.html#tabela-de-anova-e-como-ler",
+    "href": "cap03A-anova.html#tabela-de-anova-e-como-ler",
+    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "section": "4.4 🧾 Tabela de ANOVA (e como ler)",
+    "text": "4.4 🧾 Tabela de ANOVA (e como ler)\n\n\n\n\nFonte\n\n\nGL\n\n\nSQ\n\n\nQM = SQ/GL\n\n\nF = QMtrat/QMerro\n\n\np-valor\n\n\n\n\n\n\nTratamentos\n\n\nk − 1\n\n\nSQtrat\n\n\nQMtrat\n\n\nF calculado\n\n\nProb(H0)\n\n\n\n\nResíduo (Erro)\n\n\nN − k\n\n\nSQerro\n\n\nQMerro\n\n\n—\n\n\n—\n\n\n\n\nTotal\n\n\nN − 1\n\n\nSQtotal\n\n\n—\n\n\n—\n\n\n—\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nComo interpretar rapidamente\n- GL: graus de liberdade (quantas comparações independentes cabem).\n- SQ / QM: variação total e variação média.\n- F grande + p-valor pequeno → evidência de diferenças entre médias.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+    ]
+  },
+  {
+    "objectID": "cap03A-anova.html#aplicação-prática-altura",
+    "href": "cap03A-anova.html#aplicação-prática-altura",
+    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "section": "4.5 💻 Aplicação prática (Altura)",
+    "text": "4.5 💻 Aplicação prática (Altura)\nDados novos deste capítulo: dados/eucalipto_adubacao.csv\nConexão com o Cap. 2 (revisão gráfica): dados/crescimento_mudas.csv\n\n\nCode\nlibrary(readr); library(ggplot2)\n\neuca &lt;- read_csv(\"dados/eucalipto_adubacao.csv\", show_col_types = FALSE)\n\nmod_alt &lt;- aov(Altura_cm ~ Tratamento, data = euca)\nsummary(mod_alt)\n\n\n            Df Sum Sq Mean Sq F value  Pr(&gt;F)    \nTratamento   2  154.0   77.02   15.25 3.7e-05 ***\nResiduals   27  136.4    5.05                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\nCode\n# Visualização\nggplot(euca, aes(Tratamento, Altura_cm, fill = Tratamento)) +\n  geom_boxplot() +\n  labs(title = \"Eucalyptus grandis — Altura por adubação\",\n       x = \"Tratamento\", y = \"Altura (cm)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n✅ Dica prática: Se o p-valor &lt; 0,05, rejeitamos H0 → há evidência de diferença entre os tratamentos. Mas ANOVA não diz quais tratamentos diferem. (isso veremos no Cap. 3B)\n\n\n\n\n\n\n\n\nTip\n\n\n\n✅ Dica profissional: Relacione o resultado ao custo e logística. Às vezes o ganho de altura é real, mas não compensa o custo do insumo no viveiro.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+    ]
+  },
+  {
+    "objectID": "cap03A-anova.html#outras-respostas-de-interesse",
+    "href": "cap03A-anova.html#outras-respostas-de-interesse",
+    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "section": "4.6 🔁 Outras respostas de interesse",
+    "text": "4.6 🔁 Outras respostas de interesse\n\n\nCode\nsummary(aov(Diametro_mm ~ Tratamento, data = euca))\n\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)  \nTratamento   2  2.122  1.0610   4.846 0.0159 *\nResiduals   27  5.912  0.2189                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCode\nsummary(aov(Biomassa_g ~ Tratamento, data = euca))\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nTratamento   2  6.037  3.0183   25.27 6.53e-07 ***\nResiduals   27  3.225  0.1194                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+    ]
+  },
+  {
+    "objectID": "cap03A-anova.html#exercícios",
+    "href": "cap03A-anova.html#exercícios",
+    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "section": "4.7 📝 Exercícios",
+    "text": "4.7 📝 Exercícios\n\nUse o dataset crescimento_mudas.csv para:\n\n\nFazer boxplot de Biomassa_g;\nResumir médias e desvios;\nAplicar ANOVA e escrever 2 frases de interpretação.\n\n\nCom o conjunto de dados eucalipto_adubacao.csv:\n\n\nAplique ANOVA para Diametro_mm;\nExplique se há diferença significativa;\nInclua gráficos e interpretação no relatório.\n\n\n✅ Síntese\n\nA ANOVA responde: “as médias são todas iguais?”\nCompara variação entre tratamentos vs. dentro dos tratamentos.\nResultado significativo indica diferença, mas não mostra onde (isso será o Cap. 3B).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+    ]
   }
 ]

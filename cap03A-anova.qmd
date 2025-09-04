@@ -1,0 +1,115 @@
+---
+title: "📖 Capítulo 3A – ANOVA: Introdução e Contexto"
+---
+
+*Módulo 1 – Semana 3*
+
+## 🌱 Narrativa inicial
+
+Você é o(a) **engenheiro(a) florestal** de um viveiro de *Eucalyptus grandis*. Sua decisão afeta **custos** e **qualidade** das mudas que irão para campo.  
+Para recomendar o **tipo de adubação**, foi conduzido um teste com três tratamentos:
+
+- **Controle** (sem adubo) – referência de custo zero.  
+- **Orgânica** (composto local) – menor custo, possível ganho gradual.  
+- **Química** (NPK 06-30-06) – maior custo, promessa de ganho rápido.
+
+Foram avaliadas **10 mudas por tratamento** e medidas **Altura (cm)**, **Diâmetro (mm)** e **Biomassa (g)**.  
+👉 **Decisão profissional:** qual adubação recomendar **com base em evidências**?
+
+::: callout-important
+⚠️ **Erro comum**: escolher pelo “olhômetro”. Diferenças visuais podem ocorrer **ao acaso**. A **ANOVA** formaliza essa comparação de médias.
+:::
+
+## 🎯 Objetivos de aprendizagem
+- Entender a lógica da **ANOVA** (variação entre vs. dentro dos grupos).  
+- **Ler** e **interpretar** a **tabela de ANOVA**.  
+- Aplicar ANOVA no R com dados florestais contextualizados.  
+- Conectar gráficos e resumos (Cap. 2) com o teste formal.
+
+## 🧠 Intuição da ANOVA
+A ANOVA verifica se as diferenças entre as **médias** dos grupos são maiores do que esperaríamos **por acaso**.  
+- **Entre grupos (tratamentos):** efeito potencial da adubação.  
+- **Dentro dos grupos (erro):** variabilidade natural entre mudas do mesmo tratamento.  
+- Estatística **F = QM_trat / QM_erro** → quanto maior, maior a evidência de diferença.
+
+## 🧾 Tabela de ANOVA (e como ler)
+
+<table class="anova">
+<thead>
+<tr><th>Fonte</th><th>GL</th><th>SQ</th><th>QM = SQ/GL</th><th>F = QM<sub>trat</sub>/QM<sub>erro</sub></th><th>p-valor</th></tr>
+</thead>
+<tbody>
+<tr><td>Tratamentos</td><td>k − 1</td><td>SQ<sub>trat</sub></td><td>QM<sub>trat</sub></td><td>F calculado</td><td>Prob(H0)</td></tr>
+<tr><td>Resíduo (Erro)</td><td>N − k</td><td>SQ<sub>erro</sub></td><td>QM<sub>erro</sub></td><td>—</td><td>—</td></tr>
+<tr><td>Total</td><td>N − 1</td><td>SQ<sub>total</sub></td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table>
+
+::: callout-note
+**Como interpretar rapidamente**  
+- **GL**: graus de liberdade (quantas comparações independentes cabem).  
+- **SQ / QM**: variação total e variação média.  
+- **F** grande + **p-valor** pequeno → **evidência de diferenças** entre médias.
+:::
+
+## 💻 Aplicação prática (Altura)
+
+**Dados novos deste capítulo:** [`dados/eucalipto_adubacao.csv`](dados/eucalipto_adubacao.csv)  
+**Conexão com o Cap. 2 (revisão gráfica):** [`dados/crescimento_mudas.csv`](dados/crescimento_mudas.csv)
+
+```{r}
+library(readr); library(ggplot2)
+
+euca <- read_csv("dados/eucalipto_adubacao.csv", show_col_types = FALSE)
+
+mod_alt <- aov(Altura_cm ~ Tratamento, data = euca)
+summary(mod_alt)
+```
+
+```{r}
+# Visualização
+ggplot(euca, aes(Tratamento, Altura_cm, fill = Tratamento)) +
+  geom_boxplot() +
+  labs(title = "Eucalyptus grandis — Altura por adubação",
+       x = "Tratamento", y = "Altura (cm)") +
+  theme_minimal()
+```
+
+::: callout-tip
+✅ Dica prática:
+Se o p-valor < 0,05, rejeitamos H0 → há evidência de diferença entre os tratamentos.
+Mas ANOVA não diz quais tratamentos diferem. (isso veremos no Cap. 3B)
+:::
+
+
+::: callout-tip
+✅ **Dica profissional**: Relacione o resultado ao **custo** e **logística**. Às vezes o ganho de altura é real, mas **não compensa** o custo do insumo no viveiro.
+:::
+
+## 🔁 Outras respostas de interesse
+```{r}
+summary(aov(Diametro_mm ~ Tratamento, data = euca))
+summary(aov(Biomassa_g ~ Tratamento, data = euca))
+```
+
+## 📝 Exercícios
+
+1. Use o dataset crescimento_mudas.csv para:
+a) Fazer boxplot de Biomassa_g;
+b) Resumir médias e desvios;
+c) Aplicar ANOVA e escrever 2 frases de interpretação.
+
+2. Com o conjunto de dados eucalipto_adubacao.csv:
+a) Aplique ANOVA para Diametro_mm;
+b) Explique se há diferença significativa;
+c) Inclua gráficos e interpretação no relatório.
+
+---
+
+✅ Síntese
+
+- A ANOVA responde: “as médias são todas iguais?”
+
+- Compara variação entre tratamentos vs. dentro dos tratamentos.
+
+- Resultado significativo indica diferença, mas não mostra onde (isso será o Cap. 3B).

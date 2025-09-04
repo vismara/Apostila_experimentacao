@@ -10,7 +10,7 @@ book:
     - index.qmd
     - cap01-introducao.qmd
     - cap02-variaveis-fatores.qmd
-    #- cap03-anova.qmd
+    - cap03A-anova.qmd
     #- cap04-comparacoes.qmd
     #- cap05-pressupostos.qmd
     #- cap06-delineamentos.qmd
