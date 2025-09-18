@@ -1,0 +1,213 @@
+---
+title: "📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias"
+---
+
+*Módulo 1 – Semana 4*
+
+## 🌱 Narrativa inicial
+
+Na aula passada, a ANOVA mostrou que **há diferença global** entre os tratamentos.  
+Mas o(a) engenheiro(a) florestal precisa de algo mais prático: **quais tratamentos são diferentes** e se pode confiar nesses resultados.  
+É aqui que entram os **pressupostos** e os **testes de médias**.
+
+::: callout-tip
+📌 **Na prática:** só podemos recomendar um tratamento se tivermos **confiança estatística** de que o resultado não é fruto do acaso ou de distorções.
+:::
+
+## 🎯 Objetivos do capítulo
+
+- Explicar **o que são pressupostos** e por que importam.  
+- Entender **como funcionam os testes de médias**.  
+- Gerar e interpretar **boxplots com letras** do Tukey.  
+- Consolidar a análise com dois experimentos florestais.
+
+---
+
+## 🧠 O que são pressupostos?
+
+A ANOVA é um **modelo estatístico** e, como todo modelo, depende de condições para funcionar.  
+Essas condições são chamadas de **pressupostos**.
+
+1. **Normalidade dos resíduos**  
+   - Os “erros” do modelo devem seguir uma distribuição aproximadamente normal.  
+   - Garante que os p-valores do teste F sejam confiáveis.
+
+2. **Homogeneidade das variâncias**  
+   - A variabilidade dentro dos grupos deve ser semelhante.  
+   - Se um grupo tem variância muito maior, ele “puxa” a decisão.
+
+👉 **Importância:** Se os pressupostos não forem atendidos, a conclusão da ANOVA pode ser **enganosa**.  
+
+No R, verificamos com:  
+- **Shapiro-Wilk** (normalidade)  
+- **Levene** (homogeneidade)  
+
+---
+
+## 🌳 O que são testes de médias?
+
+A ANOVA responde apenas: **“todas as médias são iguais?”**  
+Se a resposta é “não”, surge a pergunta: **“quais grupos diferem entre si?”**
+
+- O **teste de médias** compara pares de médias. 
+- Em geral eles tem como principio o calculo de uma distância mínima significativa. 
+- O teste de **Tukey HSD** é o mais comum.  
+- Resultado:  
+  - Texto com pares significativos.  
+  - Gráfico com intervalos de confiança.  
+  - **Boxplot com letras**: tratamentos com mesma letra não diferem.
+
+👉 **Na prática florestal:** é essa etapa que permite recomendar um substrato ou adubação.
+
+---
+
+## 🌳 Experimento 1 – *Eucalyptus grandis* (Adubação)
+
+**Contexto:** Viveiro comercial quer decidir entre **Controle**, **Orgânica** e **Química**.  
+**Delineamento:** 3 tratamentos, 10 mudas/tratamento; variáveis: Altura, Diâmetro, Biomassa.
+
+📦 **Dados desta análise**
+
+  - [`dados/eucalipto_adubacao.csv`](dados/eucalipto_adubacao.csv)  
+  
+  - No Colab: `/content/eucalipto_adubacao.csv`  
+  
+  - No Quarto local: `dados/eucalipto_adubacao.csv`
+
+### 1. Ajuste do modelo (Altura)
+```{r}
+library(readr); library(dplyr); library(agricolae); library(ggplot2); library(tibble); library(car)
+
+euca <- read_csv("dados/eucalipto_adubacao.csv", show_col_types = FALSE)
+mod_alt <- aov(Altura_cm ~ Tratamento, data = euca)
+summary(mod_alt)
+```
+
+### 2. Verificação dos pressupostos
+```{r}
+shapiro.test(residuals(mod_alt))
+leveneTest(Altura_cm ~ Tratamento, data = euca)
+```
+
+### 3. Teste de médias (Tukey) com letras
+```{r}
+tk <- HSD.test(mod_alt, "Tratamento", group = TRUE)
+tk$groups
+```
+
+```{r}
+# 1) Transformar o tk$groups em um data frame com colunas explícitas
+letras_df <- tk$groups %>%
+  rownames_to_column(var = "Tratamento") %>%
+  rename(letra = groups)
+
+# 2) Posição vertical (y) das letras: máximo por tratamento + uma folguinha
+topos <- euca %>%
+  group_by(Tratamento) %>%
+  summarise(y = max(Altura_cm, na.rm = TRUE) + 1, .groups = "drop")
+
+# 3) Juntando os dois conjunto de dados
+letras_df <- letras_df |>
+  left_join(topos, by = "Tratamento")
+```
+
+
+```{r}
+# 4) Gráfico final com letras
+ggplot(euca, aes(x = Tratamento, y = Altura_cm, fill = Tratamento)) +
+  geom_boxplot() +
+  geom_text(data = letras_df,
+            aes(x = Tratamento, y = y, label = letra),
+            inherit.aes = FALSE) +
+  labs(title = "Altura de Eucalyptus por adubação",
+       x = "Tratamento", y = "Altura (cm)") +
+  theme_minimal()
+
+```
+
+**Como ler:** Tratamentos com **mesma letra** não diferem; letras diferentes = diferença significativa.
+
+---
+
+## 🌿 Experimento 2 – Mudas nativas (Substratos)
+
+**Contexto:** Viveiro de nativas para restauração precisa escolher o substrato mais eficiente.  
+**Delineamento:** 3 substratos, *n* mudas/tratamento; variável: Biomassa.
+
+📦 **Dados desta análise**  
+
+  - [`dados/crescimento_mudas.csv`](dados/crescimento_mudas.csv) 
+  
+  - No Colab: use o link direto no `read_csv()`  
+  
+  - No Quarto local: `dados/crescimento_mudas.csv`
+
+### 1. Ajuste do modelo
+```{r}
+mudas <- read_csv("dados/crescimento_mudas.csv", show_col_types = FALSE)
+mod_bio <- aov(Biomassa_g ~ Tratamento, data = mudas)
+summary(mod_bio)
+```
+
+### 2. Pressupostos
+
+```{r}
+shapiro.test(residuals(mod_bio))
+leveneTest(Biomassa_g ~ Tratamento, data = mudas)
+```
+
+### 3. Teste de médias (Tukey) com letras
+
+```{r}
+tk_bio <- HSD.test(mod_bio, "Tratamento", group = TRUE)
+tk_bio$groups
+```
+
+
+
+```{r}
+# 1) Transformar o tk$groups em um data frame com colunas explícitas
+letras_df <- tk_bio$groups %>%
+  rownames_to_column(var = "Tratamento") %>%
+  rename(letra = groups)
+
+# 2) Posição vertical (y) das letras: máximo por tratamento + uma folguinha
+topos <- mudas %>%
+  group_by(Tratamento) %>%
+  summarise(y = max(Biomassa_g, na.rm = TRUE) + 1, .groups = "drop")
+
+# 3) Juntando os dois conjunto de dados
+letras_df <- letras_df |>
+  left_join(topos, by = "Tratamento")
+```
+
+
+```{r}
+# 4) Gráfico final com letras
+ggplot(mudas, aes(x = Tratamento, y = Biomassa_g, fill = Tratamento)) +
+  geom_boxplot() +
+  geom_text(data = letras_df,
+            aes(x = Tratamento, y = y, label = letra),
+            inherit.aes = FALSE) +
+  labs(title = "Biomassa por substrato",
+       x = "Tratamento", y = "Biomassa (g)") +
+  theme_minimal()
+
+```
+
+---
+
+## 📝 Exercícios
+
+1. No experimento com **Eucalipto**, aplique Tukey também para **Diâmetro** e **Biomassa**.  
+2. No experimento com **Mudas**, faça o mesmo para **Altura**.  
+3. Analise os resultados e discuta: os tratamentos “melhores” coincidem entre variáveis?  
+
+---
+
+## ✅ Síntese
+
+- **Pressupostos** = condições para que a ANOVA seja válida.  
+- **Teste de médias** = detalha onde estão as diferenças.  
+- **Boxplots com letras** tornam a interpretação imediata.  
+
