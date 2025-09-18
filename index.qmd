@@ -1,5 +1,5 @@
 ---
-title: "📚 Experimentção Florestal com R"
+title: "📚 Experimentação Florestal com R"
 subtitle: "Uma jornada prática de Estatística Experimental"
 author: "Edgar de Souza Vismara"
 format: html

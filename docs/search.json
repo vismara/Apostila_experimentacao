@@ -2,11 +2,11 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "📚 Experimentção Florestal com R",
+    "title": "📚 Experimentação Florestal com R",
     "section": "",
     "text": "1 🌱 Bem-vindo(a)!\nEste ebook foi criado para estudantes de Engenharia Florestal que desejam aprender Estatística Experimental usando o software R de forma prática e contextualizada.\n\n\n\n\n\n\nNota\n\n\n\n💡 Como usar este ebook:\nCada capítulo traz conceitos-chave, exemplos aplicados e scripts R prontos para execução. Use os datasets fornecidos e siga as orientações passo a passo.\n\n\n📌 Ferramenta recomendada: Google Colab (ambiente R) ou RStudio.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>📚 Experimentção Florestal com R</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>📚 Experimentação Florestal com R</span>"
     ]
   },
   {
