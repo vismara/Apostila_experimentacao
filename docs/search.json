@@ -338,5 +338,95 @@
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html",
+    "href": "cap04-delineamentos.html",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "",
+    "text": "6.1 🌱 Narrativa aplicada\nMódulo 2 – Semana 5\nVocê precisa recomendar o melhor manejo em dois cenários distintos:\nPara responder com confiança, vamos planejar experimentos usando DIC (ambiente homogêneo) e DBC (ambiente heterogêneo).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html#narrativa-aplicada",
+    "href": "cap04-delineamentos.html#narrativa-aplicada",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "",
+    "text": "Viveiro homogêneo: escolher o substrato que maximiza o crescimento inicial de mudas nativas.\n\nCampo heterogêneo: selecionar o clone de Eucalyptus mais produtivo em uma área com gradiente de solo.\n\n\n\n\n\n\n\n\nDica\n\n\n\n💡 Ideia central: Controlamos a aleatorização e a repetição em qualquer delineamento. Quando há heterogeneidade conhecida (ex.: faixas de solo), usamos blocos (DBC) para reduzir o erro.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html#objetivos-de-aprendizagem",
+    "href": "cap04-delineamentos.html#objetivos-de-aprendizagem",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "6.2 🎯 Objetivos de aprendizagem",
+    "text": "6.2 🎯 Objetivos de aprendizagem\n\nDiferenciar DIC e DBC e quando usar cada um.\n\nAssociar repetição, aleatorização e controle local aos experimentos.\n\nEspecificar o modelo linear de cada delineamento.\n\nAnalisar, no R, um DIC (viveiro) e um DBC (campo).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html#conceitoschave-com-exemplos",
+    "href": "cap04-delineamentos.html#conceitoschave-com-exemplos",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "6.3 📊 Conceitos‑chave (com exemplos)",
+    "text": "6.3 📊 Conceitos‑chave (com exemplos)\n\nUnidade experimental\n\nDIC: muda em tubete (viveiro).\n\nDBC: parcela por bloco (ex.: 10–20 árvores) em campo.\n\nRepetição\n\nAumenta precisão das estimativas.\n\nEx.: 10 mudas por substrato (DIC).\n\nAleatorização\n\nGarante independência entre observações.\n\nEx.: sortear a posição das mudas nas bandejas (DIC) e a posição dos clones em cada bloco (DBC).\n\nControle local (blocos)\n\nDiminui a variação não controlada.\n\nEx.: dividir a área em 4 blocos segundo o gradiente de solo (DBC).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html#modelos-lineares",
+    "href": "cap04-delineamentos.html#modelos-lineares",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "6.4 🧮 Modelos lineares",
+    "text": "6.4 🧮 Modelos lineares\n\n6.4.1 DIC (Delineamento Inteiramente Casualizado)\n\\[ Y_{ij} = \\mu + \\tau_i + \\varepsilon_{ij} \\]\n\n\\(Y_{ij}\\): resposta da j‑ésima repetição do i‑ésimo tratamento.\n\n\\(\\mu\\): média geral; (_i): efeito do tratamento (substrato);\n\n\\(\\varepsilon_{ij} \\sim \\mathcal{N}(0, \\sigma^2)\\): erro experimental.\n\n\n\n6.4.2 DBC (Delineamento em Blocos Casualizados)\n\\[ Y_{ij} = \\mu + \\tau_i + \\beta_j + \\varepsilon_{ij} \\]\n\n\\(\\beta_j\\): efeito do bloco (ex.: faixa de solo).\n\nDemais termos como acima.\n\nVantagem: retira da “conta do erro” a variação sistemática entre blocos.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html#experimento-1-viveiro-dic-substratos",
+    "href": "cap04-delineamentos.html#experimento-1-viveiro-dic-substratos",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "6.5 💻 Experimento 1 – Viveiro (DIC – substratos)",
+    "text": "6.5 💻 Experimento 1 – Viveiro (DIC – substratos)\nContexto: bandejas de isopor com 3 substratos (A, B, C).\nUnidade experimental: muda em tubete. Repetições: 10 por substrato.\nVariáveis: Altura_cm, Biomassa_g.\n📦 Dados desta análise\n- crescimento_mudas.csv (mesmo do Cap. 2)\n- Colab: /content/crescimento_mudas.csv\n- Quarto: dados/crescimento_mudas.csv\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2)\n\nmudas &lt;- read_csv(\"dados/crescimento_mudas.csv\", show_col_types = FALSE)\n\n# ANOVA (DIC): Altura ~ Tratamento\nmod_dic &lt;- aov(Altura_cm ~ Tratamento, data = mudas)\nsummary(mod_dic)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nTratamento   2  226.4  113.21   21.63 2.38e-08 ***\nResiduals   87  455.5    5.24                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCódigo\n# Visualização\nggplot(mudas, aes(Tratamento, Altura_cm, fill = Tratamento)) +\n  geom_boxplot() + theme_minimal() +\n  labs(title = \"DIC – Altura por substrato\", x = \"Substrato\", y = \"Altura (cm)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\n📌 Leia a tabela de ANOVA (DIC): se p &lt; 0,05, há diferença global entre substratos. Para saber quais diferem, use Tukey (você já conhece do Cap. 3B).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html#experimento-2-campo-dbc-clones-de-eucalyptus",
+    "href": "cap04-delineamentos.html#experimento-2-campo-dbc-clones-de-eucalyptus",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "6.6 💻 Experimento 2 – Campo (DBC – clones de Eucalyptus)",
+    "text": "6.6 💻 Experimento 2 – Campo (DBC – clones de Eucalyptus)\nProblema real: escolher o clone mais produtivo para uma área com gradiente de solo (heterogênea).\nDelineamento: 4 clones (C1–C4) × 4 blocos (B1–B4), 1 parcela/clone/bloco.\nVariável resposta: Volume_m3ha (m³/ha).\nUnidade experimental: parcela (ex.: 12–20 árvores).\n📦 Dados desta análise\n- clones_eucalipto.csv (novo)\n- Colab: /content/clones_eucalipto.csv\n- Quarto: dados/clones_eucalipto.csv\n\n\nCódigo\nlibrary(readr); library(ggplot2)\n\nclones &lt;- read_csv(\"dados/clones_eucalipto.csv\", show_col_types = FALSE)\nstr(clones)\n\n\nspc_tbl_ [16 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Bloco      : chr [1:16] \"B1\" \"B1\" \"B1\" \"B1\" ...\n $ Clone      : chr [1:16] \"C1\" \"C2\" \"C3\" \"C4\" ...\n $ Volume_m3ha: num [1:16] 239 261 234 260 259 ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Bloco = col_character(),\n  ..   Clone = col_character(),\n  ..   Volume_m3ha = col_double()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt; \n\n\nCódigo\nhead(clones)\n\n\n# A tibble: 6 × 3\n  Bloco Clone Volume_m3ha\n  &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;\n1 B1    C1           239.\n2 B1    C2           261.\n3 B1    C3           234.\n4 B1    C4           260.\n5 B2    C1           259.\n6 B2    C2           292.\n\n\n\n6.6.1 ANOVA (DBC): modelo com blocos\n\n\nCódigo\nmod_dbc &lt;- aov(Volume_m3ha ~ Clone + Bloco, data = clones)\nsummary(mod_dbc)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nClone        3 1407.4   469.1   11.38 0.002036 ** \nBloco        3 2182.9   727.6   17.66 0.000412 ***\nResiduals    9  370.9    41.2                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n6.6.2 Por que incluir Bloco?\n\nRemove do erro a variação sistemática entre faixas de solo.\n\nGanha poder para detectar diferenças entre clones.\n\n\n\n6.6.3 Visualização por blocos e por clone\n\n\nCódigo\nggplot(clones, aes(Clone, Volume_m3ha, fill = Clone)) +\n  geom_boxplot() + theme_minimal() +\n  labs(title = \"DBC – Volume por clone\", x = \"Clone\", y = \"Volume (m³/ha)\")\n\n\n\n\n\n\n\n\n\nCódigo\nggplot(clones, aes(Bloco, Volume_m3ha, fill = Bloco)) +\n  geom_boxplot() + theme_minimal() +\n  labs(title = \"DBC – Heterogeneidade entre blocos\", x = \"Bloco\", y = \"Volume (m³/ha)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\n\n⚠️ Comparação didática\nAjuste sem blocos e compare:\n\n\nCódigo\nsummary(aov(Volume_m3ha ~ Clone, data = clones))   # ignora blocos (DIC \"forçado\")\n\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)\nClone        3   1407   469.1   2.204   0.14\nResiduals   12   2554   212.8               \n\n\nCódigo\nsummary(aov(Volume_m3ha ~ Clone + Bloco, data = clones))  # DBC correto\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nClone        3 1407.4   469.1   11.38 0.002036 ** \nBloco        3 2182.9   727.6   17.66 0.000412 ***\nResiduals    9  370.9    41.2                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nObserve como o resíduo (QM_erro) muda. O DBC tende a reduzir o erro e aumentar a precisão.\n\n\n\n\n6.6.4 (Opcional) Teste de médias para clones\n\n\nCódigo\n# Apenas se ANOVA indicar diferença para Clone\nlibrary(agricolae)\ntk &lt;- HSD.test(mod_dbc, \"Clone\", group = TRUE)\ntk$groups\n\n\n   Volume_m3ha groups\nC2     276.000      a\nC4     273.025      a\nC3     258.150      b\nC1     254.050      b",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html#exercícios",
+    "href": "cap04-delineamentos.html#exercícios",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "6.7 📝 Exercícios",
+    "text": "6.7 📝 Exercícios\n\nDBC (campo):\n\nAjuste o modelo com blocos e sem blocos; compare as tabelas de ANOVA.\n\nSe houver diferença para Clone, aplique Tukey e interprete as letras.\n\n\nMonte, em Markdown, a tabela de planejamento de cada experimento (fator, níveis, unidade experimental, variáveis resposta).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
+  },
+  {
+    "objectID": "cap04-delineamentos.html#síntese",
+    "href": "cap04-delineamentos.html#síntese",
+    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "section": "6.8 ✅ Síntese",
+    "text": "6.8 ✅ Síntese\n\nDIC: use quando a área/unidades são homogêneas (viveiro, laboratório).\n\nDBC: use para áreas heterogêneas, controlando a variação com blocos.\n\nO modelo linear deixa explícito o papel dos blocos e do tratamento.\n\nEm campo florestal, o uso adequado do delineamento melhora a confiabilidade e a precisão das recomendações.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+    ]
   }
 ]

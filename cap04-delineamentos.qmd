@@ -1,0 +1,170 @@
+---
+title: "📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)"
+---
+
+*Módulo 2 – Semana 5*
+
+## 🌱 Narrativa aplicada
+
+Você precisa recomendar **o melhor manejo** em dois cenários distintos:
+
+1) **Viveiro homogêneo**: escolher o **substrato** que maximiza o crescimento inicial de mudas nativas.  
+2) **Campo heterogêneo**: selecionar o **clone de *Eucalyptus*** mais produtivo em uma área com **gradiente de solo**.
+
+Para responder com confiança, vamos planejar experimentos usando **DIC** (ambiente homogêneo) e **DBC** (ambiente heterogêneo).
+
+::: callout-tip
+💡 **Ideia central**: Controlamos a **aleatorização** e a **repetição** em qualquer delineamento. Quando há heterogeneidade conhecida (ex.: faixas de solo), usamos **blocos (DBC)** para **reduzir o erro**.
+:::
+
+## 🎯 Objetivos de aprendizagem
+
+- Diferenciar **DIC** e **DBC** e **quando usar** cada um.  
+- Associar **repetição**, **aleatorização** e **controle local** aos experimentos.  
+- Especificar o **modelo linear** de cada delineamento.  
+- Analisar, no R, um **DIC** (viveiro) e um **DBC** (campo).
+
+## 📊 Conceitos‑chave (com exemplos)
+
+- **Unidade experimental**  
+  - DIC: **muda** em tubete (viveiro).  
+  - DBC: **parcela** por bloco (ex.: 10–20 árvores) em campo.
+
+- **Repetição**  
+  - Aumenta precisão das estimativas.  
+  - Ex.: 10 mudas por substrato (DIC).
+
+- **Aleatorização**  
+  - Garante independência entre observações.  
+  - Ex.: sortear a posição das mudas nas bandejas (DIC) e a posição dos clones em cada bloco (DBC).
+
+- **Controle local (blocos)**  
+  - Diminui a variação não controlada.  
+  - Ex.: dividir a área em **4 blocos** segundo o gradiente de solo (DBC).
+
+## 🧮 Modelos lineares
+
+### DIC (Delineamento Inteiramente Casualizado)
+
+$$ Y_{ij} = \mu + \tau_i + \varepsilon_{ij} $$
+
+- $Y_{ij}$: resposta da j‑ésima repetição do i‑ésimo tratamento.  
+- $\mu$: média geral; \(\tau_i\): efeito do tratamento (substrato);  
+- $\varepsilon_{ij} \sim \mathcal{N}(0, \sigma^2)$: erro experimental.
+
+### DBC (Delineamento em Blocos Casualizados)
+
+$$ Y_{ij} = \mu + \tau_i + \beta_j + \varepsilon_{ij} $$
+
+- $\beta_j$: efeito do **bloco** (ex.: faixa de solo).  
+- Demais termos como acima.  
+- **Vantagem**: retira da “conta do erro” a variação sistemática entre blocos.
+
+---
+
+## 💻 Experimento 1 – Viveiro (DIC – substratos)
+
+**Contexto**: bandejas de isopor com 3 **substratos** (A, B, C).  
+**Unidade experimental**: muda em tubete. **Repetições**: 10 por substrato.  
+**Variáveis**: `Altura_cm`, `Biomassa_g`.
+
+📦 **Dados desta análise**  
+- `crescimento_mudas.csv` (mesmo do Cap. 2)  
+  - Colab: `/content/crescimento_mudas.csv`  
+  - Quarto: `dados/crescimento_mudas.csv`
+
+```{r}
+library(readr); library(dplyr); library(ggplot2)
+
+mudas <- read_csv("dados/crescimento_mudas.csv", show_col_types = FALSE)
+
+# ANOVA (DIC): Altura ~ Tratamento
+mod_dic <- aov(Altura_cm ~ Tratamento, data = mudas)
+summary(mod_dic)
+
+# Visualização
+ggplot(mudas, aes(Tratamento, Altura_cm, fill = Tratamento)) +
+  geom_boxplot() + theme_minimal() +
+  labs(title = "DIC – Altura por substrato", x = "Substrato", y = "Altura (cm)")
+```
+
+::: callout-note
+📌 **Leia a tabela de ANOVA (DIC)**: se p < 0,05, há diferença global entre **substratos**. Para saber **quais** diferem, use Tukey (você já conhece do Cap. 3B).
+:::
+
+---
+
+## 💻 Experimento 2 – Campo (DBC – clones de *Eucalyptus*)
+
+**Problema real**: escolher o **clone** mais produtivo para uma área **com gradiente de solo** (heterogênea).  
+**Delineamento**: 4 **clones** (C1–C4) × 4 **blocos** (B1–B4), 1 parcela/clone/bloco.  
+**Variável resposta**: `Volume_m3ha` (m³/ha).  
+**Unidade experimental**: **parcela** (ex.: 12–20 árvores).
+
+📦 **Dados desta análise**  
+- [clones_eucalipto.csv](dados/clones_eucalipto.csv) *(novo)*  
+  - Colab: `/content/clones_eucalipto.csv`  
+  - Quarto: `dados/clones_eucalipto.csv`
+
+```{r}
+library(readr); library(ggplot2)
+
+clones <- read_csv("dados/clones_eucalipto.csv", show_col_types = FALSE)
+str(clones)
+head(clones)
+```
+
+### ANOVA (DBC): modelo com blocos
+```{r}
+mod_dbc <- aov(Volume_m3ha ~ Clone + Bloco, data = clones)
+summary(mod_dbc)
+```
+
+### Por que incluir **Bloco**?
+- Remove do erro a variação sistemática entre faixas de solo.  
+- **Ganha poder** para detectar diferenças entre clones.  
+
+### Visualização por blocos e por clone
+```{r}
+ggplot(clones, aes(Clone, Volume_m3ha, fill = Clone)) +
+  geom_boxplot() + theme_minimal() +
+  labs(title = "DBC – Volume por clone", x = "Clone", y = "Volume (m³/ha)")
+
+ggplot(clones, aes(Bloco, Volume_m3ha, fill = Bloco)) +
+  geom_boxplot() + theme_minimal() +
+  labs(title = "DBC – Heterogeneidade entre blocos", x = "Bloco", y = "Volume (m³/ha)")
+```
+
+::: callout-important
+⚠️ **Comparação didática**  
+Ajuste **sem blocos** e compare:
+```{r}
+summary(aov(Volume_m3ha ~ Clone, data = clones))   # ignora blocos (DIC "forçado")
+summary(aov(Volume_m3ha ~ Clone + Bloco, data = clones))  # DBC correto
+```
+Observe como o **resíduo (QM_erro)** muda. O DBC tende a **reduzir o erro** e **aumentar a precisão**.
+:::
+
+### (Opcional) Teste de médias para clones
+```{r}
+# Apenas se ANOVA indicar diferença para Clone
+library(agricolae)
+tk <- HSD.test(mod_dbc, "Clone", group = TRUE)
+tk$groups
+```
+
+---
+
+## 📝 Exercícios
+
+1. **DBC (campo)**:  
+   a) Ajuste o modelo **com blocos** e **sem blocos**; compare as tabelas de ANOVA.  
+   b) Se houver diferença para **Clone**, aplique **Tukey** e interprete as **letras**.  
+2. Monte, em Markdown, a **tabela de planejamento** de cada experimento (fator, níveis, unidade experimental, variáveis resposta).
+
+## ✅ Síntese
+
+- **DIC**: use quando a área/unidades são **homogêneas** (viveiro, laboratório).  
+- **DBC**: use para áreas **heterogêneas**, controlando a variação com **blocos**.  
+- O **modelo linear** deixa explícito o papel dos blocos e do tratamento.  
+- Em campo florestal, o uso adequado do delineamento melhora a **confiabilidade** e a **precisão** das recomendações.
