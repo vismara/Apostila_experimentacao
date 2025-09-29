@@ -1,0 +1,116 @@
+---
+title: "📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados"
+---
+
+## 🌱 Narrativa aplicada
+
+Um viveiro de mudas nativas precisa decidir se vale a pena adotar um **novo substrato adubado**.  
+As opções vigentes são: **A** e **B** (comerciais) e **C** (alternativo de baixo custo). O **D** é o **alternativo adubado**.  
+Queremos responder **perguntas práticas** do gestor, não apenas listar todos os pares diferentes.
+
+::: callout-tip
+💡 **Ganho de usar contrastes planejados**: foco em **hipóteses relevantes**, maior **poder estatístico** e **clareza** para a decisão (evita dezenas de comparações sem interesse prático).
+:::
+
+## 🎯 O experimento (DIC)
+
+- **Espécie**: *Cedrela fissilis* (cedro-rosa)  
+- **Local**: viveiro experimental (bandejas de tubetes 55 cm³)  
+- **Fator/Tratamentos**: 4 substratos → **A, B (comerciais), C (alternativo), D (alternativo + adubo)**  
+- **Unidade experimental**: muda em tubete  
+- **Repetições**: 8 mudas por tratamento (total = 32)  
+- **Variável resposta**: **Altura_cm** aos **120 dias** pós-semeadura
+
+📦 **Dados desta análise**  
+- [dados/substratos_contrastes.csv](dados/substratos_contrastes.csv) *(arquivo desta apostila)*  
+  - No Colab: `/content/substratos_contrastes.csv`  
+  - No Quarto local: `dados/substratos_contrastes.csv`
+
+## 🧮 Modelo linear (DIC)
+
+$$ Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \quad \varepsilon_{ij} \sim \mathcal{N}(0, \sigma^2) $$
+
+- $Y_{ij}$: altura da j‑ésima muda no i‑ésimo substrato.  
+- $\mu$: média geral; $\tau_i$: efeito do substrato.  
+
+**Contraste planejado**: combinação linear com coeficientes que **somam zero**.  
+Ex.: $L_1 = \tfrac{1}{2}(\mu_A + \mu_B) - \mu_C$ (comerciais vs alternativo).
+
+## 💻 Análise no R
+
+```{r}
+library(readr); library(dplyr); library(ggplot2)
+
+# Quarto local:
+dados <- read_csv("dados/substratos_contrastes.csv", show_col_types = FALSE)
+# Colab:
+# dados <- read_csv("/content/substratos_contrastes.csv", show_col_types = FALSE)
+
+# Garantir a ordem A,B,C,D para casar com os contrastes
+dados$Tratamento <- factor(dados$Tratamento, levels = c("A","B","C","D"))
+
+# ANOVA
+mod <- aov(Altura_cm ~ Tratamento, data = dados)
+summary(mod)
+
+# Gráfico exploratório
+ggplot(dados, aes(Tratamento, Altura_cm, fill = Tratamento)) +
+  geom_boxplot() + theme_minimal() +
+  labs(title = "Altura de mudas por substrato (120 dias)",
+       x = "Substrato", y = "Altura (cm)")
+```
+
+## 🎯 Por que contrastes e não apenas **Tukey/Duncan**?
+
+- **Tukey/Duncan** comparam **todos os pares** → bom para um panorama, mas produzem **muitas comparações** irrelevantes.  
+- **Contrastes** testam **hipóteses a priori** (definidas antes do experimento): **mais foco** e **maior poder** para aquilo que realmente importa.
+
+## 🔬 Contrastes planejados no R (multcomp)
+
+```{r}
+# install.packages("multcomp") # se necessário
+library(multcomp)
+
+# Matriz de contrastes: linhas = hipóteses (na ordem dos níveis A,B,C,D)
+K <- rbind(
+  "Comerciais vs Alternativo" = c( 0.5,  0.5, -1.0,  0.0),
+  "Adubado vs Outros"        = c(-1/3, -1/3, -1/3,  1.0)
+)
+
+contr <- glht(mod, linfct = mcp(Tratamento = K))
+summary(contr)
+confint(contr)  # IC dos contrastes
+```
+
+::: callout-note
+📌 **Leitura**: Se p < 0,05 em “Comerciais vs Alternativo”, então (A,B) e C têm médias diferentes.  
+Se p < 0,05 em “Adubado vs Outros”, então D difere da **média** de A,B,C.  
+Os ICs ajudam a ver **direção e magnitude** da diferença.
+:::
+
+## 🔁 (Opcional) Comparação com Tukey
+
+```{r}
+TukeyHSD(mod)
+```
+
+::: callout-important
+⚠️ **Interpretação**: Tukey pode listar vários pares “diferentes”, mas nem todos respondem à **pergunta do gestor**.  
+Contrastes mantêm o foco nas **hipóteses que motivaram o experimento**.
+:::
+
+## 📝 Exercícios
+
+Responda:
+
+1) **O que foi testado** (substratos) e **por quê** (decisão de manejo).  
+2) **ANOVA** (F, p-valor).  
+
+3) **Contrastes**: apresente p-valores e ICs para as hipóteses **planejadas**. 
+
+4) **Decisão**: recomende (ou não) o **D adubado**; avalie a possibilidade de substituir comerciais por **C**.
+
+5) Adicione um contraste **A vs B** (interessa à empresa?). Interprete.  
+
+
+

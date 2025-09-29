@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; 📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC) – 📚 Experimentação Florestal com R</title>
+<title>7&nbsp; 📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados – 📚 Experimentação Florestal com R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cap05-contrastes.html" rel="next">
-<link href="./cap03B-anova2.html" rel="prev">
+<link href="./cap04-delineamentos.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -147,7 +146,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap04-delineamentos.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap05-contrastes.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -204,13 +203,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cap04-delineamentos.html" class="sidebar-item-text sidebar-link active">
+  <a href="./cap04-delineamentos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cap05-contrastes.html" class="sidebar-item-text sidebar-link">
+  <a href="./cap05-contrastes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span></span></a>
   </div>
 </li>
@@ -224,24 +223,14 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#narrativa-aplicada" id="toc-narrativa-aplicada" class="nav-link active" data-scroll-target="#narrativa-aplicada"><span class="header-section-number">6.1</span> 🌱 Narrativa aplicada</a></li>
-  <li><a href="#objetivos-de-aprendizagem" id="toc-objetivos-de-aprendizagem" class="nav-link" data-scroll-target="#objetivos-de-aprendizagem"><span class="header-section-number">6.2</span> 🎯 Objetivos de aprendizagem</a></li>
-  <li><a href="#conceitoschave-com-exemplos" id="toc-conceitoschave-com-exemplos" class="nav-link" data-scroll-target="#conceitoschave-com-exemplos"><span class="header-section-number">6.3</span> 📊 Conceitos‑chave (com exemplos)</a></li>
-  <li><a href="#modelos-lineares" id="toc-modelos-lineares" class="nav-link" data-scroll-target="#modelos-lineares"><span class="header-section-number">6.4</span> 🧮 Modelos lineares</a>
-  <ul class="collapse">
-  <li><a href="#dic-delineamento-inteiramente-casualizado" id="toc-dic-delineamento-inteiramente-casualizado" class="nav-link" data-scroll-target="#dic-delineamento-inteiramente-casualizado"><span class="header-section-number">6.4.1</span> DIC (Delineamento Inteiramente Casualizado)</a></li>
-  <li><a href="#dbc-delineamento-em-blocos-casualizados" id="toc-dbc-delineamento-em-blocos-casualizados" class="nav-link" data-scroll-target="#dbc-delineamento-em-blocos-casualizados"><span class="header-section-number">6.4.2</span> DBC (Delineamento em Blocos Casualizados)</a></li>
-  </ul></li>
-  <li><a href="#experimento-1-viveiro-dic-substratos" id="toc-experimento-1-viveiro-dic-substratos" class="nav-link" data-scroll-target="#experimento-1-viveiro-dic-substratos"><span class="header-section-number">6.5</span> 💻 Experimento 1 – Viveiro (DIC – substratos)</a></li>
-  <li><a href="#experimento-2-campo-dbc-clones-de-eucalyptus" id="toc-experimento-2-campo-dbc-clones-de-eucalyptus" class="nav-link" data-scroll-target="#experimento-2-campo-dbc-clones-de-eucalyptus"><span class="header-section-number">6.6</span> 💻 Experimento 2 – Campo (DBC – clones de <em>Eucalyptus</em>)</a>
-  <ul class="collapse">
-  <li><a href="#anova-dbc-modelo-com-blocos" id="toc-anova-dbc-modelo-com-blocos" class="nav-link" data-scroll-target="#anova-dbc-modelo-com-blocos"><span class="header-section-number">6.6.1</span> ANOVA (DBC): modelo com blocos</a></li>
-  <li><a href="#por-que-incluir-bloco" id="toc-por-que-incluir-bloco" class="nav-link" data-scroll-target="#por-que-incluir-bloco"><span class="header-section-number">6.6.2</span> Por que incluir <strong>Bloco</strong>?</a></li>
-  <li><a href="#visualização-por-blocos-e-por-clone" id="toc-visualização-por-blocos-e-por-clone" class="nav-link" data-scroll-target="#visualização-por-blocos-e-por-clone"><span class="header-section-number">6.6.3</span> Visualização por blocos e por clone</a></li>
-  <li><a href="#opcional-teste-de-médias-para-clones" id="toc-opcional-teste-de-médias-para-clones" class="nav-link" data-scroll-target="#opcional-teste-de-médias-para-clones"><span class="header-section-number">6.6.4</span> (Opcional) Teste de médias para clones</a></li>
-  </ul></li>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">6.7</span> 📝 Exercícios</a></li>
-  <li><a href="#síntese" id="toc-síntese" class="nav-link" data-scroll-target="#síntese"><span class="header-section-number">6.8</span> ✅ Síntese</a></li>
+  <li><a href="#narrativa-aplicada" id="toc-narrativa-aplicada" class="nav-link active" data-scroll-target="#narrativa-aplicada"><span class="header-section-number">7.1</span> 🌱 Narrativa aplicada</a></li>
+  <li><a href="#o-experimento-dic" id="toc-o-experimento-dic" class="nav-link" data-scroll-target="#o-experimento-dic"><span class="header-section-number">7.2</span> 🎯 O experimento (DIC)</a></li>
+  <li><a href="#modelo-linear-dic" id="toc-modelo-linear-dic" class="nav-link" data-scroll-target="#modelo-linear-dic"><span class="header-section-number">7.3</span> 🧮 Modelo linear (DIC)</a></li>
+  <li><a href="#análise-no-r" id="toc-análise-no-r" class="nav-link" data-scroll-target="#análise-no-r"><span class="header-section-number">7.4</span> 💻 Análise no R</a></li>
+  <li><a href="#por-que-contrastes-e-não-apenas-tukeyduncan" id="toc-por-que-contrastes-e-não-apenas-tukeyduncan" class="nav-link" data-scroll-target="#por-que-contrastes-e-não-apenas-tukeyduncan"><span class="header-section-number">7.5</span> 🎯 Por que contrastes e não apenas <strong>Tukey/Duncan</strong>?</a></li>
+  <li><a href="#contrastes-planejados-no-r-multcomp" id="toc-contrastes-planejados-no-r-multcomp" class="nav-link" data-scroll-target="#contrastes-planejados-no-r-multcomp"><span class="header-section-number">7.6</span> 🔬 Contrastes planejados no R (multcomp)</a></li>
+  <li><a href="#opcional-comparação-com-tukey" id="toc-opcional-comparação-com-tukey" class="nav-link" data-scroll-target="#opcional-comparação-com-tukey"><span class="header-section-number">7.7</span> 🔁 (Opcional) Comparação com Tukey</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">7.8</span> 📝 Exercícios</a></li>
   </ul>
 </nav>
     </div>
@@ -250,7 +239,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span></h1>
 </div>
 
 
@@ -267,16 +256,11 @@ window.Quarto = {
 </header>
 
 
-<p><em>Módulo 2 – Semana 5</em></p>
-<section id="narrativa-aplicada" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="narrativa-aplicada"><span class="header-section-number">6.1</span> 🌱 Narrativa aplicada</h2>
-<p>Você precisa recomendar <strong>o melhor manejo</strong> em dois cenários distintos:</p>
-<ol type="1">
-<li><strong>Viveiro homogêneo</strong>: escolher o <strong>substrato</strong> que maximiza o crescimento inicial de mudas nativas.<br>
-</li>
-<li><strong>Campo heterogêneo</strong>: selecionar o <strong>clone de <em>Eucalyptus</em></strong> mais produtivo em uma área com <strong>gradiente de solo</strong>.</li>
-</ol>
-<p>Para responder com confiança, vamos planejar experimentos usando <strong>DIC</strong> (ambiente homogêneo) e <strong>DBC</strong> (ambiente heterogêneo).</p>
+<section id="narrativa-aplicada" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="narrativa-aplicada"><span class="header-section-number">7.1</span> 🌱 Narrativa aplicada</h2>
+<p>Um viveiro de mudas nativas precisa decidir se vale a pena adotar um <strong>novo substrato adubado</strong>.<br>
+As opções vigentes são: <strong>A</strong> e <strong>B</strong> (comerciais) e <strong>C</strong> (alternativo de baixo custo). O <strong>D</strong> é o <strong>alternativo adubado</strong>.<br>
+Queremos responder <strong>perguntas práticas</strong> do gestor, não apenas listar todos os pares diferentes.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -287,117 +271,147 @@ Dica
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>💡 <strong>Ideia central</strong>: Controlamos a <strong>aleatorização</strong> e a <strong>repetição</strong> em qualquer delineamento. Quando há heterogeneidade conhecida (ex.: faixas de solo), usamos <strong>blocos (DBC)</strong> para <strong>reduzir o erro</strong>.</p>
+<p>💡 <strong>Ganho de usar contrastes planejados</strong>: foco em <strong>hipóteses relevantes</strong>, maior <strong>poder estatístico</strong> e <strong>clareza</strong> para a decisão (evita dezenas de comparações sem interesse prático).</p>
 </div>
 </div>
 </section>
-<section id="objetivos-de-aprendizagem" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="objetivos-de-aprendizagem"><span class="header-section-number">6.2</span> 🎯 Objetivos de aprendizagem</h2>
+<section id="o-experimento-dic" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="o-experimento-dic"><span class="header-section-number">7.2</span> 🎯 O experimento (DIC)</h2>
 <ul>
-<li>Diferenciar <strong>DIC</strong> e <strong>DBC</strong> e <strong>quando usar</strong> cada um.<br>
+<li><strong>Espécie</strong>: <em>Cedrela fissilis</em> (cedro-rosa)<br>
 </li>
-<li>Associar <strong>repetição</strong>, <strong>aleatorização</strong> e <strong>controle local</strong> aos experimentos.<br>
+<li><strong>Local</strong>: viveiro experimental (bandejas de tubetes 55 cm³)<br>
 </li>
-<li>Especificar o <strong>modelo linear</strong> de cada delineamento.<br>
+<li><strong>Fator/Tratamentos</strong>: 4 substratos → <strong>A, B (comerciais), C (alternativo), D (alternativo + adubo)</strong><br>
 </li>
-<li>Analisar, no R, um <strong>DIC</strong> (viveiro) e um <strong>DBC</strong> (campo).</li>
+<li><strong>Unidade experimental</strong>: muda em tubete<br>
+</li>
+<li><strong>Repetições</strong>: 8 mudas por tratamento (total = 32)<br>
+</li>
+<li><strong>Variável resposta</strong>: <strong>Altura_cm</strong> aos <strong>120 dias</strong> pós-semeadura</li>
 </ul>
-</section>
-<section id="conceitoschave-com-exemplos" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="conceitoschave-com-exemplos"><span class="header-section-number">6.3</span> 📊 Conceitos‑chave (com exemplos)</h2>
-<ul>
-<li><strong>Unidade experimental</strong>
-<ul>
-<li>DIC: <strong>muda</strong> em tubete (viveiro).<br>
-</li>
-<li>DBC: <strong>parcela</strong> por bloco (ex.: 10–20 árvores) em campo.</li>
-</ul></li>
-<li><strong>Repetição</strong>
-<ul>
-<li>Aumenta precisão das estimativas.<br>
-</li>
-<li>Ex.: 10 mudas por substrato (DIC).</li>
-</ul></li>
-<li><strong>Aleatorização</strong>
-<ul>
-<li>Garante independência entre observações.<br>
-</li>
-<li>Ex.: sortear a posição das mudas nas bandejas (DIC) e a posição dos clones em cada bloco (DBC).</li>
-</ul></li>
-<li><strong>Controle local (blocos)</strong>
-<ul>
-<li>Diminui a variação não controlada.<br>
-</li>
-<li>Ex.: dividir a área em <strong>4 blocos</strong> segundo o gradiente de solo (DBC).</li>
-</ul></li>
-</ul>
-</section>
-<section id="modelos-lineares" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="modelos-lineares"><span class="header-section-number">6.4</span> 🧮 Modelos lineares</h2>
-<section id="dic-delineamento-inteiramente-casualizado" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="dic-delineamento-inteiramente-casualizado"><span class="header-section-number">6.4.1</span> DIC (Delineamento Inteiramente Casualizado)</h3>
-<p><span class="math display">\[ Y_{ij} = \mu + \tau_i + \varepsilon_{ij} \]</span></p>
-<ul>
-<li><span class="math inline">\(Y_{ij}\)</span>: resposta da j‑ésima repetição do i‑ésimo tratamento.<br>
-</li>
-<li><span class="math inline">\(\mu\)</span>: média geral; (_i): efeito do tratamento (substrato);<br>
-</li>
-<li><span class="math inline">\(\varepsilon_{ij} \sim \mathcal{N}(0, \sigma^2)\)</span>: erro experimental.</li>
-</ul>
-</section>
-<section id="dbc-delineamento-em-blocos-casualizados" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="dbc-delineamento-em-blocos-casualizados"><span class="header-section-number">6.4.2</span> DBC (Delineamento em Blocos Casualizados)</h3>
-<p><span class="math display">\[ Y_{ij} = \mu + \tau_i + \beta_j + \varepsilon_{ij} \]</span></p>
-<ul>
-<li><span class="math inline">\(\beta_j\)</span>: efeito do <strong>bloco</strong> (ex.: faixa de solo).<br>
-</li>
-<li>Demais termos como acima.<br>
-</li>
-<li><strong>Vantagem</strong>: retira da “conta do erro” a variação sistemática entre blocos.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="experimento-1-viveiro-dic-substratos" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="experimento-1-viveiro-dic-substratos"><span class="header-section-number">6.5</span> 💻 Experimento 1 – Viveiro (DIC – substratos)</h2>
-<p><strong>Contexto</strong>: bandejas de isopor com 3 <strong>substratos</strong> (A, B, C).<br>
-<strong>Unidade experimental</strong>: muda em tubete. <strong>Repetições</strong>: 10 por substrato.<br>
-<strong>Variáveis</strong>: <code>Altura_cm</code>, <code>Biomassa_g</code>.</p>
 <p>📦 <strong>Dados desta análise</strong><br>
-- <code>crescimento_mudas.csv</code> (mesmo do Cap. 2)<br>
-- Colab: <code>/content/crescimento_mudas.csv</code><br>
-- Quarto: <code>dados/crescimento_mudas.csv</code></p>
+- <a href="dados/substratos_contrastes.csv">dados/substratos_contrastes.csv</a> <em>(arquivo desta apostila)</em><br>
+- No Colab: <code>/content/substratos_contrastes.csv</code><br>
+- No Quarto local: <code>dados/substratos_contrastes.csv</code></p>
+</section>
+<section id="modelo-linear-dic" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="modelo-linear-dic"><span class="header-section-number">7.3</span> 🧮 Modelo linear (DIC)</h2>
+<p><span class="math display">\[ Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \quad \varepsilon_{ij} \sim \mathcal{N}(0, \sigma^2) \]</span></p>
+<ul>
+<li><span class="math inline">\(Y_{ij}\)</span>: altura da j‑ésima muda no i‑ésimo substrato.<br>
+</li>
+<li><span class="math inline">\(\mu\)</span>: média geral; <span class="math inline">\(\tau_i\)</span>: efeito do substrato.</li>
+</ul>
+<p><strong>Contraste planejado</strong>: combinação linear com coeficientes que <strong>somam zero</strong>.<br>
+Ex.: <span class="math inline">\(L_1 = \tfrac{1}{2}(\mu_A + \mu_B) - \mu_C\)</span> (comerciais vs alternativo).</p>
+</section>
+<section id="análise-no-r" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="análise-no-r"><span class="header-section-number">7.4</span> 💻 Análise no R</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(dplyr); <span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mudas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/crescimento_mudas.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA (DIC): Altura ~ Tratamento</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mod_dic <span class="ot">&lt;-</span> <span class="fu">aov</span>(Altura_cm <span class="sc">~</span> Tratamento, <span class="at">data =</span> mudas)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_dic)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto local:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/substratos_contrastes.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># dados &lt;- read_csv("/content/substratos_contrastes.csv", show_col_types = FALSE)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Garantir a ordem A,B,C,D para casar com os contrastes</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Tratamento <span class="ot">&lt;-</span> <span class="fu">factor</span>(dados<span class="sc">$</span>Tratamento, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov</span>(Altura_cm <span class="sc">~</span> Tratamento, <span class="at">data =</span> dados)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Tratamento   2  226.4  113.21   21.63 2.38e-08 ***
-Residuals   87  455.5    5.24                     
+Tratamento   3 131.06   43.69    21.8 1.74e-07 ***
+Residuals   28  56.11    2.00                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualização</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mudas, <span class="fu">aes</span>(Tratamento, Altura_cm, <span class="at">fill =</span> Tratamento)) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico exploratório</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(Tratamento, Altura_cm, <span class="at">fill =</span> Tratamento)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"DIC – Altura por substrato"</span>, <span class="at">x =</span> <span class="st">"Substrato"</span>, <span class="at">y =</span> <span class="st">"Altura (cm)"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Altura de mudas por substrato (120 dias)"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Substrato"</span>, <span class="at">y =</span> <span class="st">"Altura (cm)"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cap04-delineamentos_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cap05-contrastes_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+</section>
+<section id="por-que-contrastes-e-não-apenas-tukeyduncan" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="por-que-contrastes-e-não-apenas-tukeyduncan"><span class="header-section-number">7.5</span> 🎯 Por que contrastes e não apenas <strong>Tukey/Duncan</strong>?</h2>
+<ul>
+<li><strong>Tukey/Duncan</strong> comparam <strong>todos os pares</strong> → bom para um panorama, mas produzem <strong>muitas comparações</strong> irrelevantes.<br>
+</li>
+<li><strong>Contrastes</strong> testam <strong>hipóteses a priori</strong> (definidas antes do experimento): <strong>mais foco</strong> e <strong>maior poder</strong> para aquilo que realmente importa.</li>
+</ul>
+</section>
+<section id="contrastes-planejados-no-r-multcomp" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="contrastes-planejados-no-r-multcomp"><span class="header-section-number">7.6</span> 🔬 Contrastes planejados no R (multcomp)</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("multcomp") # se necessário</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de contrastes: linhas = hipóteses (na ordem dos níveis A,B,C,D)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Comerciais vs Alternativo"</span> <span class="ot">=</span> <span class="fu">c</span>( <span class="fl">0.5</span>,  <span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">1.0</span>,  <span class="fl">0.0</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Adubado vs Outros"</span>        <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>,  <span class="fl">1.0</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>contr <span class="ot">&lt;-</span> <span class="fu">glht</span>(mod, <span class="at">linfct =</span> <span class="fu">mcp</span>(<span class="at">Tratamento =</span> K))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(contr)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: User-defined Contrasts
+
+
+Fit: aov(formula = Altura_cm ~ Tratamento, data = dados)
+
+Linear Hypotheses:
+                               Estimate Std. Error t value Pr(&gt;|t|)    
+Comerciais vs Alternativo == 0   2.0500     0.6130   3.344  0.00469 ** 
+Adubado vs Outros == 0           3.8083     0.5779   6.590  7.6e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+(Adjusted p values reported -- single-step method)</code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(contr)  <span class="co"># IC dos contrastes</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Simultaneous Confidence Intervals
+
+Multiple Comparisons of Means: User-defined Contrasts
+
+
+Fit: aov(formula = Altura_cm ~ Tratamento, data = dados)
+
+Quantile = 2.3587
+95% family-wise confidence level
+ 
+
+Linear Hypotheses:
+                               Estimate lwr    upr   
+Comerciais vs Alternativo == 0 2.0500   0.6041 3.4959
+Adubado vs Outros == 0         3.8083   2.4451 5.1715</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -410,112 +424,33 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>📌 <strong>Leia a tabela de ANOVA (DIC)</strong>: se p &lt; 0,05, há diferença global entre <strong>substratos</strong>. Para saber <strong>quais</strong> diferem, use Tukey (você já conhece do Cap. 3B).</p>
-</div>
-</div>
-<hr>
-</section>
-<section id="experimento-2-campo-dbc-clones-de-eucalyptus" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="experimento-2-campo-dbc-clones-de-eucalyptus"><span class="header-section-number">6.6</span> 💻 Experimento 2 – Campo (DBC – clones de <em>Eucalyptus</em>)</h2>
-<p><strong>Problema real</strong>: escolher o <strong>clone</strong> mais produtivo para uma área <strong>com gradiente de solo</strong> (heterogênea).<br>
-<strong>Delineamento</strong>: 4 <strong>clones</strong> (C1–C4) × 4 <strong>blocos</strong> (B1–B4), 1 parcela/clone/bloco.<br>
-<strong>Variável resposta</strong>: <code>Volume_m3ha</code> (m³/ha).<br>
-<strong>Unidade experimental</strong>: <strong>parcela</strong> (ex.: 12–20 árvores).</p>
-<p>📦 <strong>Dados desta análise</strong><br>
-- <a href="dados/clones_eucalipto.csv">clones_eucalipto.csv</a> <em>(novo)</em><br>
-- Colab: <code>/content/clones_eucalipto.csv</code><br>
-- Quarto: <code>dados/clones_eucalipto.csv</code></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>clones <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/clones_eucalipto.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(clones)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>spc_tbl_ [16 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ Bloco      : chr [1:16] "B1" "B1" "B1" "B1" ...
- $ Clone      : chr [1:16] "C1" "C2" "C3" "C4" ...
- $ Volume_m3ha: num [1:16] 239 261 234 260 259 ...
- - attr(*, "spec")=
-  .. cols(
-  ..   Bloco = col_character(),
-  ..   Clone = col_character(),
-  ..   Volume_m3ha = col_double()
-  .. )
- - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
-</div>
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clones)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  Bloco Clone Volume_m3ha
-  &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;
-1 B1    C1           239.
-2 B1    C2           261.
-3 B1    C3           234.
-4 B1    C4           260.
-5 B2    C1           259.
-6 B2    C2           292.</code></pre>
-</div>
-</div>
-<section id="anova-dbc-modelo-com-blocos" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="anova-dbc-modelo-com-blocos"><span class="header-section-number">6.6.1</span> ANOVA (DBC): modelo com blocos</h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mod_dbc <span class="ot">&lt;-</span> <span class="fu">aov</span>(Volume_m3ha <span class="sc">~</span> Clone <span class="sc">+</span> Bloco, <span class="at">data =</span> clones)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_dbc)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Clone        3 1407.4   469.1   11.38 0.002036 ** 
-Bloco        3 2182.9   727.6   17.66 0.000412 ***
-Residuals    9  370.9    41.2                     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<p>📌 <strong>Leitura</strong>: Se p &lt; 0,05 em “Comerciais vs Alternativo”, então (A,B) e C têm médias diferentes.<br>
+Se p &lt; 0,05 em “Adubado vs Outros”, então D difere da <strong>média</strong> de A,B,C.<br>
+Os ICs ajudam a ver <strong>direção e magnitude</strong> da diferença.</p>
 </div>
 </div>
 </section>
-<section id="por-que-incluir-bloco" class="level3" data-number="6.6.2">
-<h3 data-number="6.6.2" class="anchored" data-anchor-id="por-que-incluir-bloco"><span class="header-section-number">6.6.2</span> Por que incluir <strong>Bloco</strong>?</h3>
-<ul>
-<li>Remove do erro a variação sistemática entre faixas de solo.<br>
-</li>
-<li><strong>Ganha poder</strong> para detectar diferenças entre clones.</li>
-</ul>
-</section>
-<section id="visualização-por-blocos-e-por-clone" class="level3" data-number="6.6.3">
-<h3 data-number="6.6.3" class="anchored" data-anchor-id="visualização-por-blocos-e-por-clone"><span class="header-section-number">6.6.3</span> Visualização por blocos e por clone</h3>
+<section id="opcional-comparação-com-tukey" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="opcional-comparação-com-tukey"><span class="header-section-number">7.7</span> 🔁 (Opcional) Comparação com Tukey</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clones, <span class="fu">aes</span>(Clone, Volume_m3ha, <span class="at">fill =</span> Clone)) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"DBC – Volume por clone"</span>, <span class="at">x =</span> <span class="st">"Clone"</span>, <span class="at">y =</span> <span class="st">"Volume (m³/ha)"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(mod)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cap04-delineamentos_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clones, <span class="fu">aes</span>(Bloco, Volume_m3ha, <span class="at">fill =</span> Bloco)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"DBC – Heterogeneidade entre blocos"</span>, <span class="at">x =</span> <span class="st">"Bloco"</span>, <span class="at">y =</span> <span class="st">"Volume (m³/ha)"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cap04-delineamentos_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = Altura_cm ~ Tratamento, data = dados)
+
+$Tratamento
+       diff        lwr        upr     p adj
+B-A -2.3250 -4.2575601 -0.3924399 0.0137727
+C-A -3.2125 -5.1450601 -1.2799399 0.0005382
+D-A  1.9625  0.0299399  3.8950601 0.0455373
+C-B -0.8875 -2.8200601  1.0450601 0.5988934
+D-B  4.2875  2.3549399  6.2200601 0.0000090
+D-C  5.1750  3.2424399  7.1075601 0.0000003</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -528,80 +463,22 @@ Importante
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>⚠️ <strong>Comparação didática</strong><br>
-Ajuste <strong>sem blocos</strong> e compare:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(Volume_m3ha <span class="sc">~</span> Clone, <span class="at">data =</span> clones))   <span class="co"># ignora blocos (DIC "forçado")</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)
-Clone        3   1407   469.1   2.204   0.14
-Residuals   12   2554   212.8               </code></pre>
-</div>
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(Volume_m3ha <span class="sc">~</span> Clone <span class="sc">+</span> Bloco, <span class="at">data =</span> clones))  <span class="co"># DBC correto</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Clone        3 1407.4   469.1   11.38 0.002036 ** 
-Bloco        3 2182.9   727.6   17.66 0.000412 ***
-Residuals    9  370.9    41.2                     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-<p>Observe como o <strong>resíduo (QM_erro)</strong> muda. O DBC tende a <strong>reduzir o erro</strong> e <strong>aumentar a precisão</strong>.</p>
+<p>⚠️ <strong>Interpretação</strong>: Tukey pode listar vários pares “diferentes”, mas nem todos respondem à <strong>pergunta do gestor</strong>.<br>
+Contrastes mantêm o foco nas <strong>hipóteses que motivaram o experimento</strong>.</p>
 </div>
 </div>
 </section>
-<section id="opcional-teste-de-médias-para-clones" class="level3" data-number="6.6.4">
-<h3 data-number="6.6.4" class="anchored" data-anchor-id="opcional-teste-de-médias-para-clones"><span class="header-section-number">6.6.4</span> (Opcional) Teste de médias para clones</h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apenas se ANOVA indicar diferença para Clone</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>tk <span class="ot">&lt;-</span> <span class="fu">HSD.test</span>(mod_dbc, <span class="st">"Clone"</span>, <span class="at">group =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>tk<span class="sc">$</span>groups</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Volume_m3ha groups
-C2     276.000      a
-C4     273.025      a
-C3     258.150      b
-C1     254.050      b</code></pre>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="exercícios" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">6.7</span> 📝 Exercícios</h2>
+<section id="exercícios" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">7.8</span> 📝 Exercícios</h2>
+<p>Responda:</p>
 <ol type="1">
-<li><strong>DBC (campo)</strong>:
-<ol type="a">
-<li>Ajuste o modelo <strong>com blocos</strong> e <strong>sem blocos</strong>; compare as tabelas de ANOVA.<br>
-</li>
-<li>Se houver diferença para <strong>Clone</strong>, aplique <strong>Tukey</strong> e interprete as <strong>letras</strong>.<br>
-</li>
-</ol></li>
-<li>Monte, em Markdown, a <strong>tabela de planejamento</strong> de cada experimento (fator, níveis, unidade experimental, variáveis resposta).</li>
+<li><p><strong>O que foi testado</strong> (substratos) e <strong>por quê</strong> (decisão de manejo).<br>
+</p></li>
+<li><p><strong>ANOVA</strong> (F, p-valor).</p></li>
+<li><p><strong>Contrastes</strong>: apresente p-valores e ICs para as hipóteses <strong>planejadas</strong>.</p></li>
+<li><p><strong>Decisão</strong>: recomende (ou não) o <strong>D adubado</strong>; avalie a possibilidade de substituir comerciais por <strong>C</strong>.</p></li>
+<li><p>Adicione um contraste <strong>A vs B</strong> (interessa à empresa?). Interprete.</p></li>
 </ol>
-</section>
-<section id="síntese" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="síntese"><span class="header-section-number">6.8</span> ✅ Síntese</h2>
-<ul>
-<li><strong>DIC</strong>: use quando a área/unidades são <strong>homogêneas</strong> (viveiro, laboratório).<br>
-</li>
-<li><strong>DBC</strong>: use para áreas <strong>heterogêneas</strong>, controlando a variação com <strong>blocos</strong>.<br>
-</li>
-<li>O <strong>modelo linear</strong> deixa explícito o papel dos blocos e do tratamento.<br>
-</li>
-<li>Em campo florestal, o uso adequado do delineamento melhora a <strong>confiabilidade</strong> e a <strong>precisão</strong> das recomendações.</li>
-</ul>
 
 
 </section>
@@ -1008,14 +885,11 @@ C1     254.050      b</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./cap03B-anova2.html" class="pagination-link" aria-label="📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span></span>
+      <a href="./cap04-delineamentos.html" class="pagination-link" aria-label="📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cap05-contrastes.html" class="pagination-link" aria-label="📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
