@@ -16,7 +16,7 @@ book:
     - cap03B-anova2.qmd
     - cap04-delineamentos.qmd
     - cap05-contrastes.qmd
-    #- cap06-delineamentos.qmd
+    - cap06-fatorial.qmd
     #- cap07-apresentacao.qmd
   page-navigation: true
 

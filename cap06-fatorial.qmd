@@ -1,0 +1,175 @@
+---
+title: "📖 Capítulo 6 – Delineamentos Fatoriais (2x2)"
+---
+
+*Módulo 2 – Semana 8*
+
+## 🌱 Narrativa aplicada
+
+Um viveiro florestal deseja otimizar o **crescimento inicial** de mudas nativas combinando **tipo de substrato** e **regime de irrigação**.  
+Há indícios de que um substrato responde **muito melhor quando a irrigação é alta**, mas o comportamento **pode se inverter** em déficit hídrico.  
+Para responder, vamos **testar os dois fatores simultaneamente** com um **delineamento fatorial 2×2**.
+
+- **Fator 1 – Substrato**: **A** (comercial estável) vs **B** (formulação que potencialmente responde mais à água).  
+- **Fator 2 – Irrigação**: **Baixa** vs **Alta**.  
+- **Unidade experimental**: muda em tubete (55 cm³).  
+- **Repetições**: 10 por combinação (total = 40).  
+- **Variável resposta**: **Altura (cm)** aos **90 dias** pós-semeadura.
+
+::: callout-tip
+💡 **Por que fatorial?** Compara **efeitos principais** e testa **interação**. Se houver interação, **o melhor substrato depende da irrigação** (e vice‑versa) — informação crucial para o manejo.
+:::
+
+## 🎯 Objetivos de aprendizagem
+- Entender **efeitos principais** e **interação** em fatoriais.  
+- Especificar e ajustar o **modelo linear** com interação.  
+- Visualizar e interpretar **gráficos de interação**.  
+- Traduzir **efeitos estatísticos em decisões operacionais** (impacto de irrigação).
+
+## 🧮 Modelo linear (fatorial 2×2)
+
+$$
+Y_{ijk} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \varepsilon_{ijk},\quad
+\varepsilon_{ijk} \sim \mathcal{N}(0, \sigma^2)
+$$
+
+- $\alpha_i$: efeito do **substrato** (i = A,B)  
+- $\beta_j$: efeito da **irrigação** (j = Baixa,Alta)  
+- $(\alpha\beta)_{ij}$: **interação** (o efeito de um fator **depende** do nível do outro)
+
+## 📦 Dados desta análise
+- [dados/fatorial_substrato_irrigacao_2x2.csv](dados/fatorial_substrato_irrigacao_2x2.csv)  
+  - Colab: `/content/fatorial_substrato_irrigacao_2x2.csv`  
+  - Quarto local: `dados/fatorial_substrato_irrigacao_2x2.csv`
+
+## 💻 Análise no R
+
+```{r}
+library(readr); library(dplyr); library(ggplot2)
+
+# Quarto local:
+dados <- read_csv("dados/fatorial_substrato_irrigacao_2x2.csv", show_col_types = FALSE)
+# Colab:
+# dados <- read_csv("/content/fatorial_substrato_irrigacao_2x2.csv", show_col_types = FALSE)
+
+# Fatores com ordem explícita (útil para gráficos e relatórios)
+dados$Substrato <- factor(dados$Substrato, levels = c("A","B"))
+dados$Irrigacao <- factor(dados$Irrigacao, levels = c("Baixa","Alta"))
+
+# ANOVA fatorial com interação (modelo completo)
+mod_full <- aov(Altura_cm ~ Substrato * Irrigacao, data = dados)
+summary(mod_full)
+```
+
+### 🔎 Modelo com interação vs. modelo aditivo (sem interação)
+
+Quando testamos `Substrato * Irrigacao`, estamos ajustando o **modelo com interação**:
+
+- **Com interação**: $Y = \mu + \alpha + \beta + \alpha\beta + \varepsilon$  
+  — Permite que o **efeito do substrato dependa** do nível de irrigação (e vice-versa).  
+- **Sem interação (aditivo)**: $Y = \mu + \alpha + \beta + \varepsilon$  
+  — Assume efeitos **constantes** (linhas paralelas no gráfico de interação).
+
+**Por que ajustar o modelo sem interação?**  
+- Como **modelo de referência**: se a interação **não for significativa**, o modelo aditivo é **mais simples** e direto para comunicar.  
+- Para **comparar ajuste**: em casos limítrofes, compare `mod_full` vs. `mod_add` para checar se a complexidade extra se justifica.
+
+```{r}
+# Modelo sem interação (aditivo)
+mod_add  <- aov(Altura_cm ~ Substrato + Irrigacao, data = dados)
+
+# Comparação formal
+anova(mod_add, mod_full)   # p < 0,05 → manter interação
+AIC(mod_add, mod_full)     # critério de informação (menor é preferível)
+```
+
+::: callout-note
+📌 **Regra prática**  
+- **Interação significativa** → comunique **recomendações condicionais** (“Com **Irrigação Alta**, prefira **B**; com **Baixa**, **A**”).  
+- **Interação não significativa** → use o **modelo aditivo** e reporte **efeitos principais**.
+:::
+
+## 📈 Gráficos de apoio
+
+```{r}
+# Boxplot por combinação
+ggplot(dados, aes(x = Substrato, y = Altura_cm, fill = Irrigacao)) +
+  geom_boxplot(position = position_dodge(width = .8)) +
+  labs(title = "Altura por Substrato × Irrigação (90 dias)",
+       x = "Substrato", y = "Altura (cm)", fill = "Irrigação") +
+  theme_minimal()
+
+# Gráfico de interação (médias por célula)
+medias <- dados %>% group_by(Substrato, Irrigacao) %>% summarise(media = mean(Altura_cm), .groups = "drop")
+ggplot(medias, aes(Irrigacao, media, group = Substrato, shape = Substrato)) +
+  geom_point(size = 3) + geom_line() +
+  labs(title = "Gráfico de interação (médias)",
+       x = "Irrigação", y = "Altura média (cm)")
+```
+
+### 🧭 “Impacto operacional” da irrigação (o que significa?)
+
+“Impacto operacional” traduz a estatística para **decisão de viveiro**. Exemplos práticos:
+
+- **Custo de água/energia**: irrigação **Alta** pode elevar custos; só vale a pena se o ganho de crescimento (ex.: +3 cm aos 90 dias) **compensar**.  
+- **Capacidade de infraestrutura**: regimes altos podem exigir **bombas**/turnos adicionais; às vezes **A × Baixa** é preferível por **simplicidade**.  
+- **Risco de manejo**: irrigação alta pode elevar risco de **fungos**; se o ganho for pequeno, **não compensa**.  
+- **Meta de produção**: se a meta é atingir **altura mínima** para expedição em 90 dias, escolher a combinação que **garanta a meta** com **menor variância**.
+
+::: callout-tip
+✅ **Como escrever no relatório**  
+“Com irrigação **Alta**, o Substrato **B** apresentou ganho médio de **+3,2 cm** (IC 95%: +2,4 a +4,0) em relação a **A**. Considerando o custo adicional de água e maior risco de doença, recomendamos **B × Alta** **apenas** quando a meta de expedição exigir esse ganho.”
+:::
+
+## 📐 Por que **intervalos de confiança** (IC)?
+
+O valor-p diz **se** há evidência de diferença; o **IC** diz **quanto** e com **que precisão**. Em decisões de manejo, o “quanto” é crucial (ganho esperado).
+
+```{r}
+# Com emmeans: estimativas marginais e ICs
+# install.packages("emmeans") # se necessário
+library(emmeans)
+
+# ICs para as 4 células (médias ajustadas)
+emm_cells <- emmeans(mod_full, ~ Substrato * Irrigacao)
+summary(emm_cells, infer = c(TRUE, TRUE))  # inclui ICs
+
+# Gráfico com ICs
+plot(emm_cells) + ggtitle("Médias ajustadas com IC (Substrato × Irrigação)")
+```
+
+::: callout-important
+⚠️ **Decisão baseada em efeito**  
+Mesmo com p < 0,05, um ganho com IC estreito e **pequena magnitude** pode **não justificar** alterar o manejo. ICs deixam isso **explícito**.
+:::
+
+## 🔬 Efeitos simples (quando há interação)
+
+```{r}
+# Comparar Substrato dentro de cada regime de Irrigação
+dados %>% filter(Irrigacao == "Baixa") %>% aov(Altura_cm ~ Substrato, data = .) %>% summary()
+dados %>% filter(Irrigacao == "Alta")  %>% aov(Altura_cm ~ Substrato, data = .) %>% summary()
+```
+
+*(Opcional avançado)* com **emmeans**:
+```{r}
+emm_sub_by_irr <- emmeans(mod_full, ~ Substrato | Irrigacao)
+pairs(emm_sub_by_irr)        # compara Substrato dentro de cada Irrigação
+```
+
+## 🧾 “Cola” para o relatório
+1) Descreva **o problema de manejo** (otimizar crescimento via Substrato × Irrigação).  
+2) Relate a **ANOVA fatorial** (F, p) para fatores e interação.  
+3) Se houver interação, apresente **efeitos simples** e **gráfico de interação**.  
+4) Faça uma **recomendação condicional**, citando **ICs** para justificar a decisão.
+
+## 📝 Exercícios 
+1. **Interação e recomendação condicional**: ajuste `mod_full` e `mod_add`, compare com `anova(mod_add, mod_full)`. Se houver interação, faça **efeitos simples** e escreva **2–3 frases** com a recomendação condicional.  
+2. **Médias ajustadas e ICs (quantificar o ganho)**: use `emmeans` para obter **médias + IC 95%** por célula; faça um gráfico e responda: **qual combinação** tem maior ganho? A **margem de incerteza** justifica mudar o manejo?  
+3. **Cenário operacional**: suponha custo extra de irrigação **Alta** de **R$ 0,05/muda/dia**. Em 90 dias e 10.000 mudas, o custo adicional é **R$ 45.000**. Com base nos **ICs**, quando vale a pena **B × Alta**?  
+4. **Relato final**: entregue um parágrafo que combine **estatística + operação** (p-valores, ICs, recomendação clara).
+
+## ✅ Síntese
+- O fatorial 2×2 permite testar **efeitos principais** e **interação**.  
+- **Modelo com interação** vs. **modelo aditivo** ajuda a decidir **como comunicar** resultados.  
+- **ICs** quantificam **ganhos** e **incertezas**, fundamentais para **decisão de manejo**.

@@ -434,7 +434,7 @@
     "href": "cap05-contrastes.html",
     "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
     "section": "",
-    "text": "7.1 🌱 Narrativa aplicada\nUm viveiro de mudas nativas precisa decidir se vale a pena adotar um novo substrato adubado.\nAs opções vigentes são: A e B (comerciais) e C (alternativo de baixo custo). O D é o alternativo adubado.\nQueremos responder perguntas práticas do gestor, não apenas listar todos os pares diferentes.",
+    "text": "7.1 🌱 Narrativa aplicada\nMódulo 2 – Semana 6\nUm viveiro de mudas nativas precisa decidir se vale a pena adotar um novo substrato adubado.\nAs opções vigentes são: A e B (comerciais) e C (alternativo de baixo custo). O D é o alternativo adubado.\nQueremos responder perguntas práticas do gestor, não apenas listar todos os pares diferentes.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
     ]
@@ -517,6 +517,126 @@
     "text": "7.8 📝 Exercícios\nResponda:\n\nO que foi testado (substratos) e por quê (decisão de manejo).\n\nANOVA (F, p-valor).\nContrastes: apresente p-valores e ICs para as hipóteses planejadas.\nDecisão: recomende (ou não) o D adubado; avalie a possibilidade de substituir comerciais por C.\nAdicione um contraste A vs B (interessa à empresa?). Interprete.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html",
+    "href": "cap06-fatorial.html",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "",
+    "text": "8.1 🌱 Narrativa aplicada\nMódulo 2 – Semana 8\nUm viveiro florestal deseja otimizar o crescimento inicial de mudas nativas combinando tipo de substrato e regime de irrigação.\nHá indícios de que um substrato responde muito melhor quando a irrigação é alta, mas o comportamento pode se inverter em déficit hídrico.\nPara responder, vamos testar os dois fatores simultaneamente com um delineamento fatorial 2×2.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#narrativa-aplicada",
+    "href": "cap06-fatorial.html#narrativa-aplicada",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "",
+    "text": "Fator 1 – Substrato: A (comercial estável) vs B (formulação que potencialmente responde mais à água).\n\nFator 2 – Irrigação: Baixa vs Alta.\n\nUnidade experimental: muda em tubete (55 cm³).\n\nRepetições: 10 por combinação (total = 40).\n\nVariável resposta: Altura (cm) aos 90 dias pós-semeadura.\n\n\n\n\n\n\n\nDica\n\n\n\n💡 Por que fatorial? Compara efeitos principais e testa interação. Se houver interação, o melhor substrato depende da irrigação (e vice‑versa) — informação crucial para o manejo.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#objetivos-de-aprendizagem",
+    "href": "cap06-fatorial.html#objetivos-de-aprendizagem",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.2 🎯 Objetivos de aprendizagem",
+    "text": "8.2 🎯 Objetivos de aprendizagem\n\nEntender efeitos principais e interação em fatoriais.\n\nEspecificar e ajustar o modelo linear com interação.\n\nVisualizar e interpretar gráficos de interação.\n\nTraduzir efeitos estatísticos em decisões operacionais (impacto de irrigação).",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#modelo-linear-fatorial-22",
+    "href": "cap06-fatorial.html#modelo-linear-fatorial-22",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.3 🧮 Modelo linear (fatorial 2×2)",
+    "text": "8.3 🧮 Modelo linear (fatorial 2×2)\n\\[\nY_{ijk} = \\mu + \\alpha_i + \\beta_j + (\\alpha\\beta)_{ij} + \\varepsilon_{ijk},\\quad\n\\varepsilon_{ijk} \\sim \\mathcal{N}(0, \\sigma^2)\n\\]\n\n\\(\\alpha_i\\): efeito do substrato (i = A,B)\n\n\\(\\beta_j\\): efeito da irrigação (j = Baixa,Alta)\n\n\\((\\alpha\\beta)_{ij}\\): interação (o efeito de um fator depende do nível do outro)",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#dados-desta-análise",
+    "href": "cap06-fatorial.html#dados-desta-análise",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.4 📦 Dados desta análise",
+    "text": "8.4 📦 Dados desta análise\n\ndados/fatorial_substrato_irrigacao_2x2.csv\n\nColab: /content/fatorial_substrato_irrigacao_2x2.csv\n\nQuarto local: dados/fatorial_substrato_irrigacao_2x2.csv",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#análise-no-r",
+    "href": "cap06-fatorial.html#análise-no-r",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.5 💻 Análise no R",
+    "text": "8.5 💻 Análise no R\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2)\n\n# Quarto local:\ndados &lt;- read_csv(\"dados/fatorial_substrato_irrigacao_2x2.csv\", show_col_types = FALSE)\n# Colab:\n# dados &lt;- read_csv(\"/content/fatorial_substrato_irrigacao_2x2.csv\", show_col_types = FALSE)\n\n# Fatores com ordem explícita (útil para gráficos e relatórios)\ndados$Substrato &lt;- factor(dados$Substrato, levels = c(\"A\",\"B\"))\ndados$Irrigacao &lt;- factor(dados$Irrigacao, levels = c(\"Baixa\",\"Alta\"))\n\n# ANOVA fatorial com interação (modelo completo)\nmod_full &lt;- aov(Altura_cm ~ Substrato * Irrigacao, data = dados)\nsummary(mod_full)\n\n\n                    Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nSubstrato            1  14.64   14.64   10.04  0.00312 ** \nIrrigacao            1 160.80  160.80  110.27 1.66e-12 ***\nSubstrato:Irrigacao  1  40.40   40.40   27.71 6.70e-06 ***\nResiduals           36  52.50    1.46                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n8.5.1 🔎 Modelo com interação vs. modelo aditivo (sem interação)\nQuando testamos Substrato * Irrigacao, estamos ajustando o modelo com interação:\n\nCom interação: \\(Y = \\mu + \\alpha + \\beta + \\alpha\\beta + \\varepsilon\\)\n— Permite que o efeito do substrato dependa do nível de irrigação (e vice-versa).\n\nSem interação (aditivo): \\(Y = \\mu + \\alpha + \\beta + \\varepsilon\\)\n— Assume efeitos constantes (linhas paralelas no gráfico de interação).\n\nPor que ajustar o modelo sem interação?\n- Como modelo de referência: se a interação não for significativa, o modelo aditivo é mais simples e direto para comunicar.\n- Para comparar ajuste: em casos limítrofes, compare mod_full vs. mod_add para checar se a complexidade extra se justifica.\n\n\nCódigo\n# Modelo sem interação (aditivo)\nmod_add  &lt;- aov(Altura_cm ~ Substrato + Irrigacao, data = dados)\n\n# Comparação formal\nanova(mod_add, mod_full)   # p &lt; 0,05 → manter interação\n\n\nAnalysis of Variance Table\n\nModel 1: Altura_cm ~ Substrato + Irrigacao\nModel 2: Altura_cm ~ Substrato * Irrigacao\n  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    \n1     37 92.897                                  \n2     36 52.496  1    40.401 27.706 6.699e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCódigo\nAIC(mod_add, mod_full)     # critério de informação (menor é preferível)\n\n\n         df      AIC\nmod_add   4 155.2196\nmod_full  5 134.3894\n\n\n\n\n\n\n\n\nNota\n\n\n\n📌 Regra prática\n- Interação significativa → comunique recomendações condicionais (“Com Irrigação Alta, prefira B; com Baixa, A”).\n- Interação não significativa → use o modelo aditivo e reporte efeitos principais.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#gráficos-de-apoio",
+    "href": "cap06-fatorial.html#gráficos-de-apoio",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.6 📈 Gráficos de apoio",
+    "text": "8.6 📈 Gráficos de apoio\n\n\nCódigo\n# Boxplot por combinação\nggplot(dados, aes(x = Substrato, y = Altura_cm, fill = Irrigacao)) +\n  geom_boxplot(position = position_dodge(width = .8)) +\n  labs(title = \"Altura por Substrato × Irrigação (90 dias)\",\n       x = \"Substrato\", y = \"Altura (cm)\", fill = \"Irrigação\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nCódigo\n# Gráfico de interação (médias por célula)\nmedias &lt;- dados %&gt;% group_by(Substrato, Irrigacao) %&gt;% summarise(media = mean(Altura_cm), .groups = \"drop\")\nggplot(medias, aes(Irrigacao, media, group = Substrato, shape = Substrato)) +\n  geom_point(size = 3) + geom_line() +\n  labs(title = \"Gráfico de interação (médias)\",\n       x = \"Irrigação\", y = \"Altura média (cm)\")\n\n\n\n\n\n\n\n\n\n\n8.6.1 🧭 “Impacto operacional” da irrigação (o que significa?)\n“Impacto operacional” traduz a estatística para decisão de viveiro. Exemplos práticos:\n\nCusto de água/energia: irrigação Alta pode elevar custos; só vale a pena se o ganho de crescimento (ex.: +3 cm aos 90 dias) compensar.\n\nCapacidade de infraestrutura: regimes altos podem exigir bombas/turnos adicionais; às vezes A × Baixa é preferível por simplicidade.\n\nRisco de manejo: irrigação alta pode elevar risco de fungos; se o ganho for pequeno, não compensa.\n\nMeta de produção: se a meta é atingir altura mínima para expedição em 90 dias, escolher a combinação que garanta a meta com menor variância.\n\n\n\n\n\n\n\nDica\n\n\n\n✅ Como escrever no relatório\n“Com irrigação Alta, o Substrato B apresentou ganho médio de +3,2 cm (IC 95%: +2,4 a +4,0) em relação a A. Considerando o custo adicional de água e maior risco de doença, recomendamos B × Alta apenas quando a meta de expedição exigir esse ganho.”",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#por-que-intervalos-de-confiança-ic",
+    "href": "cap06-fatorial.html#por-que-intervalos-de-confiança-ic",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.7 📐 Por que intervalos de confiança (IC)?",
+    "text": "8.7 📐 Por que intervalos de confiança (IC)?\nO valor-p diz se há evidência de diferença; o IC diz quanto e com que precisão. Em decisões de manejo, o “quanto” é crucial (ganho esperado).\n\n\nCódigo\n# Com emmeans: estimativas marginais e ICs\n# install.packages(\"emmeans\") # se necessário\nlibrary(emmeans)\n\n# ICs para as 4 células (médias ajustadas)\nemm_cells &lt;- emmeans(mod_full, ~ Substrato * Irrigacao)\nsummary(emm_cells, infer = c(TRUE, TRUE))  # inclui ICs\n\n\n Substrato Irrigacao emmean    SE df lower.CL upper.CL t.ratio p.value\n A         Baixa       20.4 0.382 36     19.6     21.2  53.422  &lt;.0001\n B         Baixa       19.6 0.382 36     18.8     20.4  51.327  &lt;.0001\n A         Alta        22.4 0.382 36     21.6     23.2  58.659  &lt;.0001\n B         Alta        25.6 0.382 36     24.8     26.4  67.091  &lt;.0001\n\nConfidence level used: 0.95 \n\n\nCódigo\n# Gráfico com ICs\nplot(emm_cells) + ggtitle(\"Médias ajustadas com IC (Substrato × Irrigação)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\n\n⚠️ Decisão baseada em efeito\nMesmo com p &lt; 0,05, um ganho com IC estreito e pequena magnitude pode não justificar alterar o manejo. ICs deixam isso explícito.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#efeitos-simples-quando-há-interação",
+    "href": "cap06-fatorial.html#efeitos-simples-quando-há-interação",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.8 🔬 Efeitos simples (quando há interação)",
+    "text": "8.8 🔬 Efeitos simples (quando há interação)\n\n\nCódigo\n# Comparar Substrato dentro de cada regime de Irrigação\ndados %&gt;% filter(Irrigacao == \"Baixa\") %&gt;% aov(Altura_cm ~ Substrato, data = .) %&gt;% summary()\n\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)\nSubstrato    1    3.2   3.200   1.933  0.181\nResiduals   18   29.8   1.656               \n\n\nCódigo\ndados %&gt;% filter(Irrigacao == \"Alta\")  %&gt;% aov(Altura_cm ~ Substrato, data = .) %&gt;% summary()\n\n\n            Df Sum Sq Mean Sq F value  Pr(&gt;F)    \nSubstrato    1  51.84   51.84   41.12 4.9e-06 ***\nResiduals   18  22.70    1.26                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n(Opcional avançado) com emmeans:\n\n\nCódigo\nemm_sub_by_irr &lt;- emmeans(mod_full, ~ Substrato | Irrigacao)\npairs(emm_sub_by_irr)        # compara Substrato dentro de cada Irrigação\n\n\nIrrigacao = Baixa:\n contrast estimate   SE df t.ratio p.value\n A - B        0.80 0.54 36   1.481  0.1472\n\nIrrigacao = Alta:\n contrast estimate   SE df t.ratio p.value\n A - B       -3.22 0.54 36  -5.963  &lt;.0001",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#cola-para-o-relatório",
+    "href": "cap06-fatorial.html#cola-para-o-relatório",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.9 🧾 “Cola” para o relatório",
+    "text": "8.9 🧾 “Cola” para o relatório\n\nDescreva o problema de manejo (otimizar crescimento via Substrato × Irrigação).\n\nRelate a ANOVA fatorial (F, p) para fatores e interação.\n\nSe houver interação, apresente efeitos simples e gráfico de interação.\n\nFaça uma recomendação condicional, citando ICs para justificar a decisão.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#exercícios",
+    "href": "cap06-fatorial.html#exercícios",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.10 📝 Exercícios",
+    "text": "8.10 📝 Exercícios\n\nInteração e recomendação condicional: ajuste mod_full e mod_add, compare com anova(mod_add, mod_full). Se houver interação, faça efeitos simples e escreva 2–3 frases com a recomendação condicional.\n\nMédias ajustadas e ICs (quantificar o ganho): use emmeans para obter médias + IC 95% por célula; faça um gráfico e responda: qual combinação tem maior ganho? A margem de incerteza justifica mudar o manejo?\n\nCenário operacional: suponha custo extra de irrigação Alta de R$ 0,05/muda/dia. Em 90 dias e 10.000 mudas, o custo adicional é R$ 45.000. Com base nos ICs, quando vale a pena B × Alta?\n\nRelato final: entregue um parágrafo que combine estatística + operação (p-valores, ICs, recomendação clara).",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+    ]
+  },
+  {
+    "objectID": "cap06-fatorial.html#síntese",
+    "href": "cap06-fatorial.html#síntese",
+    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "section": "8.11 ✅ Síntese",
+    "text": "8.11 ✅ Síntese\n\nO fatorial 2×2 permite testar efeitos principais e interação.\n\nModelo com interação vs. modelo aditivo ajuda a decidir como comunicar resultados.\n\nICs quantificam ganhos e incertezas, fundamentais para decisão de manejo.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
     ]
   }
 ]

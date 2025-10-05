@@ -2,6 +2,8 @@
 title: "📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados"
 ---
 
+*Módulo 2 – Semana 6*
+
 ## 🌱 Narrativa aplicada
 
 Um viveiro de mudas nativas precisa decidir se vale a pena adotar um **novo substrato adubado**.  
