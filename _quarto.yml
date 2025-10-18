@@ -17,7 +17,7 @@ book:
     - cap04-delineamentos.qmd
     - cap05-contrastes.qmd
     - cap06-fatorial.qmd
-    #- cap07-apresentacao.qmd
+    - cap07-split.qmd
   page-navigation: true
 
 format:
