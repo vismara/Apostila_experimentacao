@@ -235,22 +235,21 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#narrativa-inicial" id="toc-narrativa-inicial" class="nav-link active" data-scroll-target="#narrativa-inicial"><span class="header-section-number">9.1</span> 🌱 Narrativa inicial</a></li>
+  <li><a href="#narrativa-aplicada" id="toc-narrativa-aplicada" class="nav-link active" data-scroll-target="#narrativa-aplicada"><span class="header-section-number">9.1</span> 🌱 Narrativa aplicada</a></li>
   <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">9.2</span> 🎯 Objetivos</a></li>
-  <li><a href="#modelo-linear-split-plot" id="toc-modelo-linear-split-plot" class="nav-link" data-scroll-target="#modelo-linear-split-plot"><span class="header-section-number">9.3</span> 🧮 Modelo linear (split-plot)</a></li>
-  <li><a href="#exemplo-espécie-adubação-no-viveiro" id="toc-exemplo-espécie-adubação-no-viveiro" class="nav-link" data-scroll-target="#exemplo-espécie-adubação-no-viveiro"><span class="header-section-number">9.4</span> 🌳 EXEMPLO — Espécie × Adubação no viveiro</a>
+  <li><a href="#quando-é-necessário-usar-parcelas-subdivididas" id="toc-quando-é-necessário-usar-parcelas-subdivididas" class="nav-link" data-scroll-target="#quando-é-necessário-usar-parcelas-subdivididas"><span class="header-section-number">9.3</span> 🧭 Quando <strong>é necessário</strong> usar parcelas subdivididas?</a></li>
+  <li><a href="#modelo-linear-split-plot" id="toc-modelo-linear-split-plot" class="nav-link" data-scroll-target="#modelo-linear-split-plot"><span class="header-section-number">9.4</span> 🧮 Modelo linear (split-plot)</a></li>
+  <li><a href="#exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt" id="toc-exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt" class="nav-link" data-scroll-target="#exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt"><span class="header-section-number">9.5</span> 🌳 EXEMPLO — Viveiro (Espécie × Adubação) — split‑plot em DIC <strong>com ExpDes.pt</strong></a>
   <ul class="collapse">
-  <li><a href="#análise-no-r" id="toc-análise-no-r" class="nav-link" data-scroll-target="#análise-no-r"><span class="header-section-number">9.4.1</span> 💻 Análise no R</a></li>
-  <li><a href="#visualizações" id="toc-visualizações" class="nav-link" data-scroll-target="#visualizações"><span class="header-section-number">9.4.2</span> 📊 Visualizações</a></li>
-  <li><a href="#interpretação" id="toc-interpretação" class="nav-link" data-scroll-target="#interpretação"><span class="header-section-number">9.4.3</span> 🧩 Interpretação</a></li>
+  <li><a href="#anova-tukey-expdes.pt" id="toc-anova-tukey-expdes.pt" class="nav-link" data-scroll-target="#anova-tukey-expdes.pt"><span class="header-section-number">9.5.1</span> 💻 ANOVA + Tukey (ExpDes.pt)</a></li>
+  <li><a href="#interpretação" id="toc-interpretação" class="nav-link" data-scroll-target="#interpretação"><span class="header-section-number">9.5.2</span> 🧩 Interpretação</a></li>
   </ul></li>
-  <li><a href="#exercício-espaçamento-fungicida-em-campo-jovem" id="toc-exercício-espaçamento-fungicida-em-campo-jovem" class="nav-link" data-scroll-target="#exercício-espaçamento-fungicida-em-campo-jovem"><span class="header-section-number">9.5</span> 🌾 EXERCÍCIO — Espaçamento × Fungicida em campo jovem</a>
+  <li><a href="#exercício-espaçamento-fungicida-em-campo-jovem" id="toc-exercício-espaçamento-fungicida-em-campo-jovem" class="nav-link" data-scroll-target="#exercício-espaçamento-fungicida-em-campo-jovem"><span class="header-section-number">9.6</span> 🌾 EXERCÍCIO — Espaçamento × Fungicida em campo jovem</a>
   <ul class="collapse">
-  <li><a href="#análise-no-r-1" id="toc-análise-no-r-1" class="nav-link" data-scroll-target="#análise-no-r-1"><span class="header-section-number">9.5.1</span> 💻 Análise no R</a></li>
-  <li><a href="#orientações-de-leitura" id="toc-orientações-de-leitura" class="nav-link" data-scroll-target="#orientações-de-leitura"><span class="header-section-number">9.5.2</span> 📊 Orientações de leitura</a></li>
+  <li><a href="#orientações-d" id="toc-orientações-d" class="nav-link" data-scroll-target="#orientações-d"><span class="header-section-number">9.6.1</span> 📊 Orientações d</a></li>
   </ul></li>
-  <li><a href="#cola-para-o-relatório" id="toc-cola-para-o-relatório" class="nav-link" data-scroll-target="#cola-para-o-relatório"><span class="header-section-number">9.6</span> 🧾 “Cola” para o relatório</a></li>
-  <li><a href="#síntese" id="toc-síntese" class="nav-link" data-scroll-target="#síntese"><span class="header-section-number">9.7</span> ✅ Síntese</a></li>
+  <li><a href="#cola-para-o-relatório" id="toc-cola-para-o-relatório" class="nav-link" data-scroll-target="#cola-para-o-relatório"><span class="header-section-number">9.7</span> 🧾 “Cola” para o relatório</a></li>
+  <li><a href="#síntese" id="toc-síntese" class="nav-link" data-scroll-target="#síntese"><span class="header-section-number">9.8</span> ✅ Síntese</a></li>
   </ul>
 </nav>
     </div>
@@ -277,9 +276,9 @@ window.Quarto = {
 
 
 <p><em>Módulo 2 – Semana 9</em></p>
-<section id="narrativa-inicial" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="narrativa-inicial"><span class="header-section-number">9.1</span> 🌱 Narrativa inicial</h2>
-<p>Em muitos experimentos florestais, <strong>alguns fatores são difíceis de controlar</strong> (ex.: espécie, espaçamento de plantio, preparo de área), enquanto <strong>outros são fáceis</strong> (ex.: adubação dentro de uma bancada, fungicida por pulverização).<br>
+<section id="narrativa-aplicada" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="narrativa-aplicada"><span class="header-section-number">9.1</span> 🌱 Narrativa aplicada</h2>
+<p>Em muitos experimentos florestais, <strong>alguns fatores são difíceis de controlar</strong> (ex.: espécie, espaçamento de plantio, preparo de área), enquanto <strong>outros são fáceis</strong> (ex.: adubação na bancada, fungicida por pulverização).<br>
 Quando isso acontece, o <strong>delineamento em parcelas subdivididas (split-plot)</strong> é o caminho natural — ele respeita as <strong>restrições operacionais</strong> e usa <strong>duas fontes de erro</strong> (parcela e subparcela) para testar os efeitos apropriadamente.</p>
 <hr>
 </section>
@@ -292,29 +291,59 @@ Quando isso acontece, o <strong>delineamento em parcelas subdivididas (split-plo
 </li>
 <li>Ajustar e interpretar <strong>ANOVA com dois erros</strong>.<br>
 </li>
+<li>Realizar <strong>comparações de médias (Tukey)</strong> com o <strong>ExpDes.pt</strong>, preservando os estratos corretos.<br>
+</li>
 <li>Traduzir resultado em <strong>decisão técnica</strong>.</li>
 </ul>
 <hr>
 </section>
-<section id="modelo-linear-split-plot" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="modelo-linear-split-plot"><span class="header-section-number">9.3</span> 🧮 Modelo linear (split-plot)</h2>
+<section id="quando-é-necessário-usar-parcelas-subdivididas" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="quando-é-necessário-usar-parcelas-subdivididas"><span class="header-section-number">9.3</span> 🧭 Quando <strong>é necessário</strong> usar parcelas subdivididas?</h2>
+<ul>
+<li><strong>Operação “de difícil ajuste” em larga escala</strong>: fator exige <strong>mudança de bancada/talhão</strong>, preparo de área, ou maquinário (ex.: <strong>Espécie</strong>, <strong>Espaçamento</strong>).<br>
+</li>
+<li><strong>Custo/tempo elevado</strong> ao alternar níveis com frequência: manter um nível por <strong>parcela principal</strong> e variar o outro dentro dela reduz custo e <strong>viabiliza</strong> o estudo.<br>
+</li>
+<li><strong>Risco/biosegurança</strong>: tratamentos que precisam ser mantidos <strong>separados</strong> (ex.: inoculação, sombreamento fixo).<br>
+</li>
+<li><strong>Interferência entre unidades se alternar muito</strong>: operações que “vazam” entre unidades vizinhas (ex.: irrigação por setor, controle de pragas por baia).<br>
+</li>
+<li><strong>Logística do viveiro/campo</strong>: o planejamento obriga a <strong>fixar</strong> um fator por parcela (<em>whole‑plot</em>) e <strong>subdividir</strong> para o outro (<em>subplot</em>).</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>Regra prática</strong>: trate como <strong>fator de parcela (whole‑plot)</strong> aquilo que <strong>não dá</strong> (ou não convém) alternar célula a célula; trate como <strong>subparcela</strong> o que é <strong>fácil e frequente</strong> de variar.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="modelo-linear-split-plot" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="modelo-linear-split-plot"><span class="header-section-number">9.4</span> 🧮 Modelo linear (split-plot)</h2>
 <p><span class="math display">\[
 Y_{ijkl} = \\mu + B_i + A_j + (BA)_{ij} + S_{k(ij)} + C_l + (AC)_{jl} + (BC)_{il} + (ABC)_{ijl} + \varepsilon_{ijkl}
 \]</span></p>
 <ul>
-<li><span class="math inline">\(A_j\)</span>: <strong>fator de parcela</strong> (difícil).<br>
+<li><span class="math inline">\(A_j\)</span>: <strong>fator de parcela</strong> (difícil, aplicado nas parcelas principais dentro de cada bloco).<br>
 </li>
-<li><span class="math inline">\(C_l\)</span>: <strong>fator de subparcela</strong> (fácil).<br>
+<li><span class="math inline">\(C_l\)</span>: <strong>fator de subparcela</strong> (fácil, aplicado dentro de cada parcela).<br>
 </li>
-<li><span class="math inline">\(S_{k(ij)}\)</span>: variação da <strong>parcela</strong> (erro de parcela).<br>
+<li><span class="math inline">\((S_{k(ij)}\)</span>: variação aleatória de <strong>parcela</strong> (erro de parcela).<br>
 </li>
-<li><span class="math inline">\(\varepsilon\)</span>: <strong>erro de subparcela</strong>.</li>
+<li><span class="math inline">\(\varepsilon\)</span>: erro de <strong>subparcela</strong>.</li>
 </ul>
-<p><strong>Regra de ouro:</strong> o efeito de <strong>A</strong> é testado contra o <strong>erro de parcela</strong>; os efeitos de <strong>C</strong> e interações com C, contra o <strong>erro de subparcela</strong>.</p>
+<p><strong>Regra de ouro:</strong> o efeito de <strong>A</strong> é testado contra o <strong>erro de parcela</strong>; efeitos de <strong>C</strong> e interações com C, contra o <strong>erro de subparcela</strong>.</p>
 <hr>
 </section>
-<section id="exemplo-espécie-adubação-no-viveiro" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="exemplo-espécie-adubação-no-viveiro"><span class="header-section-number">9.4</span> 🌳 EXEMPLO — Espécie × Adubação no viveiro</h2>
+<section id="exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt"><span class="header-section-number">9.5</span> 🌳 EXEMPLO — Viveiro (Espécie × Adubação) — split‑plot em DIC <strong>com ExpDes.pt</strong></h2>
 <p><strong>Contexto</strong><br>
 No viveiro, trocar adubação é simples; trocar de <strong>Espécie</strong> demanda <strong>bancada</strong> diferente. Logo, <strong>Espécie = parcela</strong>, <strong>Adubação = subparcela</strong>.</p>
 <table class="caption-top table">
@@ -348,80 +377,164 @@ No viveiro, trocar adubação é simples; trocar de <strong>Espécie</strong> de
 </tbody>
 </table>
 <p>📦 <strong>Dados</strong>: <a href="dados/parcelas_subdivididas_especie_adubacao.csv">dados/parcelas_subdivididas_especie_adubacao.csv</a></p>
-<section id="análise-no-r" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="análise-no-r"><span class="header-section-number">9.4.1</span> 💻 Análise no R</h3>
+<section id="anova-tukey-expdes.pt" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="anova-tukey-expdes.pt"><span class="header-section-number">9.5.1</span> 💻 ANOVA + Tukey (ExpDes.pt)</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(ggplot2); <span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/parcelas_subdivididas_especie_adubacao.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Bloco <span class="ot">&lt;-</span> <span class="fu">factor</span>(dados<span class="sc">$</span>Bloco)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Especie <span class="ot">&lt;-</span> <span class="fu">factor</span>(dados<span class="sc">$</span>Especie, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Cedrela"</span>,<span class="st">"Ipe"</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Adubacao <span class="ot">&lt;-</span> <span class="fu">factor</span>(dados<span class="sc">$</span>Adubacao, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Baixa"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>))</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(dplyr); <span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto local:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/parcelas_subdivididas_especie_adubacao.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab (se preferir copiar antes p/ /content):</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dados &lt;- read_csv("/content/parcelas_subdivididas_especie_adubacao.csv", show_col_types = FALSE)</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">aov</span>(Altura_cm <span class="sc">~</span> Bloco <span class="sc">+</span> Especie <span class="sc">*</span> Adubacao <span class="sc">+</span> <span class="fu">Error</span>(Bloco<span class="sc">/</span>Especie), <span class="at">data =</span> dados)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Bloco    =</span> <span class="fu">factor</span>(Bloco),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Especie  =</span> <span class="fu">factor</span>(Especie,  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Cedrela"</span>,<span class="st">"Ipe"</span>)),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">Adubacao =</span> <span class="fu">factor</span>(Adubacao, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Baixa"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Parcela = Especie ; Subparcela = Adubacao</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>out_viveiro <span class="ot">&lt;-</span> <span class="fu">psub2.dic</span>(</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">fator1     =</span> dados<span class="sc">$</span>Especie,       <span class="co"># PARCELA</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">fator2     =</span> dados<span class="sc">$</span>Adubacao,      <span class="co"># SUBPARCELA</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">repet      =</span> dados<span class="sc">$</span>Bloco,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">resp       =</span> dados<span class="sc">$</span>Altura_cm,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">quali      =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">mcomp      =</span> <span class="st">"tukey"</span>,             <span class="co"># letras de Tukey nos estratos corretos</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">fac.names  =</span> <span class="fu">c</span>(<span class="st">"Espécie"</span>, <span class="st">"Adubação"</span>),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigF       =</span> <span class="fl">0.05</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigT       =</span> <span class="fl">0.05</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">unfold     =</span> <span class="cn">NULL</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Error: Bloco
-      Df Sum Sq Mean Sq
-Bloco  3  69.93   23.31
+<pre><code>------------------------------------------------------------------------
+Legenda:
+FATOR 1(parcela):  Espécie 
+FATOR 2 (subparcela):  Adubação 
+------------------------------------------------------------------------
 
-Error: Bloco:Especie
-          Df Sum Sq Mean Sq F value Pr(&gt;F)
-Especie    1  41.61   41.61   2.441  0.216
-Residuals  3  51.13   17.04               
-
-Error: Within
-                 Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Adubacao          2  35.08  17.538  55.021 9.04e-07 ***
-Especie:Adubacao  2   3.77   1.883   5.907   0.0164 *  
-Residuals        12   3.83   0.319                     
+------------------------------------------------------------------------
+Quadro da analise de variancia
+------------------------------------------------------------------------
+                 GL      SQ     QM     Fc Pr(&gt;Fc)    
+Espécie           1  41.607 41.607  2.062 0.20102    
+Erro a            6 121.060 20.177                   
+Adubação          2  35.076 17.538 55.021   1e-06 ***
+Espécie*Adubação  2   3.766  1.883  5.907 0.01637 *  
+Erro b           12   3.825  0.319                   
+Total            23 205.333                          
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+------------------------------------------------------------------------
+CV 1 = 17.77775 %
+CV 2 = 2.234483 %
+
+------------------------------------------------------------------------
+#Teste de normalidade dos residuos (Shapiro-Wilk)
+valor-p:  0.05399922 
+De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+------------------------------------------------------------------------
+
+
+
+Interacao significativa: desdobrando a interacao
+------------------------------------------------------------------------
+
+Desdobrando  Espécie  dentro de cada nivel de  Adubação 
+------------------------------------------------------------------------
+                                GL       SQ        QM       Fc  valor.p
+Espécie : Adubação Baixa  1.000000 15.40125 15.401250 2.219822 0.183924
+Espécie : Adubação Media  1.000000  5.12000  5.120000 0.737959 0.421405
+Espécie : Adubação Alta   1.000000 24.85125 24.851250 3.581875 0.104349
+Erro combinado            6.381955 44.27836  6.938056                  
+------------------------------------------------------------------------
+
+
+ Espécie dentro de Adubação Baixa
+------------------------------------------------------------------------
+De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
+------------------------------------------------------------------------
+   Niveis Medias
+1 Cedrela 22.550
+2     Ipe 25.325
+------------------------------------------------------------------------
+
+ Espécie dentro de Adubação Media
+------------------------------------------------------------------------
+De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
+------------------------------------------------------------------------
+   Niveis Medias
+1 Cedrela   24.2
+2     Ipe   25.8
+------------------------------------------------------------------------
+
+ Espécie dentro de Adubação Alta
+------------------------------------------------------------------------
+De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
+------------------------------------------------------------------------
+   Niveis Medias
+1 Cedrela 25.100
+2     Ipe 28.625
+------------------------------------------------------------------------
+
+
+Desdobrando  Adubação  dentro de cada nivel de  Espécie 
+------------------------------------------------------------------------
+                            GL       SQ       QM        Fc  valor.p
+Adubação : Espécie Cedrela   2 13.38000  6.69000 20.988235 0.000121
+Adubação : Espécie Ipe       2 25.46167 12.73083 39.939869    5e-06
+Erro b                      12  3.82500  0.31875                   
+------------------------------------------------------------------------
+
+
+ Adubação dentro de Espécie Cedrela
+------------------------------------------------------------------------
+Teste de Tukey
+------------------------------------------------------------------------
+Grupos Tratamentos Medias
+a    Alta    25.1 
+a    Media   24.2 
+ b   Baixa   22.55 
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+
+ Adubação dentro de Espécie Ipe
+------------------------------------------------------------------------
+Teste de Tukey
+------------------------------------------------------------------------
+Grupos Tratamentos Medias
+a    Alta    28.625 
+ b   Media   25.8 
+ b   Baixa   25.325 
+------------------------------------------------------------------------
+------------------------------------------------------------------------</code></pre>
 </div>
-</div>
-</section>
-<section id="visualizações" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="visualizações"><span class="header-section-number">9.4.2</span> 📊 Visualizações</h3>
-<div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(Adubacao, Altura_cm, <span class="at">fill =</span> Especie)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Altura – Espécie × Adubação"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Adubação"</span>, <span class="at">y =</span> <span class="st">"Altura (cm)"</span>) <span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visual rápido (opcional)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(Adubacao, Altura_cm, <span class="at">fill =</span> Especie)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Altura – Espécie × Adubação (split-plot, DIC)"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Adubação"</span>, <span class="at">y =</span> <span class="st">"Altura (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cap07-split_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Especie, Adubacao) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(Altura_cm), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(medias, <span class="fu">aes</span>(Adubacao, media, <span class="at">group =</span> Especie, <span class="at">shape =</span> Especie)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Interação: Espécie × Adubação (médias)"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Adubação"</span>, <span class="at">y =</span> <span class="st">"Altura média (cm)"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cap07-split_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cap07-split_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="interpretação" class="level3" data-number="9.4.3">
-<h3 data-number="9.4.3" class="anchored" data-anchor-id="interpretação"><span class="header-section-number">9.4.3</span> 🧩 Interpretação</h3>
+<section id="interpretação" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="interpretação"><span class="header-section-number">9.5.2</span> 🧩 Interpretação</h3>
 <ul>
 <li><strong>Espécie</strong> é testada com <strong>erro de parcela</strong> → menor precisão.<br>
 </li>
@@ -432,8 +545,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <hr>
 </section>
 </section>
-<section id="exercício-espaçamento-fungicida-em-campo-jovem" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="exercício-espaçamento-fungicida-em-campo-jovem"><span class="header-section-number">9.5</span> 🌾 EXERCÍCIO — Espaçamento × Fungicida em campo jovem</h2>
+<section id="exercício-espaçamento-fungicida-em-campo-jovem" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="exercício-espaçamento-fungicida-em-campo-jovem"><span class="header-section-number">9.6</span> 🌾 EXERCÍCIO — Espaçamento × Fungicida em campo jovem</h2>
 <p><strong>Contexto</strong><br>
 Alterar <strong>Espaçamento</strong> exige maquinário e planejamento (difícil) → <strong>parcela</strong>. Pulverizar <strong>Fungicida</strong> é fácil e pode ser feito dentro das parcelas → <strong>subparcela</strong>. Objetivo: reduzir <strong>incidência de doença</strong>.</p>
 <table class="caption-top table">
@@ -467,47 +580,8 @@ Alterar <strong>Espaçamento</strong> exige maquinário e planejamento (difícil
 </tbody>
 </table>
 <p>📦 <strong>Dados</strong>: <a href="dados/parcelas_subdivididas_espacamento_fungicida.csv">dados/parcelas_subdivididas_espacamento_fungicida.csv</a></p>
-<section id="análise-no-r-1" class="level3" data-number="9.5.1">
-<h3 data-number="9.5.1" class="anchored" data-anchor-id="análise-no-r-1"><span class="header-section-number">9.5.1</span> 💻 Análise no R</h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(ggplot2); <span class="fu">library</span>(dplyr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/parcelas_subdivididas_espacamento_fungicida.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Bloco <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Bloco)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Espacamento <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Espacamento, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"2x3"</span>,<span class="st">"3x3"</span>))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Fungicida <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Fungicida, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Sem"</span>,<span class="st">"Com"</span>))</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">aov</span>(Incidencia_doenca_perc <span class="sc">~</span> Bloco <span class="sc">+</span> Espacamento <span class="sc">*</span> Fungicida <span class="sc">+</span> <span class="fu">Error</span>(Bloco<span class="sc">/</span>Espacamento), <span class="at">data =</span> df)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Error: Bloco
-      Df Sum Sq Mean Sq
-Bloco  4  64.61   16.15
-
-Error: Bloco:Espacamento
-            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
-Espacamento  1  98.12   98.12   57.27 0.00163 **
-Residuals    4   6.85    1.71                   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Error: Within
-                      Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Fungicida              1  368.9   368.9 399.719 4.09e-08 ***
-Espacamento:Fungicida  1    0.0     0.0   0.001    0.982    
-Residuals              8    7.4     0.9                     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-</section>
-<section id="orientações-de-leitura" class="level3" data-number="9.5.2">
-<h3 data-number="9.5.2" class="anchored" data-anchor-id="orientações-de-leitura"><span class="header-section-number">9.5.2</span> 📊 Orientações de leitura</h3>
+<section id="orientações-d" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="orientações-d"><span class="header-section-number">9.6.1</span> 📊 Orientações d</h3>
 <ul>
 <li>Compare <strong>efeitos simples</strong> se a <strong>interação</strong> for significativa (fungicida reduz mais no adensado?).<br>
 </li>
@@ -518,8 +592,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <hr>
 </section>
 </section>
-<section id="cola-para-o-relatório" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="cola-para-o-relatório"><span class="header-section-number">9.6</span> 🧾 “Cola” para o relatório</h2>
+<section id="cola-para-o-relatório" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="cola-para-o-relatório"><span class="header-section-number">9.7</span> 🧾 “Cola” para o relatório</h2>
 <ol type="1">
 <li>Justifique o <strong>uso do split-plot</strong> pela logística do experimento.<br>
 </li>
@@ -530,8 +604,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Faça <strong>recomendação prática</strong> (qual combinação adotar).</li>
 </ol>
 </section>
-<section id="síntese" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="síntese"><span class="header-section-number">9.7</span> ✅ Síntese</h2>
+<section id="síntese" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="síntese"><span class="header-section-number">9.8</span> ✅ Síntese</h2>
 <ul>
 <li>Split-plot alinha a estatística às <strong>restrições reais</strong>.<br>
 </li>

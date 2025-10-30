@@ -4,9 +4,9 @@ title: "📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)"
 
 *Módulo 2 – Semana 9*
 
-## 🌱 Narrativa inicial
+## 🌱 Narrativa aplicada
 
-Em muitos experimentos florestais, **alguns fatores são difíceis de controlar** (ex.: espécie, espaçamento de plantio, preparo de área), enquanto **outros são fáceis** (ex.: adubação dentro de uma bancada, fungicida por pulverização).  
+Em muitos experimentos florestais, **alguns fatores são difíceis de controlar** (ex.: espécie, espaçamento de plantio, preparo de área), enquanto **outros são fáceis** (ex.: adubação na bancada, fungicida por pulverização).  
 Quando isso acontece, o **delineamento em parcelas subdivididas (split-plot)** é o caminho natural — ele respeita as **restrições operacionais** e usa **duas fontes de erro** (parcela e subparcela) para testar os efeitos apropriadamente.
 
 ---
@@ -15,7 +15,22 @@ Quando isso acontece, o **delineamento em parcelas subdivididas (split-plot)** �
 - Entender **por que/quando** usar split-plot.  
 - Distinguir **fator de parcela** vs **fator de subparcela**.  
 - Ajustar e interpretar **ANOVA com dois erros**.  
+- Realizar **comparações de médias (Tukey)** com o **ExpDes.pt**, preservando os estratos corretos.  
 - Traduzir resultado em **decisão técnica**.
+
+---
+
+## 🧭 Quando **é necessário** usar parcelas subdivididas?
+
+- **Operação “de difícil ajuste” em larga escala**: fator exige **mudança de bancada/talhão**, preparo de área, ou maquinário (ex.: **Espécie**, **Espaçamento**).  
+- **Custo/tempo elevado** ao alternar níveis com frequência: manter um nível por **parcela principal** e variar o outro dentro dela reduz custo e **viabiliza** o estudo.  
+- **Risco/biosegurança**: tratamentos que precisam ser mantidos **separados** (ex.: inoculação, sombreamento fixo).  
+- **Interferência entre unidades se alternar muito**: operações que “vazam” entre unidades vizinhas (ex.: irrigação por setor, controle de pragas por baia).  
+- **Logística do viveiro/campo**: o planejamento obriga a **fixar** um fator por parcela (*whole‑plot*) e **subdividir** para o outro (*subplot*).
+
+::: callout-tip
+💡 **Regra prática**: trate como **fator de parcela (whole‑plot)** aquilo que **não dá** (ou não convém) alternar célula a célula; trate como **subparcela** o que é **fácil e frequente** de variar.
+:::
 
 ---
 
@@ -25,16 +40,16 @@ $$
 Y_{ijkl} = \\mu + B_i + A_j + (BA)_{ij} + S_{k(ij)} + C_l + (AC)_{jl} + (BC)_{il} + (ABC)_{ijl} + \varepsilon_{ijkl}
 $$
 
-- $A_j$: **fator de parcela** (difícil).  
-- $C_l$: **fator de subparcela** (fácil).  
-- $S_{k(ij)}$: variação da **parcela** (erro de parcela).  
-- $\varepsilon$: **erro de subparcela**.
+- $A_j$: **fator de parcela** (difícil, aplicado nas parcelas principais dentro de cada bloco).  
+- $C_l$: **fator de subparcela** (fácil, aplicado dentro de cada parcela).  
+- $(S_{k(ij)}$: variação aleatória de **parcela** (erro de parcela).  
+- $\varepsilon$: erro de **subparcela**.
 
-**Regra de ouro:** o efeito de **A** é testado contra o **erro de parcela**; os efeitos de **C** e interações com C, contra o **erro de subparcela**.
+**Regra de ouro:** o efeito de **A** é testado contra o **erro de parcela**; efeitos de **C** e interações com C, contra o **erro de subparcela**.
 
 ---
 
-## 🌳 EXEMPLO — Espécie × Adubação no viveiro
+## 🌳 EXEMPLO — Viveiro (Espécie × Adubação) — split‑plot em DIC **com ExpDes.pt**
 
 **Contexto**  
 No viveiro, trocar adubação é simples; trocar de **Espécie** demanda **bancada** diferente. Logo, **Espécie = parcela**, **Adubação = subparcela**.
@@ -49,36 +64,47 @@ No viveiro, trocar adubação é simples; trocar de **Espécie** demanda **banca
 
 📦 **Dados**: [dados/parcelas_subdivididas_especie_adubacao.csv](dados/parcelas_subdivididas_especie_adubacao.csv)
 
-### 💻 Análise no R
+### 💻 ANOVA + Tukey (ExpDes.pt)
 
 ```{r}
-library(readr); library(ggplot2); library(dplyr)
+library(readr); library(dplyr); library(ggplot2)
+library(ExpDes.pt)
 
+# Quarto local:
 dados <- read_csv("dados/parcelas_subdivididas_especie_adubacao.csv", show_col_types = FALSE)
+# Colab (se preferir copiar antes p/ /content):
+# dados <- read_csv("/content/parcelas_subdivididas_especie_adubacao.csv", show_col_types = FALSE)
 
-dados$Bloco <- factor(dados$Bloco)
-dados$Especie <- factor(dados$Especie, levels = c("Cedrela","Ipe"))
-dados$Adubacao <- factor(dados$Adubacao, levels = c("Baixa","Media","Alta"))
+dados <- dados |>
+  mutate(
+    Bloco    = factor(Bloco),
+    Especie  = factor(Especie,  levels = c("Cedrela","Ipe")),
+    Adubacao = factor(Adubacao, levels = c("Baixa","Media","Alta"))
+  )
 
-mod <- aov(Altura_cm ~ Bloco + Especie * Adubacao + Error(Bloco/Especie), data = dados)
-summary(mod)
-```
+# Parcela = Especie ; Subparcela = Adubacao
+out_viveiro <- psub2.dic(
+  fator1     = dados$Especie,       # PARCELA
+  fator2     = dados$Adubacao,      # SUBPARCELA
+  repet      = dados$Bloco,
+  resp       = dados$Altura_cm,
+  quali      = c(TRUE, TRUE),
+  mcomp      = "tukey",             # letras de Tukey nos estratos corretos
+  fac.names  = c("Espécie", "Adubação"),
+  sigF       = 0.05,
+  sigT       = 0.05,
+  unfold     = NULL
+)
 
-### 📊 Visualizações
-
-```{r}
+# Visual rápido (opcional)
 ggplot(dados, aes(Adubacao, Altura_cm, fill = Especie)) +
   geom_boxplot(position = position_dodge(width = 0.8)) +
-  labs(title = "Altura – Espécie × Adubação",
+  labs(title = "Altura – Espécie × Adubação (split-plot, DIC)",
        x = "Adubação", y = "Altura (cm)") +
   theme_minimal()
-
-medias <- dados %>% group_by(Especie, Adubacao) %>% summarise(media = mean(Altura_cm), .groups = "drop")
-ggplot(medias, aes(Adubacao, media, group = Especie, shape = Especie)) +
-  geom_point(size = 3) + geom_line() +
-  labs(title = "Interação: Espécie × Adubação (médias)",
-       x = "Adubação", y = "Altura média (cm)")
 ```
+
+
 
 ### 🧩 Interpretação
 - **Espécie** é testada com **erro de parcela** → menor precisão.  
@@ -102,22 +128,8 @@ Alterar **Espaçamento** exige maquinário e planejamento (difícil) → **parce
 
 📦 **Dados**: [dados/parcelas_subdivididas_espacamento_fungicida.csv](dados/parcelas_subdivididas_espacamento_fungicida.csv)
 
-### 💻 Análise no R
 
-```{r}
-library(readr); library(ggplot2); library(dplyr)
-
-df <- read_csv("dados/parcelas_subdivididas_espacamento_fungicida.csv", show_col_types = FALSE)
-
-df$Bloco <- factor(df$Bloco)
-df$Espacamento <- factor(df$Espacamento, levels = c("2x3","3x3"))
-df$Fungicida <- factor(df$Fungicida, levels = c("Sem","Com"))
-
-m2 <- aov(Incidencia_doenca_perc ~ Bloco + Espacamento * Fungicida + Error(Bloco/Espacamento), data = df)
-summary(m2)
-```
-
-### 📊 Orientações de leitura
+### 📊 Orientações d
 - Compare **efeitos simples** se a **interação** for significativa (fungicida reduz mais no adensado?).  
 - Se a interação **não** for significativa, reporte **efeitos principais** (modelo aditivo).  
 - Considere a **magnitude** da redução (%) para decisão de manejo (custo do produto × benefício).
