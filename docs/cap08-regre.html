@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; 📖 Delineamento em Parcelas Subdivididas (Split-Plot) – 📚 Experimentação Florestal com R</title>
+<title>10&nbsp; 📖 Fator Quantitativo e Regressão Polinomial – 📚 Experimentação Florestal com R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cap08-regre.html" rel="next">
-<link href="./cap06-fatorial.html" rel="prev">
+<link href="./cap07-split.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -147,7 +146,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap07-split.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap08-regre.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">📖 Fator Quantitativo e Regressão Polinomial</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -222,13 +221,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cap07-split.html" class="sidebar-item-text sidebar-link active">
+  <a href="./cap07-split.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cap08-regre.html" class="sidebar-item-text sidebar-link">
+  <a href="./cap08-regre.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">📖 Fator Quantitativo e Regressão Polinomial</span></span></a>
   </div>
 </li>
@@ -242,21 +241,22 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#narrativa-aplicada" id="toc-narrativa-aplicada" class="nav-link active" data-scroll-target="#narrativa-aplicada"><span class="header-section-number">9.1</span> 🌱 Narrativa aplicada</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">9.2</span> 🎯 Objetivos</a></li>
-  <li><a href="#quando-é-necessário-usar-parcelas-subdivididas" id="toc-quando-é-necessário-usar-parcelas-subdivididas" class="nav-link" data-scroll-target="#quando-é-necessário-usar-parcelas-subdivididas"><span class="header-section-number">9.3</span> 🧭 Quando <strong>é necessário</strong> usar parcelas subdivididas?</a></li>
-  <li><a href="#modelo-linear-split-plot" id="toc-modelo-linear-split-plot" class="nav-link" data-scroll-target="#modelo-linear-split-plot"><span class="header-section-number">9.4</span> 🧮 Modelo linear (split-plot)</a></li>
-  <li><a href="#exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt" id="toc-exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt" class="nav-link" data-scroll-target="#exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt"><span class="header-section-number">9.5</span> 🌳 EXEMPLO — Viveiro (Espécie × Adubação) — split‑plot em DIC <strong>com ExpDes.pt</strong></a>
+  <li><a href="#cenário-aplicado" id="toc-cenário-aplicado" class="nav-link active" data-scroll-target="#cenário-aplicado"><span class="header-section-number">10.1</span> 🌱 Cenário aplicado</a></li>
+  <li><a href="#objetivos-de-aprendizagem" id="toc-objetivos-de-aprendizagem" class="nav-link" data-scroll-target="#objetivos-de-aprendizagem"><span class="header-section-number">10.2</span> 🎯 Objetivos de aprendizagem</a></li>
+  <li><a href="#teoria-anova-para-regressão-polinomial-em-experimento-dic" id="toc-teoria-anova-para-regressão-polinomial-em-experimento-dic" class="nav-link" data-scroll-target="#teoria-anova-para-regressão-polinomial-em-experimento-dic"><span class="header-section-number">10.3</span> 🧠 Teoria – ANOVA para regressão polinomial em experimento (DIC)</a></li>
+  <li><a href="#conjuntos-de-dados" id="toc-conjuntos-de-dados" class="nav-link" data-scroll-target="#conjuntos-de-dados"><span class="header-section-number">10.4</span> 📦 Conjuntos de dados</a></li>
+  <li><a href="#exemplo-dose-de-n-altura-dic-quantitativo" id="toc-exemplo-dose-de-n-altura-dic-quantitativo" class="nav-link" data-scroll-target="#exemplo-dose-de-n-altura-dic-quantitativo"><span class="header-section-number">10.5</span> 🌳 EXEMPLO – Dose de N × Altura (DIC, quantitativo)</a>
   <ul class="collapse">
-  <li><a href="#anova-tukey-expdes.pt" id="toc-anova-tukey-expdes.pt" class="nav-link" data-scroll-target="#anova-tukey-expdes.pt"><span class="header-section-number">9.5.1</span> 💻 ANOVA + Tukey (ExpDes.pt)</a></li>
-  <li><a href="#interpretação" id="toc-interpretação" class="nav-link" data-scroll-target="#interpretação"><span class="header-section-number">9.5.2</span> 🧩 Interpretação</a></li>
+  <li><a href="#descrição-do-experimento" id="toc-descrição-do-experimento" class="nav-link" data-scroll-target="#descrição-do-experimento"><span class="header-section-number">10.5.1</span> Descrição do experimento</a></li>
+  <li><a href="#análise-com-expdes.pt-decomposição-polinomial" id="toc-análise-com-expdes.pt-decomposição-polinomial" class="nav-link" data-scroll-target="#análise-com-expdes.pt-decomposição-polinomial"><span class="header-section-number">10.5.2</span> Análise com ExpDes.pt (decomposição polinomial)</a></li>
+  <li><a href="#gráfico-com-médias-por-dose-equação-e-r²" id="toc-gráfico-com-médias-por-dose-equação-e-r²" class="nav-link" data-scroll-target="#gráfico-com-médias-por-dose-equação-e-r²"><span class="header-section-number">10.5.3</span> Gráfico com <strong>médias por dose</strong>, equação e R²</a></li>
+  <li><a href="#nível-ótimo-vértice-pelo-método-da-1ª-derivada" id="toc-nível-ótimo-vértice-pelo-método-da-1ª-derivada" class="nav-link" data-scroll-target="#nível-ótimo-vértice-pelo-método-da-1ª-derivada"><span class="header-section-number">10.5.4</span> 🔧 Nível ótimo (vértice) pelo método da 1ª derivada</a></li>
   </ul></li>
-  <li><a href="#exercício-espaçamento-fungicida-em-campo-jovem" id="toc-exercício-espaçamento-fungicida-em-campo-jovem" class="nav-link" data-scroll-target="#exercício-espaçamento-fungicida-em-campo-jovem"><span class="header-section-number">9.6</span> 🌾 EXERCÍCIO — Espaçamento × Fungicida em campo jovem</a>
+  <li><a href="#atividade-ph-do-substrato-diâmetro-dic-quantitativo" id="toc-atividade-ph-do-substrato-diâmetro-dic-quantitativo" class="nav-link" data-scroll-target="#atividade-ph-do-substrato-diâmetro-dic-quantitativo"><span class="header-section-number">10.6</span> 🌿 ATIVIDADE – pH do substrato × Diâmetro (DIC, quantitativo)</a>
   <ul class="collapse">
-  <li><a href="#orientações-d" id="toc-orientações-d" class="nav-link" data-scroll-target="#orientações-d"><span class="header-section-number">9.6.1</span> 📊 Orientações d</a></li>
+  <li><a href="#descrição-do-experimento-1" id="toc-descrição-do-experimento-1" class="nav-link" data-scroll-target="#descrição-do-experimento-1"><span class="header-section-number">10.6.1</span> Descrição do experimento</a></li>
   </ul></li>
-  <li><a href="#cola-para-o-relatório" id="toc-cola-para-o-relatório" class="nav-link" data-scroll-target="#cola-para-o-relatório"><span class="header-section-number">9.7</span> 🧾 “Cola” para o relatório</a></li>
-  <li><a href="#síntese" id="toc-síntese" class="nav-link" data-scroll-target="#síntese"><span class="header-section-number">9.8</span> ✅ Síntese</a></li>
+  <li><a href="#síntese" id="toc-síntese" class="nav-link" data-scroll-target="#síntese"><span class="header-section-number">10.7</span> ✅ Síntese</a></li>
   </ul>
 </nav>
     </div>
@@ -265,7 +265,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">📖 Fator Quantitativo e Regressão Polinomial</span></h1>
 </div>
 
 
@@ -282,41 +282,274 @@ window.Quarto = {
 </header>
 
 
-<p><em>Módulo 2 – Semana 9</em></p>
-<section id="narrativa-aplicada" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="narrativa-aplicada"><span class="header-section-number">9.1</span> 🌱 Narrativa aplicada</h2>
-<p>Em muitos experimentos florestais, <strong>alguns fatores são difíceis de controlar</strong> (ex.: espécie, espaçamento de plantio, preparo de área), enquanto <strong>outros são fáceis</strong> (ex.: adubação na bancada, fungicida por pulverização).<br>
-Quando isso acontece, o <strong>delineamento em parcelas subdivididas (split-plot)</strong> é o caminho natural — ele respeita as <strong>restrições operacionais</strong> e usa <strong>duas fontes de erro</strong> (parcela e subparcela) para testar os efeitos apropriadamente.</p>
+<p><em>Módulo 2 – Semana 10</em></p>
+<section id="cenário-aplicado" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="cenário-aplicado"><span class="header-section-number">10.1</span> 🌱 Cenário aplicado</h2>
+<p>No viveiro, queremos definir <strong>dose de nitrogênio</strong> para maximizar o <strong>crescimento inicial</strong> de mudas. Em outro ensaio, avaliamos como o <strong>pH do substrato</strong> (após calagem) afeta o <strong>diâmetro do colo</strong>. Em ambos os casos o fator é <strong>quantitativo</strong> e o objetivo é <strong>modelar a resposta em função do nível</strong> (não comparar níveis como se fossem categorias soltas).</p>
 <hr>
 </section>
-<section id="objetivos" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">9.2</span> 🎯 Objetivos</h2>
+<section id="objetivos-de-aprendizagem" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="objetivos-de-aprendizagem"><span class="header-section-number">10.2</span> 🎯 Objetivos de aprendizagem</h2>
 <ul>
-<li>Entender <strong>por que/quando</strong> usar split-plot.<br>
+<li>Compreender a <strong>ANOVA para regressão polinomial</strong> (linear, quadrática, cúbica…).<br>
 </li>
-<li>Distinguir <strong>fator de parcela</strong> vs <strong>fator de subparcela</strong>.<br>
+<li>Ajustar <strong>modelos polinomiais</strong> no contexto de <strong>experimentos (DIC)</strong>.<br>
 </li>
-<li>Ajustar e interpretar <strong>ANOVA com dois erros</strong>.<br>
+<li>Avaliar <strong>falta de ajuste (lack-of-fit)</strong> usando o erro puro das repetições.<br>
 </li>
-<li>Realizar <strong>comparações de médias (Tukey)</strong> com o <strong>ExpDes.pt</strong>, preservando os estratos corretos.<br>
+<li><strong>Usar <code>ExpDes.pt</code></strong> (<code>dic(quali = FALSE)</code>) para decompor a soma de quadrados do tratamento em <strong>componentes polinomiais</strong>.<br>
 </li>
-<li>Traduzir resultado em <strong>decisão técnica</strong>.</li>
+<li><strong>Construir gráficos com médias por tratamento</strong>, incluindo <strong>equação</strong> e <strong>R²</strong>, no <strong>ggplot2</strong>.</li>
 </ul>
 <hr>
 </section>
-<section id="quando-é-necessário-usar-parcelas-subdivididas" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="quando-é-necessário-usar-parcelas-subdivididas"><span class="header-section-number">9.3</span> 🧭 Quando <strong>é necessário</strong> usar parcelas subdivididas?</h2>
+<section id="teoria-anova-para-regressão-polinomial-em-experimento-dic" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="teoria-anova-para-regressão-polinomial-em-experimento-dic"><span class="header-section-number">10.3</span> 🧠 Teoria – ANOVA para regressão polinomial em experimento (DIC)</h2>
+<p>Considere um experimento com k <strong>níveis do fator quantitativo</strong> (x_1, …, x_k) e r repetições por nível. O modelo polinomial de grau g (ex.: g=2 para quadrático) é:</p>
+<p><span class="math display">\[
+Y_{ij} = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \cdots + \beta_g x_i^g + \varepsilon_{ij},\quad
+\varepsilon_{ij} \sim \mathcal{N}(0, \sigma^2), \; i=1..k,\; j=1..r.
+\]</span></p>
+<p>A <strong>ANOVA do tratamento</strong> (tradicional) pode ser decomposta em <strong>contrastes ortogonais</strong>: - <strong>Linear (L)</strong>, <strong>Quadrático (Q)</strong>, <strong>Cúbico (C)</strong>, …, até grau <strong>k-1</strong> (limitado pela quantidade de níveis).<br>
+- Cada contraste tem seu <strong>SQ</strong>, <strong>GL = 1</strong>, <strong>QM</strong>, <strong>F</strong>, <strong>p-valor</strong>.<br>
+- O <strong>Erro (puro)</strong> vem da <strong>variação entre repetições</strong> dentro de cada nível - ele permite testar <strong>falta de ajuste</strong> do polinômio escolhido.</p>
+<p><strong>Teste de falta de ajuste (LOF)</strong>: compare um modelo “saturado por tratamentos” com o <strong>modelo polinomial</strong> (ex.: grau 2).<br>
+- <strong>H0:</strong> o polinômio <strong>ajusta bem</strong> (sem falta de ajuste).<br>
+- <strong>HA:</strong> há <strong>falta de ajuste</strong> (o polinômio é muito simples para a forma verdadeira).</p>
+<hr>
+</section>
+<section id="conjuntos-de-dados" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="conjuntos-de-dados"><span class="header-section-number">10.4</span> 📦 Conjuntos de dados</h2>
 <ul>
-<li><strong>Operação “de difícil ajuste” em larga escala</strong>: fator exige <strong>mudança de bancada/talhão</strong>, preparo de área, ou maquinário (ex.: <strong>Espécie</strong>, <strong>Espaçamento</strong>).<br>
+<li><strong>Exemplo (Dose de N → Altura)</strong>: <a href="dados/dic_doseN_altura.csv">dados/dic_doseN_altura.csv</a><br>
 </li>
-<li><strong>Custo/tempo elevado</strong> ao alternar níveis com frequência: manter um nível por <strong>parcela principal</strong> e variar o outro dentro dela reduz custo e <strong>viabiliza</strong> o estudo.<br>
-</li>
-<li><strong>Risco/biosegurança</strong>: tratamentos que precisam ser mantidos <strong>separados</strong> (ex.: inoculação, sombreamento fixo).<br>
-</li>
-<li><strong>Interferência entre unidades se alternar muito</strong>: operações que “vazam” entre unidades vizinhas (ex.: irrigação por setor, controle de pragas por baia).<br>
-</li>
-<li><strong>Logística do viveiro/campo</strong>: o planejamento obriga a <strong>fixar</strong> um fator por parcela (<em>whole‑plot</em>) e <strong>subdividir</strong> para o outro (<em>subplot</em>).</li>
+<li><strong>Atividade (pH → Diâmetro)</strong>: <a href="dados/dic_ph_diametro.csv">dados/dic_ph_diametro.csv</a></li>
 </ul>
+<hr>
+</section>
+<section id="exemplo-dose-de-n-altura-dic-quantitativo" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="exemplo-dose-de-n-altura-dic-quantitativo"><span class="header-section-number">10.5</span> 🌳 EXEMPLO – Dose de N × Altura (DIC, quantitativo)</h2>
+<section id="descrição-do-experimento" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="descrição-do-experimento"><span class="header-section-number">10.5.1</span> Descrição do experimento</h3>
+<ul>
+<li><strong>Fator (quantitativo):</strong> Dose de nitrogênio (mg/L) — níveis: 0, 40, 80, 120, 160.<br>
+</li>
+<li><strong>Unidades experimentais:</strong> bandejas (5 mudas), resposta = <strong>Altura (cm)</strong> aos 90 dias.<br>
+</li>
+<li><strong>Repetições:</strong> 5 por dose (<strong>erro puro</strong> disponível).<br>
+</li>
+<li><strong>Hipótese biológica:</strong> resposta <strong>quadrática</strong> com ótimo em torno de 110–120 mg/L.</li>
+</ul>
+</section>
+<section id="análise-com-expdes.pt-decomposição-polinomial" class="level3" data-number="10.5.2">
+<h3 data-number="10.5.2" class="anchored" data-anchor-id="análise-com-expdes.pt-decomposição-polinomial"><span class="header-section-number">10.5.2</span> Análise com ExpDes.pt (decomposição polinomial)</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(dplyr); <span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto local:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/dic_doseN_altura.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dados &lt;- read_csv("/content/dic_doseN_altura.csv", show_col_types = FALSE)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Dose_N_mgL =</span> <span class="fu">as.numeric</span>(Dose_N_mgL)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ExpDes: DIC com fator quantitativo -&gt; quali = FALSE (faz decomposição polinomial)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>out_dic <span class="ot">&lt;-</span> <span class="fu">dic</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">trat  =</span> dados<span class="sc">$</span>Dose_N_mgL,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">resp  =</span> dados<span class="sc">$</span>Altura_cm,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">quali =</span> <span class="cn">FALSE</span>            <span class="co"># graus a testar (até k-1); aqui 4 níveis polinomiais</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>------------------------------------------------------------------------
+Quadro da analise de variancia
+------------------------------------------------------------------------
+           GL      SQ     QM     Fc      Pr&gt;Fc
+Tratamento  4 199.500 49.875 82.561 3.8446e-12
+Residuo    20  12.082  0.604                  
+Total      24 211.582                         
+------------------------------------------------------------------------
+CV = 5.25 %
+
+------------------------------------------------------------------------
+Teste de normalidade dos residuos ( Shapiro-Wilk ) 
+Valor-p:  0.4548708 
+De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+Teste de homogeneidade de variancia 
+valor-p:  0.9929198 
+De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
+------------------------------------------------------------------------
+
+Ajuste de modelos polinomiais de regressao
+------------------------------------------------------------------------
+
+Modelo Linear
+=========================================
+   Estimativa Erro.padrao   tc    valor.p
+-----------------------------------------
+b0  11.3924     0.2692    42.3126    0   
+b1   0.0426     0.0027    15.5170    0   
+-----------------------------------------
+
+R2 do modelo linear
+--------
+0.729090
+--------
+
+Analise de variancia do modelo linear
+========================================================
+                     GL    SQ       QM      Fc   valor.p
+--------------------------------------------------------
+Efeito linear        1  145.4536 145.4536 240.78    0   
+Desvios de Regressao 3  54.0466  18.0155  29.82     0   
+Residuos             20 12.0820   0.6041                
+--------------------------------------------------------
+------------------------------------------------------------------------
+
+Modelo quadratico
+=========================================
+   Estimativa Erro.padrao   tc    valor.p
+-----------------------------------------
+b0   9.6564     0.3271    29.5188    0   
+b1   0.1294     0.0097    13.3613    0   
+b2  -0.0005     0.0001    -9.3436    0   
+-----------------------------------------
+
+R2 do modelo quadratico
+--------
+0.993449
+--------
+
+Analise de variancia do modelo quadratico
+========================================================
+                     GL    SQ       QM      Fc   valor.p
+--------------------------------------------------------
+Efeito linear        1  145.4536 145.4536 240.78    0   
+Efeito quadratico    1  52.7397  52.7397   87.3     0   
+Desvios de Regressao 2   1.3069   0.6534   1.08  0.35805
+Residuos             20 12.0820   0.6041                
+--------------------------------------------------------
+------------------------------------------------------------------------
+
+Modelo cubico
+=========================================
+   Estimativa Erro.padrao   tc    valor.p
+-----------------------------------------
+b0   9.7616     0.3451    28.2862    0   
+b1   0.1106     0.0220    5.0389  0.0001 
+b2  -0.0002     0.0004    -0.6136 0.5464 
+b3 -0.000001       0      -0.9571 0.3500 
+-----------------------------------------
+
+R2 do modelo cubico
+--------
+0.996223
+--------
+
+Analise de variancia do modelo cubico
+========================================================
+                     GL    SQ       QM      Fc   valor.p
+--------------------------------------------------------
+Efeito linear        1  145.4536 145.4536 240.78    0   
+Efeito quadratico    1  52.7397  52.7397   87.3     0   
+Efeito cubico        1   0.5534   0.5534   0.92  0.34996
+Desvios de Regressao 1   0.7535   0.7535   1.25  0.27729
+Residuos             20 12.0820   0.6041                
+--------------------------------------------------------
+------------------------------------------------------------------------</code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#out_dic</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="gráfico-com-médias-por-dose-equação-e-r²" class="level3" data-number="10.5.3">
+<h3 data-number="10.5.3" class="anchored" data-anchor-id="gráfico-com-médias-por-dose-equação-e-r²"><span class="header-section-number">10.5.3</span> Gráfico com <strong>médias por dose</strong>, equação e R²</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Médias por tratamento</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Dose_N_mgL) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Altura_media =</span> <span class="fu">mean</span>(Altura_cm), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste polinomial nas MÉDIAS (prática experimental para figura de relatório)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>fit_med <span class="ot">&lt;-</span> <span class="fu">lm</span>(Altura_media <span class="sc">~</span> Dose_N_mgL <span class="sc">+</span> <span class="fu">I</span>(Dose_N_mgL<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> medias)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Coeficientes e R2</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> <span class="fu">coef</span>(fit_med)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> coefs[<span class="dv">1</span>]; b1 <span class="ot">&lt;-</span> coefs[<span class="dv">2</span>]; b2 <span class="ot">&lt;-</span> coefs[<span class="dv">3</span>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit_med)<span class="sc">$</span>r.squared</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Curva suave</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>newd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Dose_N_mgL =</span> <span class="fu">seq</span>(<span class="fu">min</span>(medias<span class="sc">$</span>Dose_N_mgL), <span class="fu">max</span>(medias<span class="sc">$</span>Dose_N_mgL), <span class="at">length.out =</span> <span class="dv">200</span>))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>newd<span class="sc">$</span>yhat <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_med, <span class="at">newdata =</span> newd)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(medias, <span class="fu">aes</span>(Dose_N_mgL, Altura_media)) <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> newd, <span class="fu">aes</span>(Dose_N_mgL, yhat)) <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Altura × Dose de N (médias por tratamento)"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Dose de N (mg/L)"</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Altura média (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap08-regre_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="nível-ótimo-vértice-pelo-método-da-1ª-derivada" class="level3" data-number="10.5.4">
+<h3 data-number="10.5.4" class="anchored" data-anchor-id="nível-ótimo-vértice-pelo-método-da-1ª-derivada"><span class="header-section-number">10.5.4</span> 🔧 Nível ótimo (vértice) pelo método da 1ª derivada</h3>
+<p>Considere o <strong>modelo quadrático</strong> ajustado (em geral, sobre as <strong>médias por tratamento</strong>): <span class="math display">\[
+\hat{Y}(x) = \beta_0 + \beta_1 x + \beta_2 x^2.
+\]</span> O ponto de ótimo (máximo ou mínimo) ocorre quando a <strong>1ª derivada</strong> é zero: <span class="math display">\[
+\frac{d\hat{Y}}{dx} = \beta_1 + 2\beta_2 x = 0 ;\Rightarrow;
+\boxed{x^* = -\frac{\beta_1}{2\beta_2}}.
+\]</span></p>
+<ul>
+<li><strong>Máximo</strong> (ótimo desejável): se <span class="math inline">\(\beta_2 &lt; 0 \Rightarrow\)</span> concavidade voltada para baixo.</li>
+<li><strong>Mínimo</strong>: se <span class="math inline">\(\beta_2 &gt; 0\)</span>.</li>
+<li><strong>Atenção ao domínio</strong>: se <span class="math inline">\(x^*\)</span> ficar <strong>fora</strong> do intervalo testado <span class="math inline">\((x_{\min}, x_{\max})\)</span>, <strong>prefira</strong> o melhor ponto <strong>na borda</strong> do domínio experimental.</li>
+</ul>
+<section id="implementação-prática-r" class="level4" data-number="10.5.4.1">
+<h4 data-number="10.5.4.1" class="anchored" data-anchor-id="implementação-prática-r"><span class="header-section-number">10.5.4.1</span> Implementação prática (R)</h4>
+<p>Supondo que você ajustou o quadrático nas <strong>médias por tratamento</strong>:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(fit_med)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> b[<span class="dv">1</span>]; b1 <span class="ot">&lt;-</span> b[<span class="dv">2</span>]; b2 <span class="ot">&lt;-</span> b[<span class="dv">3</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># nível ótimo</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>x_star <span class="ot">&lt;-</span> <span class="sc">-</span>b1<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>b2)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>x_star</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dose_N_mgL 
+  119.2995 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y_star &lt;- b0 + b1*x_star + b2*x_star^2</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#y_star</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -327,298 +560,43 @@ Dica
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>💡 <strong>Regra prática</strong>: trate como <strong>fator de parcela (whole‑plot)</strong> aquilo que <strong>não dá</strong> (ou não convém) alternar célula a célula; trate como <strong>subparcela</strong> o que é <strong>fácil e frequente</strong> de variar.</p>
+<p><strong>Fórmula prática (modelo grau 2):</strong> <span class="math display">\[
+\boxed{x^* = -\dfrac{\beta_1}{2\beta_2},}
+\]</span> Use somente quando houver <strong>evidência de curvatura</strong> (componente Quadrática significativa e/ou LOF não significativo) e **(_2&lt;0)** para máximo.</p>
 </div>
 </div>
 <hr>
 </section>
-<section id="modelo-linear-split-plot" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="modelo-linear-split-plot"><span class="header-section-number">9.4</span> 🧮 Modelo linear (split-plot)</h2>
-<p><span class="math display">\[
-Y_{ijkl} = \\mu + B_i + A_j + (BA)_{ij} + S_{k(ij)} + C_l + (AC)_{jl} + (BC)_{il} + (ABC)_{ijl} + \varepsilon_{ijkl}
-\]</span></p>
+</section>
+</section>
+<section id="atividade-ph-do-substrato-diâmetro-dic-quantitativo" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="atividade-ph-do-substrato-diâmetro-dic-quantitativo"><span class="header-section-number">10.6</span> 🌿 ATIVIDADE – pH do substrato × Diâmetro (DIC, quantitativo)</h2>
+<section id="descrição-do-experimento-1" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="descrição-do-experimento-1"><span class="header-section-number">10.6.1</span> Descrição do experimento</h3>
 <ul>
-<li><span class="math inline">\(A_j\)</span>: <strong>fator de parcela</strong> (difícil, aplicado nas parcelas principais dentro de cada bloco).<br>
+<li><strong>Fator (quantitativo):</strong> pH do substrato (4.5, 5.0, 5.5, 6.0, 6.5).<br>
 </li>
-<li><span class="math inline">\(C_l\)</span>: <strong>fator de subparcela</strong> (fácil, aplicado dentro de cada parcela).<br>
+<li><strong>Unidade experimental:</strong> bandeja (5 mudas), resposta = <strong>Diâmetro (mm)</strong> aos 90 dias.<br>
 </li>
-<li><span class="math inline">\((S_{k(ij)}\)</span>: variação aleatória de <strong>parcela</strong> (erro de parcela).<br>
+<li><strong>Repetições:</strong> 5 por pH (<strong>erro puro</strong> disponível).<br>
 </li>
-<li><span class="math inline">\(\varepsilon\)</span>: erro de <strong>subparcela</strong>.</li>
+<li><strong>Hipótese biológica:</strong> resposta <strong>quadrática</strong> com nível ótimo presente.</li>
 </ul>
-<p><strong>Regra de ouro:</strong> o efeito de <strong>A</strong> é testado contra o <strong>erro de parcela</strong>; efeitos de <strong>C</strong> e interações com C, contra o <strong>erro de subparcela</strong>.</p>
-<hr>
-</section>
-<section id="exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt"><span class="header-section-number">9.5</span> 🌳 EXEMPLO — Viveiro (Espécie × Adubação) — split‑plot em DIC <strong>com ExpDes.pt</strong></h2>
-<p><strong>Contexto</strong><br>
-No viveiro, trocar adubação é simples; trocar de <strong>Espécie</strong> demanda <strong>bancada</strong> diferente. Logo, <strong>Espécie = parcela</strong>, <strong>Adubação = subparcela</strong>.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Elemento</th>
-<th>Especificação</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Blocos (bancadas)</strong></td>
-<td>4 (B1–B4)</td>
-</tr>
-<tr class="even">
-<td><strong>Fator de parcela (A)</strong></td>
-<td><strong>Espécie</strong>: Cedrela vs Ipê</td>
-</tr>
-<tr class="odd">
-<td><strong>Fator de subparcela (C)</strong></td>
-<td><strong>Adubação</strong>: Baixa, Média, Alta</td>
-</tr>
-<tr class="even">
-<td><strong>Unidade experimental</strong></td>
-<td>Bandeja (média de 5 mudas)</td>
-</tr>
-<tr class="odd">
-<td><strong>Resposta</strong></td>
-<td>Altura (cm) aos 120 dias</td>
-</tr>
-</tbody>
-</table>
-<p>📦 <strong>Dados</strong>: <a href="dados/parcelas_subdivididas_especie_adubacao.csv">dados/parcelas_subdivididas_especie_adubacao.csv</a></p>
-<section id="anova-tukey-expdes.pt" class="level3" data-number="9.5.1">
-<h3 data-number="9.5.1" class="anchored" data-anchor-id="anova-tukey-expdes.pt"><span class="header-section-number">9.5.1</span> 💻 ANOVA + Tukey (ExpDes.pt)</h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(dplyr); <span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto local:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/parcelas_subdivididas_especie_adubacao.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Colab (se preferir copiar antes p/ /content):</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dados &lt;- read_csv("/content/parcelas_subdivididas_especie_adubacao.csv", show_col_types = FALSE)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Bloco    =</span> <span class="fu">factor</span>(Bloco),</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Especie  =</span> <span class="fu">factor</span>(Especie,  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Cedrela"</span>,<span class="st">"Ipe"</span>)),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">Adubacao =</span> <span class="fu">factor</span>(Adubacao, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Baixa"</span>,<span class="st">"Media"</span>,<span class="st">"Alta"</span>))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Parcela = Especie ; Subparcela = Adubacao</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>out_viveiro <span class="ot">&lt;-</span> <span class="fu">psub2.dic</span>(</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">fator1     =</span> dados<span class="sc">$</span>Especie,       <span class="co"># PARCELA</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">fator2     =</span> dados<span class="sc">$</span>Adubacao,      <span class="co"># SUBPARCELA</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">repet      =</span> dados<span class="sc">$</span>Bloco,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">resp       =</span> dados<span class="sc">$</span>Altura_cm,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">quali      =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">mcomp      =</span> <span class="st">"tukey"</span>,             <span class="co"># letras de Tukey nos estratos corretos</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">fac.names  =</span> <span class="fu">c</span>(<span class="st">"Espécie"</span>, <span class="st">"Adubação"</span>),</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigF       =</span> <span class="fl">0.05</span>,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigT       =</span> <span class="fl">0.05</span>,</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">unfold     =</span> <span class="cn">NULL</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>------------------------------------------------------------------------
-Legenda:
-FATOR 1(parcela):  Espécie 
-FATOR 2 (subparcela):  Adubação 
-------------------------------------------------------------------------
-
-------------------------------------------------------------------------
-Quadro da analise de variancia
-------------------------------------------------------------------------
-                 GL      SQ     QM     Fc Pr(&gt;Fc)    
-Espécie           1  41.607 41.607  2.062 0.20102    
-Erro a            6 121.060 20.177                   
-Adubação          2  35.076 17.538 55.021   1e-06 ***
-Espécie*Adubação  2   3.766  1.883  5.907 0.01637 *  
-Erro b           12   3.825  0.319                   
-Total            23 205.333                          
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-------------------------------------------------------------------------
-CV 1 = 17.77775 %
-CV 2 = 2.234483 %
-
-------------------------------------------------------------------------
-#Teste de normalidade dos residuos (Shapiro-Wilk)
-valor-p:  0.05399922 
-De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
-------------------------------------------------------------------------
-
-
-
-Interacao significativa: desdobrando a interacao
-------------------------------------------------------------------------
-
-Desdobrando  Espécie  dentro de cada nivel de  Adubação 
-------------------------------------------------------------------------
-                                GL       SQ        QM       Fc  valor.p
-Espécie : Adubação Baixa  1.000000 15.40125 15.401250 2.219822 0.183924
-Espécie : Adubação Media  1.000000  5.12000  5.120000 0.737959 0.421405
-Espécie : Adubação Alta   1.000000 24.85125 24.851250 3.581875 0.104349
-Erro combinado            6.381955 44.27836  6.938056                  
-------------------------------------------------------------------------
-
-
- Espécie dentro de Adubação Baixa
-------------------------------------------------------------------------
-De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-------------------------------------------------------------------------
-   Niveis Medias
-1 Cedrela 22.550
-2     Ipe 25.325
-------------------------------------------------------------------------
-
- Espécie dentro de Adubação Media
-------------------------------------------------------------------------
-De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-------------------------------------------------------------------------
-   Niveis Medias
-1 Cedrela   24.2
-2     Ipe   25.8
-------------------------------------------------------------------------
-
- Espécie dentro de Adubação Alta
-------------------------------------------------------------------------
-De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-------------------------------------------------------------------------
-   Niveis Medias
-1 Cedrela 25.100
-2     Ipe 28.625
-------------------------------------------------------------------------
-
-
-Desdobrando  Adubação  dentro de cada nivel de  Espécie 
-------------------------------------------------------------------------
-                            GL       SQ       QM        Fc  valor.p
-Adubação : Espécie Cedrela   2 13.38000  6.69000 20.988235 0.000121
-Adubação : Espécie Ipe       2 25.46167 12.73083 39.939869    5e-06
-Erro b                      12  3.82500  0.31875                   
-------------------------------------------------------------------------
-
-
- Adubação dentro de Espécie Cedrela
-------------------------------------------------------------------------
-Teste de Tukey
-------------------------------------------------------------------------
-Grupos Tratamentos Medias
-a    Alta    25.1 
-a    Media   24.2 
- b   Baixa   22.55 
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-
-
- Adubação dentro de Espécie Ipe
-------------------------------------------------------------------------
-Teste de Tukey
-------------------------------------------------------------------------
-Grupos Tratamentos Medias
-a    Alta    28.625 
- b   Media   25.8 
- b   Baixa   25.325 
-------------------------------------------------------------------------
-------------------------------------------------------------------------</code></pre>
-</div>
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visual rápido (opcional)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(Adubacao, Altura_cm, <span class="at">fill =</span> Especie)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>)) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Altura – Espécie × Adubação (split-plot, DIC)"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Adubação"</span>, <span class="at">y =</span> <span class="st">"Altura (cm)"</span>) <span class="sc">+</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cap07-split_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="interpretação" class="level3" data-number="9.5.2">
-<h3 data-number="9.5.2" class="anchored" data-anchor-id="interpretação"><span class="header-section-number">9.5.2</span> 🧩 Interpretação</h3>
-<ul>
-<li><strong>Espécie</strong> é testada com <strong>erro de parcela</strong> → menor precisão.<br>
-</li>
-<li><strong>Adubação</strong> e <strong>Especie×Adubacao</strong> usam <strong>erro de subparcela</strong> → maior precisão.<br>
-</li>
-<li>Se houver interação, a <strong>adubação ótima depende da espécie</strong>.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="exercício-espaçamento-fungicida-em-campo-jovem" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="exercício-espaçamento-fungicida-em-campo-jovem"><span class="header-section-number">9.6</span> 🌾 EXERCÍCIO — Espaçamento × Fungicida em campo jovem</h2>
-<p><strong>Contexto</strong><br>
-Alterar <strong>Espaçamento</strong> exige maquinário e planejamento (difícil) → <strong>parcela</strong>. Pulverizar <strong>Fungicida</strong> é fácil e pode ser feito dentro das parcelas → <strong>subparcela</strong>. Objetivo: reduzir <strong>incidência de doença</strong>.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Elemento</th>
-<th>Especificação</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Blocos (talhões)</strong></td>
-<td>5 (T1–T5)</td>
-</tr>
-<tr class="even">
-<td><strong>Parcela (A)</strong></td>
-<td><strong>Espaçamento</strong>: 2×3 m vs 3×3 m</td>
-</tr>
-<tr class="odd">
-<td><strong>Subparcela (C)</strong></td>
-<td><strong>Fungicida</strong>: Sem vs Com</td>
-</tr>
-<tr class="even">
-<td><strong>Unidade experimental</strong></td>
-<td>Linha × 10 plantas</td>
-</tr>
-<tr class="odd">
-<td><strong>Resposta</strong></td>
-<td><strong>Incidência de doença (%)</strong> aos 6 meses</td>
-</tr>
-</tbody>
-</table>
-<p>📦 <strong>Dados</strong>: <a href="dados/parcelas_subdivididas_espacamento_fungicida.csv">dados/parcelas_subdivididas_espacamento_fungicida.csv</a></p>
-<section id="orientações-d" class="level3" data-number="9.6.1">
-<h3 data-number="9.6.1" class="anchored" data-anchor-id="orientações-d"><span class="header-section-number">9.6.1</span> 📊 Orientações d</h3>
-<ul>
-<li>Compare <strong>efeitos simples</strong> se a <strong>interação</strong> for significativa (fungicida reduz mais no adensado?).<br>
-</li>
-<li>Se a interação <strong>não</strong> for significativa, reporte <strong>efeitos principais</strong> (modelo aditivo).<br>
-</li>
-<li>Considere a <strong>magnitude</strong> da redução (%) para decisão de manejo (custo do produto × benefício).</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="cola-para-o-relatório" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="cola-para-o-relatório"><span class="header-section-number">9.7</span> 🧾 “Cola” para o relatório</h2>
+<p>📦 <strong>Dados</strong>: <a href="dados/dic_ph_diametro.csv">dados/dic_ph_diametro.csv</a></p>
 <ol type="1">
-<li>Justifique o <strong>uso do split-plot</strong> pela logística do experimento.<br>
-</li>
-<li>Apresente a <strong>ANOVA com dois erros</strong> (parcela vs subparcela).<br>
-</li>
-<li>Interprete <strong>interações</strong> com gráficos de médias.<br>
-</li>
-<li>Faça <strong>recomendação prática</strong> (qual combinação adotar).</li>
+<li>Rode o experimento, gere o grafico do polinômio escolhido e encontre a nivel ótimo se for possivel (caso o polinômio seja de grau 2)</li>
 </ol>
+<hr>
 </section>
-<section id="síntese" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="síntese"><span class="header-section-number">9.8</span> ✅ Síntese</h2>
+</section>
+<section id="síntese" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="síntese"><span class="header-section-number">10.7</span> ✅ Síntese</h2>
 <ul>
-<li>Split-plot alinha a estatística às <strong>restrições reais</strong>.<br>
+<li>Em <strong>fatores quantitativos</strong>, relatar <strong>regressão</strong> é mais informativo do que apenas “testes de médias”.<br>
 </li>
-<li>Nem todos os efeitos têm a <strong>mesma precisão</strong>.<br>
+<li>A <strong>ANOVA polinomial</strong> decompõe o efeito de tratamento em <strong>L, Q, C…</strong>, e o <strong>erro puro</strong> das repetições permite testar <strong>falta de ajuste</strong>.<br>
 </li>
-<li>Testes certos → <strong>recomendações confiáveis</strong>.</li>
+<li>Gráficos devem usar <strong>médias por tratamento</strong> e o nível ótimo deve ser encontrado.</li>
 </ul>
 
 
@@ -1026,14 +1004,11 @@ Alterar <strong>Espaçamento</strong> exige maquinário e planejamento (difícil
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./cap06-fatorial.html" class="pagination-link" aria-label="📖 Delineamentos Fatoriais (2x2)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">📖 Delineamentos Fatoriais (2x2)</span></span>
+      <a href="./cap07-split.html" class="pagination-link" aria-label="📖 Delineamento em Parcelas Subdivididas (Split-Plot)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cap08-regre.html" class="pagination-link" aria-label="📖 Fator Quantitativo e Regressão Polinomial">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">📖 Fator Quantitativo e Regressão Polinomial</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

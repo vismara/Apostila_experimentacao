@@ -1,5 +1,5 @@
 ---
-title: "📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)"
+title: "📖 Delineamento em Parcelas Subdivididas (Split-Plot)"
 ---
 
 *Módulo 2 – Semana 9*

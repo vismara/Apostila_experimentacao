@@ -1,5 +1,5 @@
 ---
-title: "📖 Capítulo 3A – ANOVA: Introdução e Contexto"
+title: "📖 ANOVA: Introdução e Contexto"
 ---
 
 *Módulo 1 – Semana 3*

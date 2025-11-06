@@ -1,5 +1,5 @@
 ---
-title: "📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)"
+title: "📖 Delineamentos Experimentais I (DIC e DBC)"
 ---
 
 *Módulo 2 – Semana 5*

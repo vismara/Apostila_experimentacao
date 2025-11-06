@@ -1,5 +1,5 @@
 ---
-title: "📖 Capítulo 2 – Variáveis, Fatores e Níveis"
+title: "📖 Variáveis, Fatores e Níveis"
 ---
 
 *(Módulo 1 – Semana 2)*

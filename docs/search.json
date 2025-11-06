@@ -12,711 +12,781 @@
   {
     "objectID": "cap01-introducao.html",
     "href": "cap01-introducao.html",
-    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Introdução e Motivação",
     "section": "",
     "text": "2.1 🌱 Cenário inicial\n(Módulo 1 – Semana 1)\nImagine que você está iniciando a disciplina de Estatística Experimental e nunca utilizou o R antes. Agora, pense que você trabalha como engenheiro(a) florestal em um viveiro que produz mudas para restauração de áreas degradadas. Um fornecedor oferece um novo substrato “revolucionário” que promete aumentar o crescimento das mudas em 20%.\nVocê precisa decidir se vale a pena trocar o substrato atual — mas como saber se essa promessa é real ou apenas marketing?\n💡 É aqui que a Estatística Experimental entra em cena: ela permite planejar um teste, coletar dados e analisar resultados para concluir, com segurança, se a diferença observada é de fato causada pelo tratamento ou apenas fruto do acaso.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#objetivos-de-aprendizagem",
     "href": "cap01-introducao.html#objetivos-de-aprendizagem",
-    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Introdução e Motivação",
     "section": "2.2 🎯 Objetivos de Aprendizagem",
     "text": "2.2 🎯 Objetivos de Aprendizagem\nAo final deste capítulo, você será capaz de:\n\n✅ Diferenciar estudo observacional de experimento controlado.\n✅ Reconhecer a importância da experimentação na Engenharia Florestal.\n✅ Criar e interpretar seu primeiro gráfico no R, usando o Google Colab.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#ambiente-de-trabalho-google-colab-r",
     "href": "cap01-introducao.html#ambiente-de-trabalho-google-colab-r",
-    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Introdução e Motivação",
     "section": "2.3 🛠️ Ambiente de Trabalho: Google Colab (R)",
     "text": "2.3 🛠️ Ambiente de Trabalho: Google Colab (R)\nPassos iniciais (para estudantes):\n\nAcesse https://colab.research.google.com e entre com sua conta Google.\nAmbiente de execução → Alterar tipo de ambiente de execução → Linguagem: R.\nNo painel lateral (ícone de pasta), faça upload de:\n\n\ncrescimento_mudas.csv\ncedrela_irrigacao.csv`\n\n\n\n\n\n\n\nNota\n\n\n\n💡 Instalação de pacotes no Colab (rode apenas no Colab): O bloco abaixo não é executado ao compilar o ebook (serve apenas para consulta). No Colab, selecione a célula e rode-a.\n\n\n\n\nCódigo\n# Instalação no Colab (rode manualmente lá, se necessário)\noptions(repos = \"https://cloud.r-project.org\")\ninstall.packages(c(\"readr\",\"ggplot2\",\"dplyr\",\"agricolae\",\"emmeans\",\"multcompView\"))",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#contexto-florestal-aplicado",
     "href": "cap01-introducao.html#contexto-florestal-aplicado",
-    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Introdução e Motivação",
     "section": "2.4 🌳 Contexto Florestal Aplicado",
     "text": "2.4 🌳 Contexto Florestal Aplicado\nNa Engenharia Florestal, decisões técnicas e econômicas dependem de dados:\n\n🌱 Escolha de espécies ou clones para plantio comercial.\n📅 Determinação da melhor época de semeadura.\n✂️ Avaliação de técnicas de manejo (podas, desbastes, irrigação).\n🐛 Seleção de métodos de controle fitossanitário.\n\nEssas decisões não podem se basear apenas em experiência ou intuição — precisam ser sustentadas por evidências experimentais obtidas em experimentos bem planejados.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#conceitos-chave",
     "href": "cap01-introducao.html#conceitos-chave",
-    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Introdução e Motivação",
     "section": "2.5 📌 Conceitos-Chave",
     "text": "2.5 📌 Conceitos-Chave\n\nExperimento 🧪 — investigação planejada, com manipulação de fatores (ex.: tipo de adubação) e observação dos efeitos em variáveis de interesse (ex.: altura das mudas).\nEstudo observacional 👀 — coleta de dados sem manipular variáveis; útil para levantar hipóteses, mas com menos capacidade de inferir causalidade.\nTratamento 🔍 — combinação específica de condições aplicadas às unidades experimentais.\nUnidade experimental 🌿 — menor porção física ou biológica à qual se aplica um tratamento (ex.: uma muda, uma parcela de campo).",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#exemplo-prático-no-r",
     "href": "cap01-introducao.html#exemplo-prático-no-r",
-    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Introdução e Motivação",
     "section": "2.6 💻 Exemplo Prático no R",
     "text": "2.6 💻 Exemplo Prático no R\nVamos visualizar dados de crescimento de mudas sob três tratamentos diferentes de substrato.\n\n\n\n\n\n\nNota\n\n\n\n💡 Usando no Colab: Após fazer upload do CSV, troque o caminho por \"/content/nome_do_arquivo.csv\". No ebook/Quarto local, mantenha o caminho relativo dados/nome_do_arquivo.csv.\n\n\n\n\nCódigo\n# Carregar pacotes sem mensagens de inicialização\nsuppressPackageStartupMessages({\n  library(readr)\n  library(ggplot2)\n})\n\n# Ebook/Quarto (caminho relativo)\ndados &lt;- read_csv(\"dados/crescimento_mudas.csv\", show_col_types = FALSE)\n\n# Para Colab, use:\n# dados &lt;- read_csv(\"/content/crescimento_mudas.csv\", show_col_types = FALSE)\n\n# Visualizar amostra (sem mensagens de leitura)\nhead(dados)\n\n\n# A tibble: 6 × 6\n  ID             Tratamento  Altura_cm Diametro_mm Biomassa_g Dias_pos_semeadura\n  &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;              &lt;dbl&gt;\n1 Substrato_A_01 Substrato_A      12.3        3.5        9.13                 80\n2 Substrato_A_02 Substrato_A      21.0        4         13.0                  82\n3 Substrato_A_03 Substrato_A      16.7        3.94      12.0                  92\n4 Substrato_A_04 Substrato_A      16.6        3.81      10.2                  83\n5 Substrato_A_05 Substrato_A      19.5        3.97      15.3                  97\n6 Substrato_A_06 Substrato_A      16.1        4         11.1                  80\n\n\nCódigo\n# Criar boxplot\nggplot(dados, aes(x = Tratamento, y = Altura_cm, fill = Tratamento)) +\n  geom_boxplot() +\n  labs(title = \"Crescimento de mudas sob diferentes substratos\",\n       x = \"Tratamento\", y = \"Altura (cm)\") +\n  theme_minimal()",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#interpretação-dos-resultados",
     "href": "cap01-introducao.html#interpretação-dos-resultados",
-    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Introdução e Motivação",
     "section": "2.7 🔍 Interpretação dos Resultados",
     "text": "2.7 🔍 Interpretação dos Resultados\nO boxplot mostra a distribuição das alturas em cada tratamento.\n\n📊 Podemos observar diferenças visuais entre os grupos.\n⚠️ Atenção: diferenças visíveis não significam que sejam estatisticamente significativas — aprenderemos a verificar isso com ANOVA nos próximos capítulos.\n👀 Mesmo sem análise estatística, já é possível levantar hipóteses.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap01-introducao.html#exercício-final-aplicado",
     "href": "cap01-introducao.html#exercício-final-aplicado",
-    "title": "2  🌱 Capítulo 1 – Introdução e Motivação",
+    "title": "2  🌱 Introdução e Motivação",
     "section": "2.8 📝 Exercício Final Aplicado",
     "text": "2.8 📝 Exercício Final Aplicado\nVocê recebeu dados de um experimento de irrigação em mudas de Cedrela fissilis, com três regimes hídricos (Baixo, Médio, Alto).\n\n\n\n\n\n\nNota\n\n\n\n💡 No Colab: após o upload, use \"/content/cedrela_irrigacao.csv\".\n\n\nTarefas:\n\nImporte o arquivo no R.\nCrie um boxplot para comparar as alturas entre os regimes de irrigação.\nEscreva uma breve interpretação visual (2 a 3 frases) sobre o padrão observado.\n\n\n\n\n\n\n\nDica\n\n\n\n✅ Dica para o relatório (Colab): Inclua no notebook:\n\nO código (com caminho /content/...)\nO gráfico\nA interpretação em texto\n\nAssim, você já inicia o relatório final da disciplina desde a primeira semana.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Capítulo 1 – Introdução e Motivação</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>🌱 Introdução e Motivação</span>"
     ]
   },
   {
     "objectID": "cap02-variaveis-fatores.html",
     "href": "cap02-variaveis-fatores.html",
-    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "title": "3  📖 Variáveis, Fatores e Níveis",
     "section": "",
     "text": "3.1 🌱 Cenário inicial\n(Módulo 1 – Semana 2)\nImagine que você está em um experimento florestal avaliando o crescimento de mudas de Cedrela fissilis sob diferentes regimes de irrigação: Baixo, Médio e Alto.\nAntes de aplicar qualquer análise estatística, precisamos organizar o raciocínio experimental:",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Variáveis, Fatores e Níveis</span>"
     ]
   },
   {
     "objectID": "cap02-variaveis-fatores.html#cenário-inicial",
     "href": "cap02-variaveis-fatores.html#cenário-inicial",
-    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "title": "3  📖 Variáveis, Fatores e Níveis",
     "section": "",
     "text": "O que é variável resposta?\nO que é fator?\nO que significa nível do fator?\nQuem é a unidade experimental?",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Variáveis, Fatores e Níveis</span>"
     ]
   },
   {
     "objectID": "cap02-variaveis-fatores.html#objetivos-de-aprendizagem",
     "href": "cap02-variaveis-fatores.html#objetivos-de-aprendizagem",
-    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "title": "3  📖 Variáveis, Fatores e Níveis",
     "section": "3.2 🎯 Objetivos de aprendizagem",
     "text": "3.2 🎯 Objetivos de aprendizagem\nAo final deste capítulo, você será capaz de:\n\nDistinguir variáveis quantitativas e qualitativas.\nIdentificar fatores e seus níveis em experimentos florestais.\nRelacionar variáveis explicativas (fatores) e variáveis resposta.\nReconhecer a unidade experimental como elemento central.\nCriar resumos e gráficos exploratórios no R (Colab).\nElaborar uma tabela de planejamento experimental.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Variáveis, Fatores e Níveis</span>"
     ]
   },
   {
     "objectID": "cap02-variaveis-fatores.html#parte-1-conceitos-fundamentais",
     "href": "cap02-variaveis-fatores.html#parte-1-conceitos-fundamentais",
-    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "title": "3  📖 Variáveis, Fatores e Níveis",
     "section": "3.3 🌳 Parte 1 – Conceitos fundamentais",
     "text": "3.3 🌳 Parte 1 – Conceitos fundamentais\nVariável. Característica que pode variar entre indivíduos/unidades.\n\nQuantitativas contínuas: altura da muda, diâmetro, biomassa.\nQuantitativas discretas: número de folhas, número de sementes germinadas.\nQualitativas/categóricas: espécie, regime de irrigação, tipo de substrato.\n\nFator. Variável controlada pelo pesquisador (ex.: regime de irrigação).\nNíveis do fator. Categorias/condições do fator (ex.: Baixo, Médio, Alto).\nUnidade experimental. Menor porção que recebe o tratamento (ex.: cada muda em tubete).\nVariável resposta. O que se mede para avaliar o efeito do fator (ex.: altura, diâmetro, biomassa).",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Variáveis, Fatores e Níveis</span>"
     ]
   },
   {
     "objectID": "cap02-variaveis-fatores.html#parte-2-exemplos-florestais",
     "href": "cap02-variaveis-fatores.html#parte-2-exemplos-florestais",
-    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "title": "3  📖 Variáveis, Fatores e Níveis",
     "section": "3.4 🌳 Parte 2 – Exemplos florestais",
     "text": "3.4 🌳 Parte 2 – Exemplos florestais\nExemplo 1 – Irrigação em Cedrela fissilis\n\nFator: Regime hídrico\nNíveis: Baixo, Médio, Alto\nUnidade experimental: cada planta em tubete\nVariáveis resposta: altura, diâmetro, biomassa\n\nExemplo 2 – Ensaio em campo com Pinus\n\nFatores: adubação e espaçamento\nNíveis:\n\nAdubação: com e sem\nEspaçamento: 2x2m, 3x2m, 3x3m\n\nUnidade experimental: parcela (10 árvores)\nVariáveis resposta: sobrevivência, altura, volume de madeira",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Variáveis, Fatores e Níveis</span>"
     ]
   },
   {
     "objectID": "cap02-variaveis-fatores.html#parte-3-exploração-prática-no-r-colab",
     "href": "cap02-variaveis-fatores.html#parte-3-exploração-prática-no-r-colab",
-    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "title": "3  📖 Variáveis, Fatores e Níveis",
     "section": "3.5 💻 Parte 3 – Exploração prática no R (Colab)",
     "text": "3.5 💻 Parte 3 – Exploração prática no R (Colab)\n\nCaminhos dos arquivos - No ebook/local: dados/cedrela_irrigacao.csv e dados/crescimento_mudas.csv - No Colab (após upload): /content/cedrela_irrigacao.csv e /content/crescimento_mudas.csv\n\n\n3.5.1 3.1 Importar dataset Cedrela fissilis\n\n\nCódigo\nlibrary(readr); library(dplyr)\n\n# Ebook/local (caminho relativo)\ncedrela &lt;- read_csv(\"dados/cedrela_irrigacao.csv\", show_col_types = FALSE)\n\n# Para Colab, use:\n# cedrela &lt;- read_csv(\"/content/cedrela_irrigacao.csv\", show_col_types = FALSE)\n\n# Estrutura dos dados e amostra\nstr(cedrela)\n\n\nspc_tbl_ [75 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Planta              : chr [1:75] \"Baixo_01\" \"Baixo_02\" \"Baixo_03\" \"Baixo_04\" ...\n $ Regime              : chr [1:75] \"Baixo\" \"Baixo\" \"Baixo\" \"Baixo\" ...\n $ Altura_cm           : num [1:75] 11.6 12.3 14.8 11.8 15.2 ...\n $ Diametro_mm         : num [1:75] 2.78 2.72 3.01 3.57 3.43 2.42 2.9 3.31 3.37 3.19 ...\n $ Biomassa_g          : num [1:75] 6.78 5.98 11.62 4.8 7.88 ...\n $ Especie             : chr [1:75] \"Cedrela fissilis\" \"Cedrela fissilis\" \"Cedrela fissilis\" \"Cedrela fissilis\" ...\n $ Dias_pos_transplante: num [1:75] 74 88 78 84 74 86 90 76 71 90 ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Planta = col_character(),\n  ..   Regime = col_character(),\n  ..   Altura_cm = col_double(),\n  ..   Diametro_mm = col_double(),\n  ..   Biomassa_g = col_double(),\n  ..   Especie = col_character(),\n  ..   Dias_pos_transplante = col_double()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt; \n\n\nCódigo\nhead(cedrela)\n\n\n# A tibble: 6 × 7\n  Planta   Regime Altura_cm Diametro_mm Biomassa_g Especie  Dias_pos_transplante\n  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt;\n1 Baixo_01 Baixo       11.6        2.78       6.78 Cedrela…                   74\n2 Baixo_02 Baixo       12.3        2.72       5.98 Cedrela…                   88\n3 Baixo_03 Baixo       14.8        3.01      11.6  Cedrela…                   78\n4 Baixo_04 Baixo       11.8        3.57       4.8  Cedrela…                   84\n5 Baixo_05 Baixo       15.2        3.43       7.88 Cedrela…                   74\n6 Baixo_06 Baixo       13.4        2.42       5.72 Cedrela…                   86\n\n\n\n\n3.5.2 3.2 Resumos estatísticos\n\n\nCódigo\ncedrela %&gt;%\n  group_by(Regime) %&gt;%\n  summarise(\n    n = n(),\n    media_altura = mean(Altura_cm),\n    desvio_altura = sd(Altura_cm),\n    media_diam = mean(Diametro_mm),\n    media_biomassa = mean(Biomassa_g)\n  )\n\n\n# A tibble: 3 × 6\n  Regime     n media_altura desvio_altura media_diam media_biomassa\n  &lt;chr&gt;  &lt;int&gt;        &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;\n1 Alto      25         20.1          2.28       3.84          12.4 \n2 Baixo     25         14.4          1.83       2.98           7.78\n3 Medio     25         16.1          2.00       3.30           9.80\n\n\n\n\n3.5.3 3.3 Gráficos exploratórios\n\n\nCódigo\nlibrary(ggplot2)\n\n# Boxplot de altura por regime\nggplot(cedrela, aes(x = Regime, y = Altura_cm, fill = Regime)) +\n  geom_boxplot() +\n  labs(title = \"Altura por regime de irrigação\",\n       x = \"Regime hídrico\", y = \"Altura (cm)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nCódigo\n# Pontos das médias de altura por regime\ncedrela %&gt;%\n  group_by(Regime) %&gt;%\n  summarise(media_altura = mean(Altura_cm)) %&gt;%\n  ggplot(aes(x = Regime, y = media_altura)) +\n  geom_point(size = 4) +\n  labs(title = \"Médias de altura por regime de irrigação\",\n       x = \"Regime hídrico\", y = \"Altura média (cm)\") +\n  theme_minimal()",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Variáveis, Fatores e Níveis</span>"
     ]
   },
   {
     "objectID": "cap02-variaveis-fatores.html#parte-4-discussão-guiada-com-cedrela-fissilis",
     "href": "cap02-variaveis-fatores.html#parte-4-discussão-guiada-com-cedrela-fissilis",
-    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "title": "3  📖 Variáveis, Fatores e Níveis",
     "section": "3.6 🤔 Parte 4 – Discussão guiada (com Cedrela fissilis)",
     "text": "3.6 🤔 Parte 4 – Discussão guiada (com Cedrela fissilis)\nUse os resultados exploratórios do item 3 para discutir em grupo:\n\nQual é o fator do experimento? Quais são seus níveis?\nQuem é a unidade experimental e por que defini-la corretamente é crucial?\nAs médias e boxplots sugerem diferenças entre os regimes? Isso já é evidência conclusiva?\nQuais variáveis resposta (altura, diâmetro, biomassa) parecem mais sensíveis ao tratamento?\nSe você pudesse repetir esse experimento no futuro, o que faria diferente para ter mais confiança nos resultados?",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Variáveis, Fatores e Níveis</span>"
     ]
   },
   {
     "objectID": "cap02-variaveis-fatores.html#exercício-integrador-dataset-de-mudas",
     "href": "cap02-variaveis-fatores.html#exercício-integrador-dataset-de-mudas",
-    "title": "3  📖 Capítulo 2 – Variáveis, Fatores e Níveis",
+    "title": "3  📖 Variáveis, Fatores e Níveis",
     "section": "3.7 📝 Exercício integrador (dataset de mudas)",
     "text": "3.7 📝 Exercício integrador (dataset de mudas)\nDataset: dados/crescimento_mudas.csv (ou /content/crescimento_mudas.csv no Colab).\nTarefas:\n\nImporte o dataset no Colab.\nIdentifique:\n\nFator e seus níveis;\nUnidade experimental;\nVariáveis resposta.\n\nCrie boxplots de Altura e Biomassa por tratamento.\nConstrua uma tabela resumo com as colunas: Fator | Níveis | Unidade experimental | Variáveis resposta.\nExplique em um parágrafo:\n\na diferença entre variável explicativa (fator) e variável resposta;\na importância de definir corretamente a unidade experimental.\n\n\n\n\nCódigo\n# Leitura para iniciar o exercício integrador\nmudas &lt;- read_csv(\"dados/crescimento_mudas.csv\", show_col_types = FALSE)\n\nstr(mudas)\n\n\nspc_tbl_ [90 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ ID                : chr [1:90] \"Substrato_A_01\" \"Substrato_A_02\" \"Substrato_A_03\" \"Substrato_A_04\" ...\n $ Tratamento        : chr [1:90] \"Substrato_A\" \"Substrato_A\" \"Substrato_A\" \"Substrato_A\" ...\n $ Altura_cm         : num [1:90] 12.3 21 16.7 16.6 19.5 ...\n $ Diametro_mm       : num [1:90] 3.5 4 3.94 3.81 3.97 4 2.88 4.23 4 4.46 ...\n $ Biomassa_g        : num [1:90] 9.13 12.97 12.02 10.2 15.29 ...\n $ Dias_pos_semeadura: num [1:90] 80 82 92 83 97 80 93 93 86 86 ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   ID = col_character(),\n  ..   Tratamento = col_character(),\n  ..   Altura_cm = col_double(),\n  ..   Diametro_mm = col_double(),\n  ..   Biomassa_g = col_double(),\n  ..   Dias_pos_semeadura = col_double()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt; \n\n\n\n\n\n\n\n\nDica\n\n\n\n✅ Dica para o relatório:\nA tabela resumo (Fatores, Níveis, Unidade experimental, Variáveis resposta) deve ser incluída em cada relatório.\nEla funciona como um mapa conceitual que orienta todas as análises posteriores.\n🗂️ Como montar sua tabela no Colab usando Markdown\nNo Colab/Quarto, escreva tabelas em Markdown.\nUse | para separar colunas e - para indicar o cabeçalho.\nExemplo:\n| Fator               | Níveis             | Unidade experimental | Variáveis resposta         |\n| ------------------- | ------------------ | -------------------- | -------------------------- |\n| Regime de irrigação | Baixo, Médio, Alto | Cada muda em tubete  | Altura, Diâmetro, Biomassa |\n💡 Tarefa: substitua os conteúdos da tabela conforme o seu experimento.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Capítulo 2 – Variáveis, Fatores e Níveis</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>📖 Variáveis, Fatores e Níveis</span>"
     ]
   },
   {
     "objectID": "cap03A-anova.html",
     "href": "cap03A-anova.html",
-    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "title": "4  📖 ANOVA: Introdução e Contexto",
     "section": "",
     "text": "4.1 🌱 Narrativa inicial\nMódulo 1 – Semana 3\nVocê é o(a) engenheiro(a) florestal de um viveiro de Eucalyptus grandis. Sua decisão afeta custos e qualidade das mudas que irão para campo.\nPara recomendar o tipo de adubação, foi conduzido um teste com três tratamentos:\nForam avaliadas 10 mudas por tratamento e medidas Altura (cm), Diâmetro (mm) e Biomassa (g).\n👉 Decisão profissional: qual adubação recomendar com base em evidências?",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 ANOVA: Introdução e Contexto</span>"
     ]
   },
   {
     "objectID": "cap03A-anova.html#narrativa-inicial",
     "href": "cap03A-anova.html#narrativa-inicial",
-    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "title": "4  📖 ANOVA: Introdução e Contexto",
     "section": "",
     "text": "Controle (sem adubo) – referência de custo zero.\n\nOrgânica (composto local) – menor custo, possível ganho gradual.\n\nQuímica (NPK 06-30-06) – maior custo, promessa de ganho rápido.\n\n\n\n\n\n\n\n\nImportante\n\n\n\n⚠️ Erro comum: escolher pelo “olhômetro”. Diferenças visuais podem ocorrer ao acaso. A ANOVA formaliza essa comparação de médias.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 ANOVA: Introdução e Contexto</span>"
     ]
   },
   {
     "objectID": "cap03A-anova.html#objetivos-de-aprendizagem",
     "href": "cap03A-anova.html#objetivos-de-aprendizagem",
-    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "title": "4  📖 ANOVA: Introdução e Contexto",
     "section": "4.2 🎯 Objetivos de aprendizagem",
     "text": "4.2 🎯 Objetivos de aprendizagem\n\nEntender a lógica da ANOVA (variação entre vs. dentro dos grupos).\n\nLer e interpretar a tabela de ANOVA.\n\nAplicar ANOVA no R com dados florestais contextualizados.\n\nConectar gráficos e resumos (Cap. 2) com o teste formal.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 ANOVA: Introdução e Contexto</span>"
     ]
   },
   {
     "objectID": "cap03A-anova.html#intuição-da-anova",
     "href": "cap03A-anova.html#intuição-da-anova",
-    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "title": "4  📖 ANOVA: Introdução e Contexto",
     "section": "4.3 🧠 Intuição da ANOVA",
     "text": "4.3 🧠 Intuição da ANOVA\nA ANOVA verifica se as diferenças entre as médias dos grupos são maiores do que esperaríamos por acaso.\n- Entre grupos (tratamentos): efeito potencial da adubação.\n- Dentro dos grupos (erro): variabilidade natural entre mudas do mesmo tratamento.\n- Estatística F = QM_trat / QM_erro → quanto maior, maior a evidência de diferença.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 ANOVA: Introdução e Contexto</span>"
     ]
   },
   {
     "objectID": "cap03A-anova.html#tabela-de-anova-e-como-ler",
     "href": "cap03A-anova.html#tabela-de-anova-e-como-ler",
-    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "title": "4  📖 ANOVA: Introdução e Contexto",
     "section": "4.4 🧾 Tabela de ANOVA (e como ler)",
     "text": "4.4 🧾 Tabela de ANOVA (e como ler)\n\n\n\n\nFonte\n\n\nGL\n\n\nSQ\n\n\nQM = SQ/GL\n\n\nF = QMtrat/QMerro\n\n\np-valor\n\n\n\n\n\n\nTratamentos\n\n\nk − 1\n\n\nSQtrat\n\n\nQMtrat\n\n\nF calculado\n\n\nProb(H0)\n\n\n\n\nResíduo (Erro)\n\n\nN − k\n\n\nSQerro\n\n\nQMerro\n\n\n—\n\n\n—\n\n\n\n\nTotal\n\n\nN − 1\n\n\nSQtotal\n\n\n—\n\n\n—\n\n\n—\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nComo interpretar rapidamente\n- GL: graus de liberdade (quantas comparações independentes cabem).\n- SQ / QM: variação total e variação média.\n- F grande + p-valor pequeno → evidência de diferenças entre médias.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 ANOVA: Introdução e Contexto</span>"
     ]
   },
   {
     "objectID": "cap03A-anova.html#aplicação-prática-altura",
     "href": "cap03A-anova.html#aplicação-prática-altura",
-    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "title": "4  📖 ANOVA: Introdução e Contexto",
     "section": "4.5 💻 Aplicação prática (Altura)",
     "text": "4.5 💻 Aplicação prática (Altura)\nDados novos deste capítulo: dados/eucalipto_adubacao.csv\nConexão com o Cap. 2 (revisão gráfica): dados/crescimento_mudas.csv\n\n\nCódigo\nlibrary(readr); library(ggplot2)\n\neuca &lt;- read_csv(\"dados/eucalipto_adubacao.csv\", show_col_types = FALSE)\n\nmod_alt &lt;- aov(Altura_cm ~ Tratamento, data = euca)\nsummary(mod_alt)\n\n\n            Df Sum Sq Mean Sq F value  Pr(&gt;F)    \nTratamento   2  154.0   77.02   15.25 3.7e-05 ***\nResiduals   27  136.4    5.05                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\nCódigo\n# Visualização\nggplot(euca, aes(Tratamento, Altura_cm, fill = Tratamento)) +\n  geom_boxplot() +\n  labs(title = \"Eucalyptus grandis — Altura por adubação\",\n       x = \"Tratamento\", y = \"Altura (cm)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDica\n\n\n\n✅ Dica prática: Se o p-valor &lt; 0,05, rejeitamos H0 → há evidência de diferença entre os tratamentos. Mas ANOVA não diz quais tratamentos diferem. (isso veremos no Cap. 3B)\n\n\n\n\n\n\n\n\nDica\n\n\n\n✅ Dica profissional: Relacione o resultado ao custo e logística. Às vezes o ganho de altura é real, mas não compensa o custo do insumo no viveiro.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 ANOVA: Introdução e Contexto</span>"
     ]
   },
   {
     "objectID": "cap03A-anova.html#outras-respostas-de-interesse",
     "href": "cap03A-anova.html#outras-respostas-de-interesse",
-    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "title": "4  📖 ANOVA: Introdução e Contexto",
     "section": "4.6 🔁 Outras respostas de interesse",
     "text": "4.6 🔁 Outras respostas de interesse\n\n\nCódigo\nsummary(aov(Diametro_mm ~ Tratamento, data = euca))\n\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)  \nTratamento   2  2.122  1.0610   4.846 0.0159 *\nResiduals   27  5.912  0.2189                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCódigo\nsummary(aov(Biomassa_g ~ Tratamento, data = euca))\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nTratamento   2  6.037  3.0183   25.27 6.53e-07 ***\nResiduals   27  3.225  0.1194                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 ANOVA: Introdução e Contexto</span>"
     ]
   },
   {
     "objectID": "cap03A-anova.html#exercícios",
     "href": "cap03A-anova.html#exercícios",
-    "title": "4  📖 Capítulo 3A – ANOVA: Introdução e Contexto",
+    "title": "4  📖 ANOVA: Introdução e Contexto",
     "section": "4.7 📝 Exercícios",
     "text": "4.7 📝 Exercícios\n\nUse o dataset crescimento_mudas.csv para:\n\n\nFazer boxplot de Biomassa_g;\nResumir médias e desvios;\nAplicar ANOVA e escrever 2 frases de interpretação.\n\n\nCom o conjunto de dados eucalipto_adubacao.csv:\n\n\nAplique ANOVA para Diametro_mm;\nExplique se há diferença significativa;\nInclua gráficos e interpretação no relatório.\n\n\n✅ Síntese\n\nA ANOVA responde: “as médias são todas iguais?”\nCompara variação entre tratamentos vs. dentro dos tratamentos.\nResultado significativo indica diferença, mas não mostra onde (isso será o Cap. 3B).",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 Capítulo 3A – ANOVA: Introdução e Contexto</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>📖 ANOVA: Introdução e Contexto</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html",
     "href": "cap03B-anova2.html",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "",
     "text": "5.1 🌱 Narrativa inicial\nMódulo 1 – Semana 4\nNa aula passada, a ANOVA mostrou que há diferença global entre os tratamentos.\nMas o(a) engenheiro(a) florestal precisa de algo mais prático: quais tratamentos são diferentes e se pode confiar nesses resultados.\nÉ aqui que entram os pressupostos e os testes de médias.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html#narrativa-inicial",
     "href": "cap03B-anova2.html#narrativa-inicial",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "",
     "text": "Dica\n\n\n\n📌 Na prática: só podemos recomendar um tratamento se tivermos confiança estatística de que o resultado não é fruto do acaso ou de distorções.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html#objetivos-do-capítulo",
     "href": "cap03B-anova2.html#objetivos-do-capítulo",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "5.2 🎯 Objetivos do capítulo",
     "text": "5.2 🎯 Objetivos do capítulo\n\nExplicar o que são pressupostos e por que importam.\n\nEntender como funcionam os testes de médias.\n\nGerar e interpretar boxplots com letras do Tukey.\n\nConsolidar a análise com dois experimentos florestais.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html#o-que-são-pressupostos",
     "href": "cap03B-anova2.html#o-que-são-pressupostos",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "5.3 🧠 O que são pressupostos?",
     "text": "5.3 🧠 O que são pressupostos?\nA ANOVA é um modelo estatístico e, como todo modelo, depende de condições para funcionar.\nEssas condições são chamadas de pressupostos.\n\nNormalidade dos resíduos\n\nOs “erros” do modelo devem seguir uma distribuição aproximadamente normal.\n\nGarante que os p-valores do teste F sejam confiáveis.\n\nHomogeneidade das variâncias\n\nA variabilidade dentro dos grupos deve ser semelhante.\n\nSe um grupo tem variância muito maior, ele “puxa” a decisão.\n\n\n👉 Importância: Se os pressupostos não forem atendidos, a conclusão da ANOVA pode ser enganosa.\nNo R, verificamos com:\n- Shapiro-Wilk (normalidade)\n- Levene (homogeneidade)",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html#o-que-são-testes-de-médias",
     "href": "cap03B-anova2.html#o-que-são-testes-de-médias",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "5.4 🌳 O que são testes de médias?",
     "text": "5.4 🌳 O que são testes de médias?\nA ANOVA responde apenas: “todas as médias são iguais?”\nSe a resposta é “não”, surge a pergunta: “quais grupos diferem entre si?”\n\nO teste de médias compara pares de médias.\nEm geral eles tem como principio o calculo de uma distância mínima significativa.\nO teste de Tukey HSD é o mais comum.\n\nResultado:\n\nTexto com pares significativos.\n\nGráfico com intervalos de confiança.\n\nBoxplot com letras: tratamentos com mesma letra não diferem.\n\n\n👉 Na prática florestal: é essa etapa que permite recomendar um substrato ou adubação.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html#experimento-1-eucalyptus-grandis-adubação",
     "href": "cap03B-anova2.html#experimento-1-eucalyptus-grandis-adubação",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "5.5 🌳 Experimento 1 – Eucalyptus grandis (Adubação)",
     "text": "5.5 🌳 Experimento 1 – Eucalyptus grandis (Adubação)\nContexto: Viveiro comercial quer decidir entre Controle, Orgânica e Química.\nDelineamento: 3 tratamentos, 10 mudas/tratamento; variáveis: Altura, Diâmetro, Biomassa.\n📦 Dados desta análise\n\ndados/eucalipto_adubacao.csv\nNo Colab: /content/eucalipto_adubacao.csv\nNo Quarto local: dados/eucalipto_adubacao.csv\n\n\n5.5.1 1. Ajuste do modelo (Altura)\n\n\nCódigo\nlibrary(readr); library(dplyr); library(agricolae); library(ggplot2); library(tibble); library(car)\n\neuca &lt;- read_csv(\"dados/eucalipto_adubacao.csv\", show_col_types = FALSE)\nmod_alt &lt;- aov(Altura_cm ~ Tratamento, data = euca)\nsummary(mod_alt)\n\n\n            Df Sum Sq Mean Sq F value  Pr(&gt;F)    \nTratamento   2  154.0   77.02   15.25 3.7e-05 ***\nResiduals   27  136.4    5.05                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n5.5.2 2. Verificação dos pressupostos\n\n\nCódigo\nshapiro.test(residuals(mod_alt))\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  residuals(mod_alt)\nW = 0.97756, p-value = 0.7577\n\n\nCódigo\nleveneTest(Altura_cm ~ Tratamento, data = euca)\n\n\nLevene's Test for Homogeneity of Variance (center = median)\n      Df F value Pr(&gt;F)\ngroup  2  0.5323 0.5933\n      27               \n\n\n\n\n5.5.3 3. Teste de médias (Tukey) com letras\n\n\nCódigo\ntk &lt;- HSD.test(mod_alt, \"Tratamento\", group = TRUE)\ntk$groups\n\n\n         Altura_cm groups\nQuimica     20.008      a\nOrganica    17.065      b\nControle    14.461      c\n\n\n\n\nCódigo\n# 1) Transformar o tk$groups em um data frame com colunas explícitas\nletras_df &lt;- tk$groups %&gt;%\n  rownames_to_column(var = \"Tratamento\") %&gt;%\n  rename(letra = groups)\n\n# 2) Posição vertical (y) das letras: máximo por tratamento + uma folguinha\ntopos &lt;- euca %&gt;%\n  group_by(Tratamento) %&gt;%\n  summarise(y = max(Altura_cm, na.rm = TRUE) + 1, .groups = \"drop\")\n\n# 3) Juntando os dois conjunto de dados\nletras_df &lt;- letras_df |&gt;\n  left_join(topos, by = \"Tratamento\")\n\n\n\n\nCódigo\n# 4) Gráfico final com letras\nggplot(euca, aes(x = Tratamento, y = Altura_cm, fill = Tratamento)) +\n  geom_boxplot() +\n  geom_text(data = letras_df,\n            aes(x = Tratamento, y = y, label = letra),\n            inherit.aes = FALSE) +\n  labs(title = \"Altura de Eucalyptus por adubação\",\n       x = \"Tratamento\", y = \"Altura (cm)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nComo ler: Tratamentos com mesma letra não diferem; letras diferentes = diferença significativa.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html#experimento-2-mudas-nativas-substratos",
     "href": "cap03B-anova2.html#experimento-2-mudas-nativas-substratos",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "5.6 🌿 Experimento 2 – Mudas nativas (Substratos)",
     "text": "5.6 🌿 Experimento 2 – Mudas nativas (Substratos)\nContexto: Viveiro de nativas para restauração precisa escolher o substrato mais eficiente.\nDelineamento: 3 substratos, n mudas/tratamento; variável: Biomassa.\n📦 Dados desta análise\n\ndados/crescimento_mudas.csv\nNo Colab: use o link direto no read_csv()\nNo Quarto local: dados/crescimento_mudas.csv\n\n\n5.6.1 1. Ajuste do modelo\n\n\nCódigo\nmudas &lt;- read_csv(\"dados/crescimento_mudas.csv\", show_col_types = FALSE)\nmod_bio &lt;- aov(Biomassa_g ~ Tratamento, data = mudas)\nsummary(mod_bio)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nTratamento   2  119.3   59.65   8.727 0.000351 ***\nResiduals   87  594.7    6.84                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n5.6.2 2. Pressupostos\n\n\nCódigo\nshapiro.test(residuals(mod_bio))\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  residuals(mod_bio)\nW = 0.97442, p-value = 0.07272\n\n\nCódigo\nleveneTest(Biomassa_g ~ Tratamento, data = mudas)\n\n\nLevene's Test for Homogeneity of Variance (center = median)\n      Df F value Pr(&gt;F)\ngroup  2  0.4823  0.619\n      87               \n\n\n\n\n5.6.3 3. Teste de médias (Tukey) com letras\n\n\nCódigo\ntk_bio &lt;- HSD.test(mod_bio, \"Tratamento\", group = TRUE)\ntk_bio$groups\n\n\n            Biomassa_g groups\nSubstrato_C   14.55633      a\nSubstrato_B   13.00967     ab\nSubstrato_A   11.74067      b\n\n\n\n\nCódigo\n# 1) Transformar o tk$groups em um data frame com colunas explícitas\nletras_df &lt;- tk_bio$groups %&gt;%\n  rownames_to_column(var = \"Tratamento\") %&gt;%\n  rename(letra = groups)\n\n# 2) Posição vertical (y) das letras: máximo por tratamento + uma folguinha\ntopos &lt;- mudas %&gt;%\n  group_by(Tratamento) %&gt;%\n  summarise(y = max(Biomassa_g, na.rm = TRUE) + 1, .groups = \"drop\")\n\n# 3) Juntando os dois conjunto de dados\nletras_df &lt;- letras_df |&gt;\n  left_join(topos, by = \"Tratamento\")\n\n\n\n\nCódigo\n# 4) Gráfico final com letras\nggplot(mudas, aes(x = Tratamento, y = Biomassa_g, fill = Tratamento)) +\n  geom_boxplot() +\n  geom_text(data = letras_df,\n            aes(x = Tratamento, y = y, label = letra),\n            inherit.aes = FALSE) +\n  labs(title = \"Biomassa por substrato\",\n       x = \"Tratamento\", y = \"Biomassa (g)\") +\n  theme_minimal()",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html#exercícios",
     "href": "cap03B-anova2.html#exercícios",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "5.7 📝 Exercícios",
     "text": "5.7 📝 Exercícios\n\nNo experimento com Eucalipto, aplique Tukey também para Diâmetro e Biomassa.\n\nNo experimento com Mudas, faça o mesmo para Altura.\n\nAnalise os resultados e discuta: os tratamentos “melhores” coincidem entre variáveis?",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap03B-anova2.html#síntese",
     "href": "cap03B-anova2.html#síntese",
-    "title": "5  📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias",
+    "title": "5  📖 ANOVA II: Pressupostos e Teste de Médias",
     "section": "5.8 ✅ Síntese",
     "text": "5.8 ✅ Síntese\n\nPressupostos = condições para que a ANOVA seja válida.\n\nTeste de médias = detalha onde estão as diferenças.\n\nBoxplots com letras tornam a interpretação imediata.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 Capítulo 3B – ANOVA II: Pressupostos e Teste de Médias</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>📖 ANOVA II: Pressupostos e Teste de Médias</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html",
     "href": "cap04-delineamentos.html",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "",
     "text": "6.1 🌱 Narrativa aplicada\nMódulo 2 – Semana 5\nVocê precisa recomendar o melhor manejo em dois cenários distintos:\nPara responder com confiança, vamos planejar experimentos usando DIC (ambiente homogêneo) e DBC (ambiente heterogêneo).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html#narrativa-aplicada",
     "href": "cap04-delineamentos.html#narrativa-aplicada",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "",
     "text": "Viveiro homogêneo: escolher o substrato que maximiza o crescimento inicial de mudas nativas.\n\nCampo heterogêneo: selecionar o clone de Eucalyptus mais produtivo em uma área com gradiente de solo.\n\n\n\n\n\n\n\n\nDica\n\n\n\n💡 Ideia central: Controlamos a aleatorização e a repetição em qualquer delineamento. Quando há heterogeneidade conhecida (ex.: faixas de solo), usamos blocos (DBC) para reduzir o erro.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html#objetivos-de-aprendizagem",
     "href": "cap04-delineamentos.html#objetivos-de-aprendizagem",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "6.2 🎯 Objetivos de aprendizagem",
     "text": "6.2 🎯 Objetivos de aprendizagem\n\nDiferenciar DIC e DBC e quando usar cada um.\n\nAssociar repetição, aleatorização e controle local aos experimentos.\n\nEspecificar o modelo linear de cada delineamento.\n\nAnalisar, no R, um DIC (viveiro) e um DBC (campo).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html#conceitoschave-com-exemplos",
     "href": "cap04-delineamentos.html#conceitoschave-com-exemplos",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "6.3 📊 Conceitos‑chave (com exemplos)",
     "text": "6.3 📊 Conceitos‑chave (com exemplos)\n\nUnidade experimental\n\nDIC: muda em tubete (viveiro).\n\nDBC: parcela por bloco (ex.: 10–20 árvores) em campo.\n\nRepetição\n\nAumenta precisão das estimativas.\n\nEx.: 10 mudas por substrato (DIC).\n\nAleatorização\n\nGarante independência entre observações.\n\nEx.: sortear a posição das mudas nas bandejas (DIC) e a posição dos clones em cada bloco (DBC).\n\nControle local (blocos)\n\nDiminui a variação não controlada.\n\nEx.: dividir a área em 4 blocos segundo o gradiente de solo (DBC).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html#modelos-lineares",
     "href": "cap04-delineamentos.html#modelos-lineares",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "6.4 🧮 Modelos lineares",
     "text": "6.4 🧮 Modelos lineares\n\n6.4.1 DIC (Delineamento Inteiramente Casualizado)\n\\[ Y_{ij} = \\mu + \\tau_i + \\varepsilon_{ij} \\]\n\n\\(Y_{ij}\\): resposta da j‑ésima repetição do i‑ésimo tratamento.\n\n\\(\\mu\\): média geral; (_i): efeito do tratamento (substrato);\n\n\\(\\varepsilon_{ij} \\sim \\mathcal{N}(0, \\sigma^2)\\): erro experimental.\n\n\n\n6.4.2 DBC (Delineamento em Blocos Casualizados)\n\\[ Y_{ij} = \\mu + \\tau_i + \\beta_j + \\varepsilon_{ij} \\]\n\n\\(\\beta_j\\): efeito do bloco (ex.: faixa de solo).\n\nDemais termos como acima.\n\nVantagem: retira da “conta do erro” a variação sistemática entre blocos.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html#experimento-1-viveiro-dic-substratos",
     "href": "cap04-delineamentos.html#experimento-1-viveiro-dic-substratos",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "6.5 💻 Experimento 1 – Viveiro (DIC – substratos)",
     "text": "6.5 💻 Experimento 1 – Viveiro (DIC – substratos)\nContexto: bandejas de isopor com 3 substratos (A, B, C).\nUnidade experimental: muda em tubete. Repetições: 10 por substrato.\nVariáveis: Altura_cm, Biomassa_g.\n📦 Dados desta análise\n- crescimento_mudas.csv (mesmo do Cap. 2)\n- Colab: /content/crescimento_mudas.csv\n- Quarto: dados/crescimento_mudas.csv\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2)\n\nmudas &lt;- read_csv(\"dados/crescimento_mudas.csv\", show_col_types = FALSE)\n\n# ANOVA (DIC): Altura ~ Tratamento\nmod_dic &lt;- aov(Altura_cm ~ Tratamento, data = mudas)\nsummary(mod_dic)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nTratamento   2  226.4  113.21   21.63 2.38e-08 ***\nResiduals   87  455.5    5.24                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCódigo\n# Visualização\nggplot(mudas, aes(Tratamento, Altura_cm, fill = Tratamento)) +\n  geom_boxplot() + theme_minimal() +\n  labs(title = \"DIC – Altura por substrato\", x = \"Substrato\", y = \"Altura (cm)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\n📌 Leia a tabela de ANOVA (DIC): se p &lt; 0,05, há diferença global entre substratos. Para saber quais diferem, use Tukey (você já conhece do Cap. 3B).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html#experimento-2-campo-dbc-clones-de-eucalyptus",
     "href": "cap04-delineamentos.html#experimento-2-campo-dbc-clones-de-eucalyptus",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "6.6 💻 Experimento 2 – Campo (DBC – clones de Eucalyptus)",
     "text": "6.6 💻 Experimento 2 – Campo (DBC – clones de Eucalyptus)\nProblema real: escolher o clone mais produtivo para uma área com gradiente de solo (heterogênea).\nDelineamento: 4 clones (C1–C4) × 4 blocos (B1–B4), 1 parcela/clone/bloco.\nVariável resposta: Volume_m3ha (m³/ha).\nUnidade experimental: parcela (ex.: 12–20 árvores).\n📦 Dados desta análise\n- clones_eucalipto.csv (novo)\n- Colab: /content/clones_eucalipto.csv\n- Quarto: dados/clones_eucalipto.csv\n\n\nCódigo\nlibrary(readr); library(ggplot2)\n\nclones &lt;- read_csv(\"dados/clones_eucalipto.csv\", show_col_types = FALSE)\nstr(clones)\n\n\nspc_tbl_ [16 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Bloco      : chr [1:16] \"B1\" \"B1\" \"B1\" \"B1\" ...\n $ Clone      : chr [1:16] \"C1\" \"C2\" \"C3\" \"C4\" ...\n $ Volume_m3ha: num [1:16] 239 261 234 260 259 ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   Bloco = col_character(),\n  ..   Clone = col_character(),\n  ..   Volume_m3ha = col_double()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt; \n\n\nCódigo\nhead(clones)\n\n\n# A tibble: 6 × 3\n  Bloco Clone Volume_m3ha\n  &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;\n1 B1    C1           239.\n2 B1    C2           261.\n3 B1    C3           234.\n4 B1    C4           260.\n5 B2    C1           259.\n6 B2    C2           292.\n\n\n\n6.6.1 ANOVA (DBC): modelo com blocos\n\n\nCódigo\nmod_dbc &lt;- aov(Volume_m3ha ~ Clone + Bloco, data = clones)\nsummary(mod_dbc)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nClone        3 1407.4   469.1   11.38 0.002036 ** \nBloco        3 2182.9   727.6   17.66 0.000412 ***\nResiduals    9  370.9    41.2                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n6.6.2 Por que incluir Bloco?\n\nRemove do erro a variação sistemática entre faixas de solo.\n\nGanha poder para detectar diferenças entre clones.\n\n\n\n6.6.3 Visualização por blocos e por clone\n\n\nCódigo\nggplot(clones, aes(Clone, Volume_m3ha, fill = Clone)) +\n  geom_boxplot() + theme_minimal() +\n  labs(title = \"DBC – Volume por clone\", x = \"Clone\", y = \"Volume (m³/ha)\")\n\n\n\n\n\n\n\n\n\nCódigo\nggplot(clones, aes(Bloco, Volume_m3ha, fill = Bloco)) +\n  geom_boxplot() + theme_minimal() +\n  labs(title = \"DBC – Heterogeneidade entre blocos\", x = \"Bloco\", y = \"Volume (m³/ha)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\n\n⚠️ Comparação didática\nAjuste sem blocos e compare:\n\n\nCódigo\nsummary(aov(Volume_m3ha ~ Clone, data = clones))   # ignora blocos (DIC \"forçado\")\n\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)\nClone        3   1407   469.1   2.204   0.14\nResiduals   12   2554   212.8               \n\n\nCódigo\nsummary(aov(Volume_m3ha ~ Clone + Bloco, data = clones))  # DBC correto\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nClone        3 1407.4   469.1   11.38 0.002036 ** \nBloco        3 2182.9   727.6   17.66 0.000412 ***\nResiduals    9  370.9    41.2                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nObserve como o resíduo (QM_erro) muda. O DBC tende a reduzir o erro e aumentar a precisão.\n\n\n\n\n6.6.4 (Opcional) Teste de médias para clones\n\n\nCódigo\n# Apenas se ANOVA indicar diferença para Clone\nlibrary(agricolae)\ntk &lt;- HSD.test(mod_dbc, \"Clone\", group = TRUE)\ntk$groups\n\n\n   Volume_m3ha groups\nC2     276.000      a\nC4     273.025      a\nC3     258.150      b\nC1     254.050      b",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html#exercícios",
     "href": "cap04-delineamentos.html#exercícios",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "6.7 📝 Exercícios",
     "text": "6.7 📝 Exercícios\n\nDBC (campo):\n\nAjuste o modelo com blocos e sem blocos; compare as tabelas de ANOVA.\n\nSe houver diferença para Clone, aplique Tukey e interprete as letras.\n\n\nMonte, em Markdown, a tabela de planejamento de cada experimento (fator, níveis, unidade experimental, variáveis resposta).",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap04-delineamentos.html#síntese",
     "href": "cap04-delineamentos.html#síntese",
-    "title": "6  📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)",
+    "title": "6  📖 Delineamentos Experimentais I (DIC e DBC)",
     "section": "6.8 ✅ Síntese",
     "text": "6.8 ✅ Síntese\n\nDIC: use quando a área/unidades são homogêneas (viveiro, laboratório).\n\nDBC: use para áreas heterogêneas, controlando a variação com blocos.\n\nO modelo linear deixa explícito o papel dos blocos e do tratamento.\n\nEm campo florestal, o uso adequado do delineamento melhora a confiabilidade e a precisão das recomendações.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Capítulo 4 – Delineamentos Experimentais I (DIC e DBC)</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>📖 Delineamentos Experimentais I (DIC e DBC)</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html",
     "href": "cap05-contrastes.html",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "",
     "text": "7.1 🌱 Narrativa aplicada\nMódulo 2 – Semana 6\nUm viveiro de mudas nativas precisa decidir se vale a pena adotar um novo substrato adubado.\nAs opções vigentes são: A e B (comerciais) e C (alternativo de baixo custo). O D é o alternativo adubado.\nQueremos responder perguntas práticas do gestor, não apenas listar todos os pares diferentes.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html#narrativa-aplicada",
     "href": "cap05-contrastes.html#narrativa-aplicada",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "",
     "text": "Dica\n\n\n\n💡 Ganho de usar contrastes planejados: foco em hipóteses relevantes, maior poder estatístico e clareza para a decisão (evita dezenas de comparações sem interesse prático).",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html#o-experimento-dic",
     "href": "cap05-contrastes.html#o-experimento-dic",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "7.2 🎯 O experimento (DIC)",
     "text": "7.2 🎯 O experimento (DIC)\n\nEspécie: Cedrela fissilis (cedro-rosa)\n\nLocal: viveiro experimental (bandejas de tubetes 55 cm³)\n\nFator/Tratamentos: 4 substratos → A, B (comerciais), C (alternativo), D (alternativo + adubo)\n\nUnidade experimental: muda em tubete\n\nRepetições: 8 mudas por tratamento (total = 32)\n\nVariável resposta: Altura_cm aos 120 dias pós-semeadura\n\n📦 Dados desta análise\n- dados/substratos_contrastes.csv (arquivo desta apostila)\n- No Colab: /content/substratos_contrastes.csv\n- No Quarto local: dados/substratos_contrastes.csv",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html#modelo-linear-dic",
     "href": "cap05-contrastes.html#modelo-linear-dic",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "7.3 🧮 Modelo linear (DIC)",
     "text": "7.3 🧮 Modelo linear (DIC)\n\\[ Y_{ij} = \\mu + \\tau_i + \\varepsilon_{ij}, \\quad \\varepsilon_{ij} \\sim \\mathcal{N}(0, \\sigma^2) \\]\n\n\\(Y_{ij}\\): altura da j‑ésima muda no i‑ésimo substrato.\n\n\\(\\mu\\): média geral; \\(\\tau_i\\): efeito do substrato.\n\nContraste planejado: combinação linear com coeficientes que somam zero.\nEx.: \\(L_1 = \\tfrac{1}{2}(\\mu_A + \\mu_B) - \\mu_C\\) (comerciais vs alternativo).",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html#análise-no-r",
     "href": "cap05-contrastes.html#análise-no-r",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "7.4 💻 Análise no R",
     "text": "7.4 💻 Análise no R\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2)\n\n# Quarto local:\ndados &lt;- read_csv(\"dados/substratos_contrastes.csv\", show_col_types = FALSE)\n# Colab:\n# dados &lt;- read_csv(\"/content/substratos_contrastes.csv\", show_col_types = FALSE)\n\n# Garantir a ordem A,B,C,D para casar com os contrastes\ndados$Tratamento &lt;- factor(dados$Tratamento, levels = c(\"A\",\"B\",\"C\",\"D\"))\n\n# ANOVA\nmod &lt;- aov(Altura_cm ~ Tratamento, data = dados)\nsummary(mod)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nTratamento   3 131.06   43.69    21.8 1.74e-07 ***\nResiduals   28  56.11    2.00                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCódigo\n# Gráfico exploratório\nggplot(dados, aes(Tratamento, Altura_cm, fill = Tratamento)) +\n  geom_boxplot() + theme_minimal() +\n  labs(title = \"Altura de mudas por substrato (120 dias)\",\n       x = \"Substrato\", y = \"Altura (cm)\")",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html#por-que-contrastes-e-não-apenas-tukeyduncan",
     "href": "cap05-contrastes.html#por-que-contrastes-e-não-apenas-tukeyduncan",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "7.5 🎯 Por que contrastes e não apenas Tukey/Duncan?",
     "text": "7.5 🎯 Por que contrastes e não apenas Tukey/Duncan?\n\nTukey/Duncan comparam todos os pares → bom para um panorama, mas produzem muitas comparações irrelevantes.\n\nContrastes testam hipóteses a priori (definidas antes do experimento): mais foco e maior poder para aquilo que realmente importa.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html#contrastes-planejados-no-r-multcomp",
     "href": "cap05-contrastes.html#contrastes-planejados-no-r-multcomp",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "7.6 🔬 Contrastes planejados no R (multcomp)",
     "text": "7.6 🔬 Contrastes planejados no R (multcomp)\n\n\nCódigo\n# install.packages(\"multcomp\") # se necessário\nlibrary(multcomp)\n\n# Matriz de contrastes: linhas = hipóteses (na ordem dos níveis A,B,C,D)\nK &lt;- rbind(\n  \"Comerciais vs Alternativo\" = c( 0.5,  0.5, -1.0,  0.0),\n  \"Adubado vs Outros\"        = c(-1/3, -1/3, -1/3,  1.0)\n)\n\ncontr &lt;- glht(mod, linfct = mcp(Tratamento = K))\nsummary(contr)\n\n\n\n     Simultaneous Tests for General Linear Hypotheses\n\nMultiple Comparisons of Means: User-defined Contrasts\n\n\nFit: aov(formula = Altura_cm ~ Tratamento, data = dados)\n\nLinear Hypotheses:\n                               Estimate Std. Error t value Pr(&gt;|t|)    \nComerciais vs Alternativo == 0   2.0500     0.6130   3.344  0.00469 ** \nAdubado vs Outros == 0           3.8083     0.5779   6.590  7.6e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n(Adjusted p values reported -- single-step method)\n\n\nCódigo\nconfint(contr)  # IC dos contrastes\n\n\n\n     Simultaneous Confidence Intervals\n\nMultiple Comparisons of Means: User-defined Contrasts\n\n\nFit: aov(formula = Altura_cm ~ Tratamento, data = dados)\n\nQuantile = 2.3587\n95% family-wise confidence level\n \n\nLinear Hypotheses:\n                               Estimate lwr    upr   \nComerciais vs Alternativo == 0 2.0500   0.6041 3.4959\nAdubado vs Outros == 0         3.8083   2.4451 5.1715\n\n\n\n\n\n\n\n\nNota\n\n\n\n📌 Leitura: Se p &lt; 0,05 em “Comerciais vs Alternativo”, então (A,B) e C têm médias diferentes.\nSe p &lt; 0,05 em “Adubado vs Outros”, então D difere da média de A,B,C.\nOs ICs ajudam a ver direção e magnitude da diferença.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html#opcional-comparação-com-tukey",
     "href": "cap05-contrastes.html#opcional-comparação-com-tukey",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "7.7 🔁 (Opcional) Comparação com Tukey",
     "text": "7.7 🔁 (Opcional) Comparação com Tukey\n\n\nCódigo\nTukeyHSD(mod)\n\n\n  Tukey multiple comparisons of means\n    95% family-wise confidence level\n\nFit: aov(formula = Altura_cm ~ Tratamento, data = dados)\n\n$Tratamento\n       diff        lwr        upr     p adj\nB-A -2.3250 -4.2575601 -0.3924399 0.0137727\nC-A -3.2125 -5.1450601 -1.2799399 0.0005382\nD-A  1.9625  0.0299399  3.8950601 0.0455373\nC-B -0.8875 -2.8200601  1.0450601 0.5988934\nD-B  4.2875  2.3549399  6.2200601 0.0000090\nD-C  5.1750  3.2424399  7.1075601 0.0000003\n\n\n\n\n\n\n\n\nImportante\n\n\n\n⚠️ Interpretação: Tukey pode listar vários pares “diferentes”, mas nem todos respondem à pergunta do gestor.\nContrastes mantêm o foco nas hipóteses que motivaram o experimento.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap05-contrastes.html#exercícios",
     "href": "cap05-contrastes.html#exercícios",
-    "title": "7  📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados",
+    "title": "7  📖 Comparações Múltiplas e Contrastes Planejados",
     "section": "7.8 📝 Exercícios",
     "text": "7.8 📝 Exercícios\nResponda:\n\nO que foi testado (substratos) e por quê (decisão de manejo).\n\nANOVA (F, p-valor).\nContrastes: apresente p-valores e ICs para as hipóteses planejadas.\nDecisão: recomende (ou não) o D adubado; avalie a possibilidade de substituir comerciais por C.\nAdicione um contraste A vs B (interessa à empresa?). Interprete.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Capítulo 5 – Comparações Múltiplas e Contrastes Planejados</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>📖 Comparações Múltiplas e Contrastes Planejados</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html",
     "href": "cap06-fatorial.html",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "",
     "text": "8.1 🌱 Narrativa aplicada\nMódulo 2 – Semana 8\nUm viveiro florestal deseja otimizar o crescimento inicial de mudas nativas combinando tipo de substrato e regime de irrigação.\nHá indícios de que um substrato responde muito melhor quando a irrigação é alta, mas o comportamento pode se inverter em déficit hídrico.\nPara responder, vamos testar os dois fatores simultaneamente com um delineamento fatorial 2×2.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#narrativa-aplicada",
     "href": "cap06-fatorial.html#narrativa-aplicada",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "",
     "text": "Fator 1 – Substrato: A (comercial estável) vs B (formulação que potencialmente responde mais à água).\n\nFator 2 – Irrigação: Baixa vs Alta.\n\nUnidade experimental: muda em tubete (55 cm³).\n\nRepetições: 10 por combinação (total = 40).\n\nVariável resposta: Altura (cm) aos 90 dias pós-semeadura.\n\n\n\n\n\n\n\nDica\n\n\n\n💡 Por que fatorial? Compara efeitos principais e testa interação. Se houver interação, o melhor substrato depende da irrigação (e vice‑versa) — informação crucial para o manejo.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#objetivos-de-aprendizagem",
     "href": "cap06-fatorial.html#objetivos-de-aprendizagem",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.2 🎯 Objetivos de aprendizagem",
     "text": "8.2 🎯 Objetivos de aprendizagem\n\nEntender efeitos principais e interação em fatoriais.\n\nEspecificar e ajustar o modelo linear com interação.\n\nVisualizar e interpretar gráficos de interação.\n\nTraduzir efeitos estatísticos em decisões operacionais (impacto de irrigação).",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#modelo-linear-fatorial-22",
     "href": "cap06-fatorial.html#modelo-linear-fatorial-22",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.3 🧮 Modelo linear (fatorial 2×2)",
     "text": "8.3 🧮 Modelo linear (fatorial 2×2)\n\\[\nY_{ijk} = \\mu + \\alpha_i + \\beta_j + (\\alpha\\beta)_{ij} + \\varepsilon_{ijk},\\quad\n\\varepsilon_{ijk} \\sim \\mathcal{N}(0, \\sigma^2)\n\\]\n\n\\(\\alpha_i\\): efeito do substrato (i = A,B)\n\n\\(\\beta_j\\): efeito da irrigação (j = Baixa,Alta)\n\n\\((\\alpha\\beta)_{ij}\\): interação (o efeito de um fator depende do nível do outro)",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#dados-desta-análise",
     "href": "cap06-fatorial.html#dados-desta-análise",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.4 📦 Dados desta análise",
     "text": "8.4 📦 Dados desta análise\n\ndados/fatorial_substrato_irrigacao_2x2.csv\n\nColab: /content/fatorial_substrato_irrigacao_2x2.csv\n\nQuarto local: dados/fatorial_substrato_irrigacao_2x2.csv",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#análise-no-r",
     "href": "cap06-fatorial.html#análise-no-r",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.5 💻 Análise no R",
     "text": "8.5 💻 Análise no R\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2)\n\n# Quarto local:\ndados &lt;- read_csv(\"dados/fatorial_substrato_irrigacao_2x2.csv\", show_col_types = FALSE)\n# Colab:\n# dados &lt;- read_csv(\"/content/fatorial_substrato_irrigacao_2x2.csv\", show_col_types = FALSE)\n\n# Fatores com ordem explícita (útil para gráficos e relatórios)\ndados$Substrato &lt;- factor(dados$Substrato, levels = c(\"A\",\"B\"))\ndados$Irrigacao &lt;- factor(dados$Irrigacao, levels = c(\"Baixa\",\"Alta\"))\n\n# ANOVA fatorial com interação (modelo completo)\nmod_full &lt;- aov(Altura_cm ~ Substrato * Irrigacao, data = dados)\nsummary(mod_full)\n\n\n                    Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nSubstrato            1  14.64   14.64   10.04  0.00312 ** \nIrrigacao            1 160.80  160.80  110.27 1.66e-12 ***\nSubstrato:Irrigacao  1  40.40   40.40   27.71 6.70e-06 ***\nResiduals           36  52.50    1.46                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n8.5.1 🔎 Modelo com interação vs. modelo aditivo (sem interação)\nQuando testamos Substrato * Irrigacao, estamos ajustando o modelo com interação:\n\nCom interação: \\(Y = \\mu + \\alpha + \\beta + \\alpha\\beta + \\varepsilon\\)\n— Permite que o efeito do substrato dependa do nível de irrigação (e vice-versa).\n\nSem interação (aditivo): \\(Y = \\mu + \\alpha + \\beta + \\varepsilon\\)\n— Assume efeitos constantes (linhas paralelas no gráfico de interação).\n\nPor que ajustar o modelo sem interação?\n- Como modelo de referência: se a interação não for significativa, o modelo aditivo é mais simples e direto para comunicar.\n- Para comparar ajuste: em casos limítrofes, compare mod_full vs. mod_add para checar se a complexidade extra se justifica.\n\n\nCódigo\n# Modelo sem interação (aditivo)\nmod_add  &lt;- aov(Altura_cm ~ Substrato + Irrigacao, data = dados)\n\n# Comparação formal\nanova(mod_add, mod_full)   # p &lt; 0,05 → manter interação\n\n\nAnalysis of Variance Table\n\nModel 1: Altura_cm ~ Substrato + Irrigacao\nModel 2: Altura_cm ~ Substrato * Irrigacao\n  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    \n1     37 92.897                                  \n2     36 52.496  1    40.401 27.706 6.699e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCódigo\nAIC(mod_add, mod_full)     # critério de informação (menor é preferível)\n\n\n         df      AIC\nmod_add   4 155.2196\nmod_full  5 134.3894\n\n\n\n\n\n\n\n\nNota\n\n\n\n📌 Regra prática\n- Interação significativa → comunique recomendações condicionais (“Com Irrigação Alta, prefira B; com Baixa, A”).\n- Interação não significativa → use o modelo aditivo e reporte efeitos principais.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#gráficos-de-apoio",
     "href": "cap06-fatorial.html#gráficos-de-apoio",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.6 📈 Gráficos de apoio",
     "text": "8.6 📈 Gráficos de apoio\n\n\nCódigo\n# Boxplot por combinação\nggplot(dados, aes(x = Substrato, y = Altura_cm, fill = Irrigacao)) +\n  geom_boxplot(position = position_dodge(width = .8)) +\n  labs(title = \"Altura por Substrato × Irrigação (90 dias)\",\n       x = \"Substrato\", y = \"Altura (cm)\", fill = \"Irrigação\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nCódigo\n# Gráfico de interação (médias por célula)\nmedias &lt;- dados %&gt;% group_by(Substrato, Irrigacao) %&gt;% summarise(media = mean(Altura_cm), .groups = \"drop\")\nggplot(medias, aes(Irrigacao, media, group = Substrato, shape = Substrato)) +\n  geom_point(size = 3) + geom_line() +\n  labs(title = \"Gráfico de interação (médias)\",\n       x = \"Irrigação\", y = \"Altura média (cm)\")\n\n\n\n\n\n\n\n\n\n\n8.6.1 🧭 “Impacto operacional” da irrigação (o que significa?)\n“Impacto operacional” traduz a estatística para decisão de viveiro. Exemplos práticos:\n\nCusto de água/energia: irrigação Alta pode elevar custos; só vale a pena se o ganho de crescimento (ex.: +3 cm aos 90 dias) compensar.\n\nCapacidade de infraestrutura: regimes altos podem exigir bombas/turnos adicionais; às vezes A × Baixa é preferível por simplicidade.\n\nRisco de manejo: irrigação alta pode elevar risco de fungos; se o ganho for pequeno, não compensa.\n\nMeta de produção: se a meta é atingir altura mínima para expedição em 90 dias, escolher a combinação que garanta a meta com menor variância.\n\n\n\n\n\n\n\nDica\n\n\n\n✅ Como escrever no relatório\n“Com irrigação Alta, o Substrato B apresentou ganho médio de +3,2 cm (IC 95%: +2,4 a +4,0) em relação a A. Considerando o custo adicional de água e maior risco de doença, recomendamos B × Alta apenas quando a meta de expedição exigir esse ganho.”",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#por-que-intervalos-de-confiança-ic",
     "href": "cap06-fatorial.html#por-que-intervalos-de-confiança-ic",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.7 📐 Por que intervalos de confiança (IC)?",
     "text": "8.7 📐 Por que intervalos de confiança (IC)?\nO valor-p diz se há evidência de diferença; o IC diz quanto e com que precisão. Em decisões de manejo, o “quanto” é crucial (ganho esperado).\n\n\nCódigo\n# Com emmeans: estimativas marginais e ICs\n# install.packages(\"emmeans\") # se necessário\nlibrary(emmeans)\n\n# ICs para as 4 células (médias ajustadas)\nemm_cells &lt;- emmeans(mod_full, ~ Substrato * Irrigacao)\nsummary(emm_cells, infer = c(TRUE, TRUE))  # inclui ICs\n\n\n Substrato Irrigacao emmean    SE df lower.CL upper.CL t.ratio p.value\n A         Baixa       20.4 0.382 36     19.6     21.2  53.422  &lt;.0001\n B         Baixa       19.6 0.382 36     18.8     20.4  51.327  &lt;.0001\n A         Alta        22.4 0.382 36     21.6     23.2  58.659  &lt;.0001\n B         Alta        25.6 0.382 36     24.8     26.4  67.091  &lt;.0001\n\nConfidence level used: 0.95 \n\n\nCódigo\n# Gráfico com ICs\nplot(emm_cells) + ggtitle(\"Médias ajustadas com IC (Substrato × Irrigação)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\n\n⚠️ Decisão baseada em efeito\nMesmo com p &lt; 0,05, um ganho com IC estreito e pequena magnitude pode não justificar alterar o manejo. ICs deixam isso explícito.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#efeitos-simples-quando-há-interação",
     "href": "cap06-fatorial.html#efeitos-simples-quando-há-interação",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.8 🔬 Efeitos simples (quando há interação)",
     "text": "8.8 🔬 Efeitos simples (quando há interação)\n\n\nCódigo\n# Comparar Substrato dentro de cada regime de Irrigação\ndados %&gt;% filter(Irrigacao == \"Baixa\") %&gt;% aov(Altura_cm ~ Substrato, data = .) %&gt;% summary()\n\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)\nSubstrato    1    3.2   3.200   1.933  0.181\nResiduals   18   29.8   1.656               \n\n\nCódigo\ndados %&gt;% filter(Irrigacao == \"Alta\")  %&gt;% aov(Altura_cm ~ Substrato, data = .) %&gt;% summary()\n\n\n            Df Sum Sq Mean Sq F value  Pr(&gt;F)    \nSubstrato    1  51.84   51.84   41.12 4.9e-06 ***\nResiduals   18  22.70    1.26                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n(Opcional avançado) com emmeans:\n\n\nCódigo\nemm_sub_by_irr &lt;- emmeans(mod_full, ~ Substrato | Irrigacao)\npairs(emm_sub_by_irr)        # compara Substrato dentro de cada Irrigação\n\n\nIrrigacao = Baixa:\n contrast estimate   SE df t.ratio p.value\n A - B        0.80 0.54 36   1.481  0.1472\n\nIrrigacao = Alta:\n contrast estimate   SE df t.ratio p.value\n A - B       -3.22 0.54 36  -5.963  &lt;.0001",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#cola-para-o-relatório",
     "href": "cap06-fatorial.html#cola-para-o-relatório",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.9 🧾 “Cola” para o relatório",
     "text": "8.9 🧾 “Cola” para o relatório\n\nDescreva o problema de manejo (otimizar crescimento via Substrato × Irrigação).\n\nRelate a ANOVA fatorial (F, p) para fatores e interação.\n\nSe houver interação, apresente efeitos simples e gráfico de interação.\n\nFaça uma recomendação condicional, citando ICs para justificar a decisão.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#exercícios",
     "href": "cap06-fatorial.html#exercícios",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.10 📝 Exercícios",
     "text": "8.10 📝 Exercícios\n\nInteração e recomendação condicional: ajuste mod_full e mod_add, compare com anova(mod_add, mod_full). Se houver interação, faça efeitos simples e escreva 2–3 frases com a recomendação condicional.\n\nMédias ajustadas e ICs (quantificar o ganho): use emmeans para obter médias + IC 95% por célula; faça um gráfico e responda: qual combinação tem maior ganho? A margem de incerteza justifica mudar o manejo?\n\nCenário operacional: suponha custo extra de irrigação Alta de R$ 0,05/muda/dia. Em 90 dias e 10.000 mudas, o custo adicional é R$ 45.000. Com base nos ICs, quando vale a pena B × Alta?\n\nRelato final: entregue um parágrafo que combine estatística + operação (p-valores, ICs, recomendação clara).",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap06-fatorial.html#síntese",
     "href": "cap06-fatorial.html#síntese",
-    "title": "8  📖 Capítulo 6 – Delineamentos Fatoriais (2x2)",
+    "title": "8  📖 Delineamentos Fatoriais (2x2)",
     "section": "8.11 ✅ Síntese",
     "text": "8.11 ✅ Síntese\n\nO fatorial 2×2 permite testar efeitos principais e interação.\n\nModelo com interação vs. modelo aditivo ajuda a decidir como comunicar resultados.\n\nICs quantificam ganhos e incertezas, fundamentais para decisão de manejo.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Capítulo 6 – Delineamentos Fatoriais (2x2)</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>📖 Delineamentos Fatoriais (2x2)</span>"
     ]
   },
   {
     "objectID": "cap07-split.html",
     "href": "cap07-split.html",
-    "title": "9  📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)",
+    "title": "9  📖 Delineamento em Parcelas Subdivididas (Split-Plot)",
     "section": "",
     "text": "9.1 🌱 Narrativa aplicada\nMódulo 2 – Semana 9\nEm muitos experimentos florestais, alguns fatores são difíceis de controlar (ex.: espécie, espaçamento de plantio, preparo de área), enquanto outros são fáceis (ex.: adubação na bancada, fungicida por pulverização).\nQuando isso acontece, o delineamento em parcelas subdivididas (split-plot) é o caminho natural — ele respeita as restrições operacionais e usa duas fontes de erro (parcela e subparcela) para testar os efeitos apropriadamente.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
     ]
   },
   {
     "objectID": "cap07-split.html#objetivos",
     "href": "cap07-split.html#objetivos",
-    "title": "9  📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)",
+    "title": "9  📖 Delineamento em Parcelas Subdivididas (Split-Plot)",
     "section": "9.2 🎯 Objetivos",
     "text": "9.2 🎯 Objetivos\n\nEntender por que/quando usar split-plot.\n\nDistinguir fator de parcela vs fator de subparcela.\n\nAjustar e interpretar ANOVA com dois erros.\n\nRealizar comparações de médias (Tukey) com o ExpDes.pt, preservando os estratos corretos.\n\nTraduzir resultado em decisão técnica.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
     ]
   },
   {
     "objectID": "cap07-split.html#quando-é-necessário-usar-parcelas-subdivididas",
     "href": "cap07-split.html#quando-é-necessário-usar-parcelas-subdivididas",
-    "title": "9  📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)",
+    "title": "9  📖 Delineamento em Parcelas Subdivididas (Split-Plot)",
     "section": "9.3 🧭 Quando é necessário usar parcelas subdivididas?",
     "text": "9.3 🧭 Quando é necessário usar parcelas subdivididas?\n\nOperação “de difícil ajuste” em larga escala: fator exige mudança de bancada/talhão, preparo de área, ou maquinário (ex.: Espécie, Espaçamento).\n\nCusto/tempo elevado ao alternar níveis com frequência: manter um nível por parcela principal e variar o outro dentro dela reduz custo e viabiliza o estudo.\n\nRisco/biosegurança: tratamentos que precisam ser mantidos separados (ex.: inoculação, sombreamento fixo).\n\nInterferência entre unidades se alternar muito: operações que “vazam” entre unidades vizinhas (ex.: irrigação por setor, controle de pragas por baia).\n\nLogística do viveiro/campo: o planejamento obriga a fixar um fator por parcela (whole‑plot) e subdividir para o outro (subplot).\n\n\n\n\n\n\n\nDica\n\n\n\n💡 Regra prática: trate como fator de parcela (whole‑plot) aquilo que não dá (ou não convém) alternar célula a célula; trate como subparcela o que é fácil e frequente de variar.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
     ]
   },
   {
     "objectID": "cap07-split.html#modelo-linear-split-plot",
     "href": "cap07-split.html#modelo-linear-split-plot",
-    "title": "9  📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)",
+    "title": "9  📖 Delineamento em Parcelas Subdivididas (Split-Plot)",
     "section": "9.4 🧮 Modelo linear (split-plot)",
     "text": "9.4 🧮 Modelo linear (split-plot)\n\\[\nY_{ijkl} = \\\\mu + B_i + A_j + (BA)_{ij} + S_{k(ij)} + C_l + (AC)_{jl} + (BC)_{il} + (ABC)_{ijl} + \\varepsilon_{ijkl}\n\\]\n\n\\(A_j\\): fator de parcela (difícil, aplicado nas parcelas principais dentro de cada bloco).\n\n\\(C_l\\): fator de subparcela (fácil, aplicado dentro de cada parcela).\n\n\\((S_{k(ij)}\\): variação aleatória de parcela (erro de parcela).\n\n\\(\\varepsilon\\): erro de subparcela.\n\nRegra de ouro: o efeito de A é testado contra o erro de parcela; efeitos de C e interações com C, contra o erro de subparcela.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
     ]
   },
   {
     "objectID": "cap07-split.html#exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt",
     "href": "cap07-split.html#exemplo-viveiro-espécie-adubação-splitplot-em-dic-com-expdes.pt",
-    "title": "9  📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)",
+    "title": "9  📖 Delineamento em Parcelas Subdivididas (Split-Plot)",
     "section": "9.5 🌳 EXEMPLO — Viveiro (Espécie × Adubação) — split‑plot em DIC com ExpDes.pt",
     "text": "9.5 🌳 EXEMPLO — Viveiro (Espécie × Adubação) — split‑plot em DIC com ExpDes.pt\nContexto\nNo viveiro, trocar adubação é simples; trocar de Espécie demanda bancada diferente. Logo, Espécie = parcela, Adubação = subparcela.\n\n\n\nElemento\nEspecificação\n\n\n\n\nBlocos (bancadas)\n4 (B1–B4)\n\n\nFator de parcela (A)\nEspécie: Cedrela vs Ipê\n\n\nFator de subparcela (C)\nAdubação: Baixa, Média, Alta\n\n\nUnidade experimental\nBandeja (média de 5 mudas)\n\n\nResposta\nAltura (cm) aos 120 dias\n\n\n\n📦 Dados: dados/parcelas_subdivididas_especie_adubacao.csv\n\n9.5.1 💻 ANOVA + Tukey (ExpDes.pt)\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2)\nlibrary(ExpDes.pt)\n\n# Quarto local:\ndados &lt;- read_csv(\"dados/parcelas_subdivididas_especie_adubacao.csv\", show_col_types = FALSE)\n# Colab (se preferir copiar antes p/ /content):\n# dados &lt;- read_csv(\"/content/parcelas_subdivididas_especie_adubacao.csv\", show_col_types = FALSE)\n\ndados &lt;- dados |&gt;\n  mutate(\n    Bloco    = factor(Bloco),\n    Especie  = factor(Especie,  levels = c(\"Cedrela\",\"Ipe\")),\n    Adubacao = factor(Adubacao, levels = c(\"Baixa\",\"Media\",\"Alta\"))\n  )\n\n# Parcela = Especie ; Subparcela = Adubacao\nout_viveiro &lt;- psub2.dic(\n  fator1     = dados$Especie,       # PARCELA\n  fator2     = dados$Adubacao,      # SUBPARCELA\n  repet      = dados$Bloco,\n  resp       = dados$Altura_cm,\n  quali      = c(TRUE, TRUE),\n  mcomp      = \"tukey\",             # letras de Tukey nos estratos corretos\n  fac.names  = c(\"Espécie\", \"Adubação\"),\n  sigF       = 0.05,\n  sigT       = 0.05,\n  unfold     = NULL\n)\n\n\n------------------------------------------------------------------------\nLegenda:\nFATOR 1(parcela):  Espécie \nFATOR 2 (subparcela):  Adubação \n------------------------------------------------------------------------\n\n------------------------------------------------------------------------\nQuadro da analise de variancia\n------------------------------------------------------------------------\n                 GL      SQ     QM     Fc Pr(&gt;Fc)    \nEspécie           1  41.607 41.607  2.062 0.20102    \nErro a            6 121.060 20.177                   \nAdubação          2  35.076 17.538 55.021   1e-06 ***\nEspécie*Adubação  2   3.766  1.883  5.907 0.01637 *  \nErro b           12   3.825  0.319                   \nTotal            23 205.333                          \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n------------------------------------------------------------------------\nCV 1 = 17.77775 %\nCV 2 = 2.234483 %\n\n------------------------------------------------------------------------\n#Teste de normalidade dos residuos (Shapiro-Wilk)\nvalor-p:  0.05399922 \nDe acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.\n------------------------------------------------------------------------\n\n\n\nInteracao significativa: desdobrando a interacao\n------------------------------------------------------------------------\n\nDesdobrando  Espécie  dentro de cada nivel de  Adubação \n------------------------------------------------------------------------\n                                GL       SQ        QM       Fc  valor.p\nEspécie : Adubação Baixa  1.000000 15.40125 15.401250 2.219822 0.183924\nEspécie : Adubação Media  1.000000  5.12000  5.120000 0.737959 0.421405\nEspécie : Adubação Alta   1.000000 24.85125 24.851250 3.581875 0.104349\nErro combinado            6.381955 44.27836  6.938056                  \n------------------------------------------------------------------------\n\n\n Espécie dentro de Adubação Baixa\n------------------------------------------------------------------------\nDe acordo com o teste F, as medias desse fator sao estatisticamente iguais.\n------------------------------------------------------------------------\n   Niveis Medias\n1 Cedrela 22.550\n2     Ipe 25.325\n------------------------------------------------------------------------\n\n Espécie dentro de Adubação Media\n------------------------------------------------------------------------\nDe acordo com o teste F, as medias desse fator sao estatisticamente iguais.\n------------------------------------------------------------------------\n   Niveis Medias\n1 Cedrela   24.2\n2     Ipe   25.8\n------------------------------------------------------------------------\n\n Espécie dentro de Adubação Alta\n------------------------------------------------------------------------\nDe acordo com o teste F, as medias desse fator sao estatisticamente iguais.\n------------------------------------------------------------------------\n   Niveis Medias\n1 Cedrela 25.100\n2     Ipe 28.625\n------------------------------------------------------------------------\n\n\nDesdobrando  Adubação  dentro de cada nivel de  Espécie \n------------------------------------------------------------------------\n                            GL       SQ       QM        Fc  valor.p\nAdubação : Espécie Cedrela   2 13.38000  6.69000 20.988235 0.000121\nAdubação : Espécie Ipe       2 25.46167 12.73083 39.939869    5e-06\nErro b                      12  3.82500  0.31875                   \n------------------------------------------------------------------------\n\n\n Adubação dentro de Espécie Cedrela\n------------------------------------------------------------------------\nTeste de Tukey\n------------------------------------------------------------------------\nGrupos Tratamentos Medias\na    Alta    25.1 \na    Media   24.2 \n b   Baixa   22.55 \n------------------------------------------------------------------------\n------------------------------------------------------------------------\n\n\n Adubação dentro de Espécie Ipe\n------------------------------------------------------------------------\nTeste de Tukey\n------------------------------------------------------------------------\nGrupos Tratamentos Medias\na    Alta    28.625 \n b   Media   25.8 \n b   Baixa   25.325 \n------------------------------------------------------------------------\n------------------------------------------------------------------------\n\n\nCódigo\n# Visual rápido (opcional)\nggplot(dados, aes(Adubacao, Altura_cm, fill = Especie)) +\n  geom_boxplot(position = position_dodge(width = 0.8)) +\n  labs(title = \"Altura – Espécie × Adubação (split-plot, DIC)\",\n       x = \"Adubação\", y = \"Altura (cm)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n9.5.2 🧩 Interpretação\n\nEspécie é testada com erro de parcela → menor precisão.\n\nAdubação e Especie×Adubacao usam erro de subparcela → maior precisão.\n\nSe houver interação, a adubação ótima depende da espécie.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
     ]
   },
   {
     "objectID": "cap07-split.html#exercício-espaçamento-fungicida-em-campo-jovem",
     "href": "cap07-split.html#exercício-espaçamento-fungicida-em-campo-jovem",
-    "title": "9  📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)",
+    "title": "9  📖 Delineamento em Parcelas Subdivididas (Split-Plot)",
     "section": "9.6 🌾 EXERCÍCIO — Espaçamento × Fungicida em campo jovem",
     "text": "9.6 🌾 EXERCÍCIO — Espaçamento × Fungicida em campo jovem\nContexto\nAlterar Espaçamento exige maquinário e planejamento (difícil) → parcela. Pulverizar Fungicida é fácil e pode ser feito dentro das parcelas → subparcela. Objetivo: reduzir incidência de doença.\n\n\n\nElemento\nEspecificação\n\n\n\n\nBlocos (talhões)\n5 (T1–T5)\n\n\nParcela (A)\nEspaçamento: 2×3 m vs 3×3 m\n\n\nSubparcela (C)\nFungicida: Sem vs Com\n\n\nUnidade experimental\nLinha × 10 plantas\n\n\nResposta\nIncidência de doença (%) aos 6 meses\n\n\n\n📦 Dados: dados/parcelas_subdivididas_espacamento_fungicida.csv\n\n9.6.1 📊 Orientações d\n\nCompare efeitos simples se a interação for significativa (fungicida reduz mais no adensado?).\n\nSe a interação não for significativa, reporte efeitos principais (modelo aditivo).\n\nConsidere a magnitude da redução (%) para decisão de manejo (custo do produto × benefício).",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
     ]
   },
   {
     "objectID": "cap07-split.html#cola-para-o-relatório",
     "href": "cap07-split.html#cola-para-o-relatório",
-    "title": "9  📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)",
+    "title": "9  📖 Delineamento em Parcelas Subdivididas (Split-Plot)",
     "section": "9.7 🧾 “Cola” para o relatório",
     "text": "9.7 🧾 “Cola” para o relatório\n\nJustifique o uso do split-plot pela logística do experimento.\n\nApresente a ANOVA com dois erros (parcela vs subparcela).\n\nInterprete interações com gráficos de médias.\n\nFaça recomendação prática (qual combinação adotar).",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
     ]
   },
   {
     "objectID": "cap07-split.html#síntese",
     "href": "cap07-split.html#síntese",
-    "title": "9  📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)",
+    "title": "9  📖 Delineamento em Parcelas Subdivididas (Split-Plot)",
     "section": "9.8 ✅ Síntese",
     "text": "9.8 ✅ Síntese\n\nSplit-plot alinha a estatística às restrições reais.\n\nNem todos os efeitos têm a mesma precisão.\n\nTestes certos → recomendações confiáveis.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Capítulo 7 – Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>📖 Delineamento em Parcelas Subdivididas (Split-Plot)</span>"
+    ]
+  },
+  {
+    "objectID": "cap08-regre.html",
+    "href": "cap08-regre.html",
+    "title": "10  📖 Fator Quantitativo e Regressão Polinomial",
+    "section": "",
+    "text": "10.1 🌱 Cenário aplicado\nMódulo 2 – Semana 10\nNo viveiro, queremos definir dose de nitrogênio para maximizar o crescimento inicial de mudas. Em outro ensaio, avaliamos como o pH do substrato (após calagem) afeta o diâmetro do colo. Em ambos os casos o fator é quantitativo e o objetivo é modelar a resposta em função do nível (não comparar níveis como se fossem categorias soltas).",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>📖 Fator Quantitativo e Regressão Polinomial</span>"
+    ]
+  },
+  {
+    "objectID": "cap08-regre.html#objetivos-de-aprendizagem",
+    "href": "cap08-regre.html#objetivos-de-aprendizagem",
+    "title": "10  📖 Fator Quantitativo e Regressão Polinomial",
+    "section": "10.2 🎯 Objetivos de aprendizagem",
+    "text": "10.2 🎯 Objetivos de aprendizagem\n\nCompreender a ANOVA para regressão polinomial (linear, quadrática, cúbica…).\n\nAjustar modelos polinomiais no contexto de experimentos (DIC).\n\nAvaliar falta de ajuste (lack-of-fit) usando o erro puro das repetições.\n\nUsar ExpDes.pt (dic(quali = FALSE)) para decompor a soma de quadrados do tratamento em componentes polinomiais.\n\nConstruir gráficos com médias por tratamento, incluindo equação e R², no ggplot2.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>📖 Fator Quantitativo e Regressão Polinomial</span>"
+    ]
+  },
+  {
+    "objectID": "cap08-regre.html#teoria-anova-para-regressão-polinomial-em-experimento-dic",
+    "href": "cap08-regre.html#teoria-anova-para-regressão-polinomial-em-experimento-dic",
+    "title": "10  📖 Fator Quantitativo e Regressão Polinomial",
+    "section": "10.3 🧠 Teoria – ANOVA para regressão polinomial em experimento (DIC)",
+    "text": "10.3 🧠 Teoria – ANOVA para regressão polinomial em experimento (DIC)\nConsidere um experimento com k níveis do fator quantitativo (x_1, …, x_k) e r repetições por nível. O modelo polinomial de grau g (ex.: g=2 para quadrático) é:\n\\[\nY_{ij} = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\cdots + \\beta_g x_i^g + \\varepsilon_{ij},\\quad\n\\varepsilon_{ij} \\sim \\mathcal{N}(0, \\sigma^2), \\; i=1..k,\\; j=1..r.\n\\]\nA ANOVA do tratamento (tradicional) pode ser decomposta em contrastes ortogonais: - Linear (L), Quadrático (Q), Cúbico (C), …, até grau k-1 (limitado pela quantidade de níveis).\n- Cada contraste tem seu SQ, GL = 1, QM, F, p-valor.\n- O Erro (puro) vem da variação entre repetições dentro de cada nível - ele permite testar falta de ajuste do polinômio escolhido.\nTeste de falta de ajuste (LOF): compare um modelo “saturado por tratamentos” com o modelo polinomial (ex.: grau 2).\n- H0: o polinômio ajusta bem (sem falta de ajuste).\n- HA: há falta de ajuste (o polinômio é muito simples para a forma verdadeira).",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>📖 Fator Quantitativo e Regressão Polinomial</span>"
+    ]
+  },
+  {
+    "objectID": "cap08-regre.html#conjuntos-de-dados",
+    "href": "cap08-regre.html#conjuntos-de-dados",
+    "title": "10  📖 Fator Quantitativo e Regressão Polinomial",
+    "section": "10.4 📦 Conjuntos de dados",
+    "text": "10.4 📦 Conjuntos de dados\n\nExemplo (Dose de N → Altura): dados/dic_doseN_altura.csv\n\nAtividade (pH → Diâmetro): dados/dic_ph_diametro.csv",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>📖 Fator Quantitativo e Regressão Polinomial</span>"
+    ]
+  },
+  {
+    "objectID": "cap08-regre.html#exemplo-dose-de-n-altura-dic-quantitativo",
+    "href": "cap08-regre.html#exemplo-dose-de-n-altura-dic-quantitativo",
+    "title": "10  📖 Fator Quantitativo e Regressão Polinomial",
+    "section": "10.5 🌳 EXEMPLO – Dose de N × Altura (DIC, quantitativo)",
+    "text": "10.5 🌳 EXEMPLO – Dose de N × Altura (DIC, quantitativo)\n\n10.5.1 Descrição do experimento\n\nFator (quantitativo): Dose de nitrogênio (mg/L) — níveis: 0, 40, 80, 120, 160.\n\nUnidades experimentais: bandejas (5 mudas), resposta = Altura (cm) aos 90 dias.\n\nRepetições: 5 por dose (erro puro disponível).\n\nHipótese biológica: resposta quadrática com ótimo em torno de 110–120 mg/L.\n\n\n\n10.5.2 Análise com ExpDes.pt (decomposição polinomial)\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2)\nlibrary(ExpDes.pt)\n\n# Quarto local:\ndados &lt;- read_csv(\"dados/dic_doseN_altura.csv\", show_col_types = FALSE)\n# Colab:\n# dados &lt;- read_csv(\"/content/dic_doseN_altura.csv\", show_col_types = FALSE)\n\ndados &lt;- dados |&gt;\n  mutate(\n    Dose_N_mgL = as.numeric(Dose_N_mgL)\n  )\n\n# ExpDes: DIC com fator quantitativo -&gt; quali = FALSE (faz decomposição polinomial)\nout_dic &lt;- dic(\n  trat  = dados$Dose_N_mgL,\n  resp  = dados$Altura_cm,\n  quali = FALSE            # graus a testar (até k-1); aqui 4 níveis polinomiais\n)\n\n\n------------------------------------------------------------------------\nQuadro da analise de variancia\n------------------------------------------------------------------------\n           GL      SQ     QM     Fc      Pr&gt;Fc\nTratamento  4 199.500 49.875 82.561 3.8446e-12\nResiduo    20  12.082  0.604                  \nTotal      24 211.582                         \n------------------------------------------------------------------------\nCV = 5.25 %\n\n------------------------------------------------------------------------\nTeste de normalidade dos residuos ( Shapiro-Wilk ) \nValor-p:  0.4548708 \nDe acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.\n------------------------------------------------------------------------\n\n------------------------------------------------------------------------\nTeste de homogeneidade de variancia \nvalor-p:  0.9929198 \nDe acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.\n------------------------------------------------------------------------\n\nAjuste de modelos polinomiais de regressao\n------------------------------------------------------------------------\n\nModelo Linear\n=========================================\n   Estimativa Erro.padrao   tc    valor.p\n-----------------------------------------\nb0  11.3924     0.2692    42.3126    0   \nb1   0.0426     0.0027    15.5170    0   \n-----------------------------------------\n\nR2 do modelo linear\n--------\n0.729090\n--------\n\nAnalise de variancia do modelo linear\n========================================================\n                     GL    SQ       QM      Fc   valor.p\n--------------------------------------------------------\nEfeito linear        1  145.4536 145.4536 240.78    0   \nDesvios de Regressao 3  54.0466  18.0155  29.82     0   \nResiduos             20 12.0820   0.6041                \n--------------------------------------------------------\n------------------------------------------------------------------------\n\nModelo quadratico\n=========================================\n   Estimativa Erro.padrao   tc    valor.p\n-----------------------------------------\nb0   9.6564     0.3271    29.5188    0   \nb1   0.1294     0.0097    13.3613    0   \nb2  -0.0005     0.0001    -9.3436    0   \n-----------------------------------------\n\nR2 do modelo quadratico\n--------\n0.993449\n--------\n\nAnalise de variancia do modelo quadratico\n========================================================\n                     GL    SQ       QM      Fc   valor.p\n--------------------------------------------------------\nEfeito linear        1  145.4536 145.4536 240.78    0   \nEfeito quadratico    1  52.7397  52.7397   87.3     0   \nDesvios de Regressao 2   1.3069   0.6534   1.08  0.35805\nResiduos             20 12.0820   0.6041                \n--------------------------------------------------------\n------------------------------------------------------------------------\n\nModelo cubico\n=========================================\n   Estimativa Erro.padrao   tc    valor.p\n-----------------------------------------\nb0   9.7616     0.3451    28.2862    0   \nb1   0.1106     0.0220    5.0389  0.0001 \nb2  -0.0002     0.0004    -0.6136 0.5464 \nb3 -0.000001       0      -0.9571 0.3500 \n-----------------------------------------\n\nR2 do modelo cubico\n--------\n0.996223\n--------\n\nAnalise de variancia do modelo cubico\n========================================================\n                     GL    SQ       QM      Fc   valor.p\n--------------------------------------------------------\nEfeito linear        1  145.4536 145.4536 240.78    0   \nEfeito quadratico    1  52.7397  52.7397   87.3     0   \nEfeito cubico        1   0.5534   0.5534   0.92  0.34996\nDesvios de Regressao 1   0.7535   0.7535   1.25  0.27729\nResiduos             20 12.0820   0.6041                \n--------------------------------------------------------\n------------------------------------------------------------------------\n\n\nCódigo\n#out_dic\n\n\n\n\n10.5.3 Gráfico com médias por dose, equação e R²\n\n\nCódigo\n# Médias por tratamento\nmedias &lt;- dados |&gt;\n  group_by(Dose_N_mgL) |&gt;\n  summarise(Altura_media = mean(Altura_cm), .groups = \"drop\")\n\n# Ajuste polinomial nas MÉDIAS (prática experimental para figura de relatório)\nfit_med &lt;- lm(Altura_media ~ Dose_N_mgL + I(Dose_N_mgL^2), data = medias)\n\n# Coeficientes e R2\ncoefs &lt;- coef(fit_med)\nb0 &lt;- coefs[1]; b1 &lt;- coefs[2]; b2 &lt;- coefs[3]\nR2 &lt;- summary(fit_med)$r.squared\n\n# Curva suave\nnewd &lt;- data.frame(Dose_N_mgL = seq(min(medias$Dose_N_mgL), max(medias$Dose_N_mgL), length.out = 200))\nnewd$yhat &lt;- predict(fit_med, newdata = newd)\n\n\nggplot(medias, aes(Dose_N_mgL, Altura_media)) +\n  geom_point(size = 3) +\n  geom_line(data = newd, aes(Dose_N_mgL, yhat)) +\n  labs(title = \"Altura × Dose de N (médias por tratamento)\",\n       x = \"Dose de N (mg/L)\",\n       y = \"Altura média (cm)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n10.5.4 🔧 Nível ótimo (vértice) pelo método da 1ª derivada\nConsidere o modelo quadrático ajustado (em geral, sobre as médias por tratamento): \\[\n\\hat{Y}(x) = \\beta_0 + \\beta_1 x + \\beta_2 x^2.\n\\] O ponto de ótimo (máximo ou mínimo) ocorre quando a 1ª derivada é zero: \\[\n\\frac{d\\hat{Y}}{dx} = \\beta_1 + 2\\beta_2 x = 0 ;\\Rightarrow;\n\\boxed{x^* = -\\frac{\\beta_1}{2\\beta_2}}.\n\\]\n\nMáximo (ótimo desejável): se \\(\\beta_2 &lt; 0 \\Rightarrow\\) concavidade voltada para baixo.\nMínimo: se \\(\\beta_2 &gt; 0\\).\nAtenção ao domínio: se \\(x^*\\) ficar fora do intervalo testado \\((x_{\\min}, x_{\\max})\\), prefira o melhor ponto na borda do domínio experimental.\n\n\n10.5.4.1 Implementação prática (R)\nSupondo que você ajustou o quadrático nas médias por tratamento:\n\n\nCódigo\nb &lt;- coef(fit_med)\nb0 &lt;- b[1]; b1 &lt;- b[2]; b2 &lt;- b[3]\n\n# nível ótimo\n\nx_star &lt;- -b1/(2*b2)\nx_star\n\n\nDose_N_mgL \n  119.2995 \n\n\nCódigo\n#y_star &lt;- b0 + b1*x_star + b2*x_star^2\n#y_star\n\n\n\n\n\n\n\n\nDica\n\n\n\nFórmula prática (modelo grau 2): \\[\n\\boxed{x^* = -\\dfrac{\\beta_1}{2\\beta_2},}\n\\] Use somente quando houver evidência de curvatura (componente Quadrática significativa e/ou LOF não significativo) e **(_2&lt;0)** para máximo.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>📖 Fator Quantitativo e Regressão Polinomial</span>"
+    ]
+  },
+  {
+    "objectID": "cap08-regre.html#atividade-ph-do-substrato-diâmetro-dic-quantitativo",
+    "href": "cap08-regre.html#atividade-ph-do-substrato-diâmetro-dic-quantitativo",
+    "title": "10  📖 Fator Quantitativo e Regressão Polinomial",
+    "section": "10.6 🌿 ATIVIDADE – pH do substrato × Diâmetro (DIC, quantitativo)",
+    "text": "10.6 🌿 ATIVIDADE – pH do substrato × Diâmetro (DIC, quantitativo)\n\n10.6.1 Descrição do experimento\n\nFator (quantitativo): pH do substrato (4.5, 5.0, 5.5, 6.0, 6.5).\n\nUnidade experimental: bandeja (5 mudas), resposta = Diâmetro (mm) aos 90 dias.\n\nRepetições: 5 por pH (erro puro disponível).\n\nHipótese biológica: resposta quadrática com nível ótimo presente.\n\n📦 Dados: dados/dic_ph_diametro.csv\n\nRode o experimento, gere o grafico do polinômio escolhido e encontre a nivel ótimo se for possivel (caso o polinômio seja de grau 2)",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>📖 Fator Quantitativo e Regressão Polinomial</span>"
+    ]
+  },
+  {
+    "objectID": "cap08-regre.html#síntese",
+    "href": "cap08-regre.html#síntese",
+    "title": "10  📖 Fator Quantitativo e Regressão Polinomial",
+    "section": "10.7 ✅ Síntese",
+    "text": "10.7 ✅ Síntese\n\nEm fatores quantitativos, relatar regressão é mais informativo do que apenas “testes de médias”.\n\nA ANOVA polinomial decompõe o efeito de tratamento em L, Q, C…, e o erro puro das repetições permite testar falta de ajuste.\n\nGráficos devem usar médias por tratamento e o nível ótimo deve ser encontrado.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>📖 Fator Quantitativo e Regressão Polinomial</span>"
     ]
   }
 ]

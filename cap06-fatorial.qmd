@@ -1,5 +1,5 @@
 ---
-title: "📖 Capítulo 6 – Delineamentos Fatoriais (2x2)"
+title: "📖 Delineamentos Fatoriais (2x2)"
 ---
 
 *Módulo 2 – Semana 8*

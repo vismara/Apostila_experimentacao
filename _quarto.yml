@@ -18,6 +18,7 @@ book:
     - cap05-contrastes.qmd
     - cap06-fatorial.qmd
     - cap07-split.qmd
+    - cap08-regre.qmd
   page-navigation: true
 
 format:

@@ -1,0 +1,183 @@
+---
+title: "📖 Fator Quantitativo e Regressão Polinomial"
+---
+
+*Módulo 2 – Semana 10*
+
+## 🌱 Cenário aplicado
+
+No viveiro, queremos definir **dose de nitrogênio** para maximizar o **crescimento inicial** de mudas. Em outro ensaio, avaliamos como o **pH do substrato** (após calagem) afeta o **diâmetro do colo**. Em ambos os casos o fator é **quantitativo** e o objetivo é **modelar a resposta em função do nível** (não comparar níveis como se fossem categorias soltas).
+
+---
+
+## 🎯 Objetivos de aprendizagem
+- Compreender a **ANOVA para regressão polinomial** (linear, quadrática, cúbica…).  
+- Ajustar **modelos polinomiais** no contexto de **experimentos (DIC)**.  
+- Avaliar **falta de ajuste (lack-of-fit)** usando o erro puro das repetições.  
+- **Usar `ExpDes.pt`** (`dic(quali = FALSE)`) para decompor a soma de quadrados do tratamento em **componentes polinomiais**.  
+- **Construir gráficos com médias por tratamento**, incluindo **equação** e **R²**, no **ggplot2**.
+
+---
+
+## 🧠 Teoria – ANOVA para regressão polinomial em experimento (DIC)
+
+Considere um experimento com k **níveis do fator quantitativo** (x_1, …, x_k) e r repetições por nível. O modelo polinomial de grau g (ex.: g=2 para quadrático) é:
+
+$$
+Y_{ij} = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \cdots + \beta_g x_i^g + \varepsilon_{ij},\quad
+\varepsilon_{ij} \sim \mathcal{N}(0, \sigma^2), \; i=1..k,\; j=1..r.
+$$
+
+A **ANOVA do tratamento** (tradicional) pode ser decomposta em **contrastes ortogonais**:
+- **Linear (L)**, **Quadrático (Q)**, **Cúbico (C)**, …, até grau **k-1** (limitado pela quantidade de níveis).  
+- Cada contraste tem seu **SQ**, **GL = 1**, **QM**, **F**, **p-valor**.  
+- O **Erro (puro)** vem da **variação entre repetições** dentro de cada nível - ele permite testar **falta de ajuste** do polinômio escolhido.
+
+**Teste de falta de ajuste (LOF)**: compare um modelo “saturado por tratamentos”  com o **modelo polinomial** (ex.: grau 2).  
+- **H0:** o polinômio **ajusta bem** (sem falta de ajuste).  
+- **HA:** há **falta de ajuste** (o polinômio é muito simples para a forma verdadeira).
+
+---
+
+## 📦 Conjuntos de dados 
+
+- **Exemplo (Dose de N → Altura)**: [dados/dic_doseN_altura.csv](dados/dic_doseN_altura.csv)  
+- **Atividade (pH → Diâmetro)**: [dados/dic_ph_diametro.csv](dados/dic_ph_diametro.csv)
+
+
+
+---
+
+## 🌳 EXEMPLO – Dose de N × Altura (DIC, quantitativo)
+
+### Descrição do experimento
+- **Fator (quantitativo):** Dose de nitrogênio (mg/L) — níveis: 0, 40, 80, 120, 160.  
+- **Unidades experimentais:** bandejas (5 mudas), resposta = **Altura (cm)** aos 90 dias.  
+- **Repetições:** 5 por dose (**erro puro** disponível).  
+- **Hipótese biológica:** resposta **quadrática** com ótimo em torno de 110–120 mg/L.
+
+### Análise com ExpDes.pt (decomposição polinomial)
+
+```{r}
+library(readr); library(dplyr); library(ggplot2)
+library(ExpDes.pt)
+
+# Quarto local:
+dados <- read_csv("dados/dic_doseN_altura.csv", show_col_types = FALSE)
+# Colab:
+# dados <- read_csv("/content/dic_doseN_altura.csv", show_col_types = FALSE)
+
+dados <- dados |>
+  mutate(
+    Dose_N_mgL = as.numeric(Dose_N_mgL)
+  )
+
+# ExpDes: DIC com fator quantitativo -> quali = FALSE (faz decomposição polinomial)
+out_dic <- dic(
+  trat  = dados$Dose_N_mgL,
+  resp  = dados$Altura_cm,
+  quali = FALSE            # graus a testar (até k-1); aqui 4 níveis polinomiais
+)
+
+#out_dic
+```
+
+
+
+### Gráfico com **médias por dose**, equação e R²
+```{r}
+# Médias por tratamento
+medias <- dados |>
+  group_by(Dose_N_mgL) |>
+  summarise(Altura_media = mean(Altura_cm), .groups = "drop")
+
+# Ajuste polinomial nas MÉDIAS (prática experimental para figura de relatório)
+fit_med <- lm(Altura_media ~ Dose_N_mgL + I(Dose_N_mgL^2), data = medias)
+
+# Coeficientes e R2
+coefs <- coef(fit_med)
+b0 <- coefs[1]; b1 <- coefs[2]; b2 <- coefs[3]
+R2 <- summary(fit_med)$r.squared
+
+# Curva suave
+newd <- data.frame(Dose_N_mgL = seq(min(medias$Dose_N_mgL), max(medias$Dose_N_mgL), length.out = 200))
+newd$yhat <- predict(fit_med, newdata = newd)
+
+
+ggplot(medias, aes(Dose_N_mgL, Altura_media)) +
+  geom_point(size = 3) +
+  geom_line(data = newd, aes(Dose_N_mgL, yhat)) +
+  labs(title = "Altura × Dose de N (médias por tratamento)",
+       x = "Dose de N (mg/L)",
+       y = "Altura média (cm)") +
+  theme_minimal()
+```
+
+
+### 🔧 Nível ótimo (vértice) pelo método da 1ª derivada
+
+Considere o **modelo quadrático** ajustado (em geral, sobre as **médias por tratamento**):
+$$
+\hat{Y}(x) = \beta_0 + \beta_1 x + \beta_2 x^2.
+$$
+O ponto de ótimo (máximo ou mínimo) ocorre quando a **1ª derivada** é zero:
+$$
+\frac{d\hat{Y}}{dx} = \beta_1 + 2\beta_2 x = 0 ;\Rightarrow;
+\boxed{x^* = -\frac{\beta_1}{2\beta_2}}.
+$$
+
+* **Máximo** (ótimo desejável): se $\beta_2 < 0 \Rightarrow$ concavidade voltada para baixo.
+* **Mínimo**: se $\beta_2 > 0$.
+* **Atenção ao domínio**: se $x^*$ ficar **fora** do intervalo testado $(x_{\min}, x_{\max})$, **prefira** o melhor ponto **na borda** do domínio experimental.
+
+
+
+#### Implementação prática (R)
+
+Supondo que você ajustou o quadrático nas **médias por tratamento**:
+
+```{r}
+
+b <- coef(fit_med)
+b0 <- b[1]; b1 <- b[2]; b2 <- b[3]
+
+# nível ótimo
+
+x_star <- -b1/(2*b2)
+x_star
+
+#y_star <- b0 + b1*x_star + b2*x_star^2
+#y_star
+```
+
+::: callout-tip
+**Fórmula prática (modelo grau 2):**
+$$
+\boxed{x^* = -\dfrac{\beta_1}{2\beta_2},}
+$$
+Use somente quando houver **evidência de curvatura** (componente Quadrática significativa e/ou LOF não significativo) e **(\beta_2<0)** para máximo.
+:::
+
+
+
+
+---
+
+## 🌿 ATIVIDADE – pH do substrato × Diâmetro (DIC, quantitativo)
+
+### Descrição do experimento
+- **Fator (quantitativo):** pH do substrato (4.5, 5.0, 5.5, 6.0, 6.5).  
+- **Unidade experimental:** bandeja (5 mudas), resposta = **Diâmetro (mm)** aos 90 dias.  
+- **Repetições:** 5 por pH (**erro puro** disponível).  
+- **Hipótese biológica:** resposta **quadrática** com nível ótimo presente.
+
+📦 **Dados**: [dados/dic_ph_diametro.csv](dados/dic_ph_diametro.csv)
+
+1. Rode o experimento, gere o grafico do polinômio escolhido e encontre a nivel ótimo se for possivel (caso o polinômio seja de grau 2)
+
+---
+
+## ✅ Síntese
+- Em **fatores quantitativos**, relatar **regressão** é mais informativo do que apenas “testes de médias”.  
+- A **ANOVA polinomial** decompõe o efeito de tratamento em **L, Q, C…**, e o **erro puro** das repetições permite testar **falta de ajuste**.  
+- Gráficos devem usar **médias por tratamento** e o nível ótimo deve ser encontrado.

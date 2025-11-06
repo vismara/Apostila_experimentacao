@@ -1,5 +1,5 @@
 ---
-title: "🌱 Capítulo 1 – Introdução e Motivação"
+title: "🌱 Introdução e Motivação"
 ---
 
 *(Módulo 1 – Semana 1)*
