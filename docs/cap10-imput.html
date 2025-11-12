@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; 📖 ANOVA: Introdução e Contexto – 📚 Experimentação Florestal com R</title>
+<title>12&nbsp; 📖 Imputação de Valores Perdidos em Experimentos – 📚 Experimentação Florestal com R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cap03B-anova2.html" rel="next">
-<link href="./cap02-variaveis-fatores.html" rel="prev">
+<link href="./cap09-trans.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -118,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap03A-anova.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📖 ANOVA: Introdução e Contexto</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap10-imput.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">📖 Imputação de Valores Perdidos em Experimentos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -163,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cap03A-anova.html" class="sidebar-item-text sidebar-link active">
+  <a href="./cap03A-anova.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📖 ANOVA: Introdução e Contexto</span></span></a>
   </div>
 </li>
@@ -211,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cap10-imput.html" class="sidebar-item-text sidebar-link">
+  <a href="./cap10-imput.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">📖 Imputação de Valores Perdidos em Experimentos</span></span></a>
   </div>
 </li>
@@ -225,13 +224,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#narrativa-inicial" id="toc-narrativa-inicial" class="nav-link active" data-scroll-target="#narrativa-inicial"><span class="header-section-number">4.1</span> 🌱 Narrativa inicial</a></li>
-  <li><a href="#objetivos-de-aprendizagem" id="toc-objetivos-de-aprendizagem" class="nav-link" data-scroll-target="#objetivos-de-aprendizagem"><span class="header-section-number">4.2</span> 🎯 Objetivos de aprendizagem</a></li>
-  <li><a href="#intuição-da-anova" id="toc-intuição-da-anova" class="nav-link" data-scroll-target="#intuição-da-anova"><span class="header-section-number">4.3</span> 🧠 Intuição da ANOVA</a></li>
-  <li><a href="#tabela-de-anova-e-como-ler" id="toc-tabela-de-anova-e-como-ler" class="nav-link" data-scroll-target="#tabela-de-anova-e-como-ler"><span class="header-section-number">4.4</span> 🧾 Tabela de ANOVA (e como ler)</a></li>
-  <li><a href="#aplicação-prática-altura" id="toc-aplicação-prática-altura" class="nav-link" data-scroll-target="#aplicação-prática-altura"><span class="header-section-number">4.5</span> 💻 Aplicação prática (Altura)</a></li>
-  <li><a href="#outras-respostas-de-interesse" id="toc-outras-respostas-de-interesse" class="nav-link" data-scroll-target="#outras-respostas-de-interesse"><span class="header-section-number">4.6</span> 🔁 Outras respostas de interesse</a></li>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">4.7</span> 📝 Exercícios</a></li>
+  <li><a href="#contexto-aplicado" id="toc-contexto-aplicado" class="nav-link active" data-scroll-target="#contexto-aplicado"><span class="header-section-number">12.1</span> 🌱 Contexto aplicado</a></li>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">12.2</span> 🎯 Objetivos</a></li>
+  <li><a href="#tipos-de-ausências" id="toc-tipos-de-ausências" class="nav-link" data-scroll-target="#tipos-de-ausências"><span class="header-section-number">12.3</span> 🧠 Tipos de ausências</a></li>
+  <li><a href="#estratégias-práticas-de-imputação" id="toc-estratégias-práticas-de-imputação" class="nav-link" data-scroll-target="#estratégias-práticas-de-imputação"><span class="header-section-number">12.4</span> 🔧 Estratégias práticas de imputação</a></li>
+  <li><a href="#exemplo-adubação-altura-com-uma-falta-dic" id="toc-exemplo-adubação-altura-com-uma-falta-dic" class="nav-link" data-scroll-target="#exemplo-adubação-altura-com-uma-falta-dic"><span class="header-section-number">12.5</span> 🌳 EXEMPLO — Adubação × Altura com uma falta (DIC)</a>
+  <ul class="collapse">
+  <li><a href="#imputação-pela-média-do-tratamento" id="toc-imputação-pela-média-do-tratamento" class="nav-link" data-scroll-target="#imputação-pela-média-do-tratamento"><span class="header-section-number">12.5.1</span> Imputação pela <strong>média do tratamento</strong></a></li>
+  <li><a href="#anova-após-imputação-boxplot" id="toc-anova-após-imputação-boxplot" class="nav-link" data-scroll-target="#anova-após-imputação-boxplot"><span class="header-section-number">12.5.2</span> ANOVA após imputação + boxplot</a></li>
+  </ul></li>
+  <li><a href="#atividade-brotos-com-duas-faltas-dic-contagem" id="toc-atividade-brotos-com-duas-faltas-dic-contagem" class="nav-link" data-scroll-target="#atividade-brotos-com-duas-faltas-dic-contagem"><span class="header-section-number">12.6</span> 🌿 ATIVIDADE — Brotos com duas faltas (DIC, contagem)</a>
+  <ul class="collapse">
+  <li><a href="#tarefas" id="toc-tarefas" class="nav-link" data-scroll-target="#tarefas"><span class="header-section-number">12.6.1</span> Tarefas</a></li>
+  </ul></li>
+  <li><a href="#síntese" id="toc-síntese" class="nav-link" data-scroll-target="#síntese"><span class="header-section-number">12.7</span> ✅ Síntese</a></li>
   </ul>
 </nav>
     </div>
@@ -240,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📖 ANOVA: Introdução e Contexto</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">📖 Imputação de Valores Perdidos em Experimentos</span></h1>
 </div>
 
 
@@ -257,138 +263,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><em>Módulo 1 – Semana 3</em></p>
-<section id="narrativa-inicial" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="narrativa-inicial"><span class="header-section-number">4.1</span> 🌱 Narrativa inicial</h2>
-<p>Você é o(a) <strong>engenheiro(a) florestal</strong> de um viveiro de <em>Eucalyptus grandis</em>. Sua decisão afeta <strong>custos</strong> e <strong>qualidade</strong> das mudas que irão para campo.<br>
-Para recomendar o <strong>tipo de adubação</strong>, foi conduzido um teste com três tratamentos:</p>
+<p><em>Módulo 2 – Semana 12</em></p>
+<section id="contexto-aplicado" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="contexto-aplicado"><span class="header-section-number">12.1</span> 🌱 Contexto aplicado</h2>
+<p>Na prática experimental, é comum ocorrerem <strong>falhas de observação</strong>: mudas perdidas, parcelas sem leitura ou erros de anotação. Esses casos geram <strong>valores ausentes (NA)</strong>, inviabilizando a <strong>ANOVA clássica</strong> e o uso direto do <strong>ExpDes.pt</strong>.</p>
+<p>💡 A <strong>imputação</strong> consiste em <strong>estimar/substituir</strong> valores faltantes de modo coerente com o delineamento, preservando conclusões e permitindo a análise.</p>
+<hr>
+</section>
+<section id="objetivos" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">12.2</span> 🎯 Objetivos</h2>
 <ul>
-<li><strong>Controle</strong> (sem adubo) – referência de custo zero.<br>
+<li>Diagnosticar <strong>valores perdidos</strong> e suas causas.<br>
 </li>
-<li><strong>Orgânica</strong> (composto local) – menor custo, possível ganho gradual.<br>
+<li>Aplicar <strong>imputação simples</strong> (média do tratamento) de forma transparente.<br>
 </li>
-<li><strong>Química</strong> (NPK 06-30-06) – maior custo, promessa de ganho rápido.</li>
+<li>Avaliar <strong>impacto</strong> da imputação nas conclusões (ANOVA + gráficos).<br>
+</li>
+<li>Preparar <strong>relatórios reprodutíveis</strong>.</li>
 </ul>
-<p>Foram avaliadas <strong>10 mudas por tratamento</strong> e medidas <strong>Altura (cm)</strong>, <strong>Diâmetro (mm)</strong> e <strong>Biomassa (g)</strong>.<br>
-👉 <strong>Decisão profissional:</strong> qual adubação recomendar <strong>com base em evidências</strong>?</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>⚠️ <strong>Erro comum</strong>: escolher pelo “olhômetro”. Diferenças visuais podem ocorrer <strong>ao acaso</strong>. A <strong>ANOVA</strong> formaliza essa comparação de médias.</p>
-</div>
-</div>
+<hr>
 </section>
-<section id="objetivos-de-aprendizagem" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="objetivos-de-aprendizagem"><span class="header-section-number">4.2</span> 🎯 Objetivos de aprendizagem</h2>
-<ul>
-<li>Entender a lógica da <strong>ANOVA</strong> (variação entre vs.&nbsp;dentro dos grupos).<br>
-</li>
-<li><strong>Ler</strong> e <strong>interpretar</strong> a <strong>tabela de ANOVA</strong>.<br>
-</li>
-<li>Aplicar ANOVA no R com dados florestais contextualizados.<br>
-</li>
-<li>Conectar gráficos e resumos (Cap. 2) com o teste formal.</li>
-</ul>
-</section>
-<section id="intuição-da-anova" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="intuição-da-anova"><span class="header-section-number">4.3</span> 🧠 Intuição da ANOVA</h2>
-<p>A ANOVA verifica se as diferenças entre as <strong>médias</strong> dos grupos são maiores do que esperaríamos <strong>por acaso</strong>.<br>
-- <strong>Entre grupos (tratamentos):</strong> efeito potencial da adubação.<br>
-- <strong>Dentro dos grupos (erro):</strong> variabilidade natural entre mudas do mesmo tratamento.<br>
-- Estatística <strong>F = QM_trat / QM_erro</strong> → quanto maior, maior a evidência de diferença.</p>
-</section>
-<section id="tabela-de-anova-e-como-ler" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="tabela-de-anova-e-como-ler"><span class="header-section-number">4.4</span> 🧾 Tabela de ANOVA (e como ler)</h2>
-<table class="anova">
+<section id="tipos-de-ausências" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="tipos-de-ausências"><span class="header-section-number">12.3</span> 🧠 Tipos de ausências</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
-<tr>
-<th>
-Fonte
-</th>
-<th>
-GL
-</th>
-<th>
-SQ
-</th>
-<th>
-QM = SQ/GL
-</th>
-<th>
-F = QM<sub>trat</sub>/QM<sub>erro</sub>
-</th>
-<th>
-p-valor
-</th>
+<tr class="header">
+<th>Tipo</th>
+<th>Descrição</th>
+<th>Exemplo</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
-Tratamentos
-</td>
-<td>
-k − 1
-</td>
-<td>
-SQ<sub>trat</sub>
-</td>
-<td>
-QM<sub>trat</sub>
-</td>
-<td>
-F calculado
-</td>
-<td>
-Prob(H0)
-</td>
+<tr class="odd">
+<td><strong>MCAR</strong></td>
+<td>completamente ao acaso</td>
+<td>quebra acidental de etiqueta</td>
 </tr>
-<tr>
-<td>
-Resíduo (Erro)
-</td>
-<td>
-N − k
-</td>
-<td>
-SQ<sub>erro</sub>
-</td>
-<td>
-QM<sub>erro</sub>
-</td>
-<td>
-—
-</td>
-<td>
-—
-</td>
+<tr class="even">
+<td><strong>MAR</strong></td>
+<td>dependente de variável observável</td>
+<td>sensor falha em dias quentes</td>
 </tr>
-<tr>
-<td>
-Total
-</td>
-<td>
-N − 1
-</td>
-<td>
-SQ<sub>total</sub>
-</td>
-<td>
-—
-</td>
-<td>
-—
-</td>
-<td>
-—
-</td>
+<tr class="odd">
+<td><strong>MNAR</strong></td>
+<td>depende do valor não observado</td>
+<td>parcelas fracas perdem mais dados</td>
+</tr>
+</tbody>
+</table>
+<p>No ensino e em rotinas simples, assumimos <strong>MCAR/MAR</strong> e priorizamos <strong>imputação parcimoniosa</strong>.</p>
+<hr>
+</section>
+<section id="estratégias-práticas-de-imputação" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="estratégias-práticas-de-imputação"><span class="header-section-number">12.4</span> 🔧 Estratégias práticas de imputação</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estratégia</th>
+<th>Quando usar</th>
+<th>Observações</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Média do tratamento</strong></td>
+<td>faltas pontuais</td>
+<td>preserva comparabilidade entre tratamentos</td>
+</tr>
+<tr class="even">
+<td>Média global</td>
+<td>poucas faltas dispersas</td>
+<td>pode subestimar variância</td>
+</tr>
+<tr class="odd">
+<td>Regressão local</td>
+<td>variável auxiliar confiável</td>
+<td>demanda ajuste adicional</td>
+</tr>
+<tr class="even">
+<td>Interpolação</td>
+<td>séries temporais</td>
+<td>mantém tendência</td>
+</tr>
+<tr class="odd">
+<td>Aleatória controlada</td>
+<td>simular variação realista</td>
+<td>usar com cautela</td>
 </tr>
 </tbody>
 </table>
@@ -402,131 +372,152 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Como interpretar rapidamente</strong><br>
-- <strong>GL</strong>: graus de liberdade (quantas comparações independentes cabem).<br>
-- <strong>SQ / QM</strong>: variação total e variação média.<br>
-- <strong>F</strong> grande + <strong>p-valor</strong> pequeno → <strong>evidência de diferenças</strong> entre médias.</p>
+<p>Sempre <strong>documente</strong> qual critério foi adotado e <strong>quantos valores</strong> foram imputados. Se o número de faltas for alto (&gt;10%), reavalie o experimento.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="exemplo-adubação-altura-com-uma-falta-dic" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="exemplo-adubação-altura-com-uma-falta-dic"><span class="header-section-number">12.5</span> 🌳 EXEMPLO — Adubação × Altura com uma falta (DIC)</h2>
+<p><strong>Contexto:</strong> três adubações (A1, A2, A3), 5 repetições; uma leitura perdida em <strong>A3</strong>.</p>
+<p>📦 <strong>Dados:</strong> <a href=".\dados/adubacao_altura_faltante.csv">dados/adubacao_altura_faltante.csv</a></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(dplyr); <span class="fu">library</span>(ggplot2); <span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/adubacao_altura_faltante.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificação</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tratamento            Repet     Altura_cm    
+ Length:15          Min.   :1   Min.   :16.04  
+ Class :character   1st Qu.:2   1st Qu.:18.20  
+ Mode  :character   Median :3   Median :19.27  
+                    Mean   :3   Mean   :19.91  
+                    3rd Qu.:4   3rd Qu.:21.58  
+                    Max.   :5   Max.   :24.16  
+                                NA's   :1      </code></pre>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(d<span class="sc">$</span>Altura_cm))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>A função <code>dic</code> falha com NA:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dic(trat = d$Tratamento, resp = d$Altura_cm, quali = TRUE)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="imputação-pela-média-do-tratamento" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="imputação-pela-média-do-tratamento"><span class="header-section-number">12.5.1</span> Imputação pela <strong>média do tratamento</strong></h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>med <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tratamento) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media_trat =</span> <span class="fu">mean</span>(Altura_cm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups=</span><span class="st">"drop"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>d_imp <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(med, <span class="at">by =</span> <span class="st">"Tratamento"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Altura_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Altura_cm), media_trat, Altura_cm)) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>media_trat)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(d_imp<span class="sc">$</span>Altura_imp))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 </section>
-<section id="aplicação-prática-altura" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="aplicação-prática-altura"><span class="header-section-number">4.5</span> 💻 Aplicação prática (Altura)</h2>
-<p><strong>Dados novos deste capítulo:</strong> <a href="dados/eucalipto_adubacao.csv"><code>dados/eucalipto_adubacao.csv</code></a><br>
-<strong>Conexão com o Cap. 2 (revisão gráfica):</strong> <a href="dados/crescimento_mudas.csv"><code>dados/crescimento_mudas.csv</code></a></p>
+<section id="anova-após-imputação-boxplot" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="anova-após-imputação-boxplot"><span class="header-section-number">12.5.2</span> ANOVA após imputação + boxplot</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr); <span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>euca <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/eucalipto_adubacao.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mod_alt <span class="ot">&lt;-</span> <span class="fu">aov</span>(Altura_cm <span class="sc">~</span> Tratamento, <span class="at">data =</span> euca)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_alt)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">dic</span>(<span class="at">trat =</span> d_imp<span class="sc">$</span>Tratamento, <span class="at">resp =</span> d_imp<span class="sc">$</span>Altura_imp, <span class="at">quali =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)    
-Tratamento   2  154.0   77.02   15.25 3.7e-05 ***
-Residuals   27  136.4    5.05                    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<pre><code>------------------------------------------------------------------------
+Quadro da analise de variancia
+------------------------------------------------------------------------
+           GL     SQ     QM     Fc      Pr&gt;Fc
+Tratamento  2 75.161 37.580 48.398 1.8005e-06
+Residuo    12  9.318  0.776                  
+Total      14 84.478                         
+------------------------------------------------------------------------
+CV = 4.38 %
+
+------------------------------------------------------------------------
+Teste de normalidade dos residuos ( Shapiro-Wilk ) 
+Valor-p:  0.7835557 
+De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+Teste de homogeneidade de variancia 
+valor-p:  0.6814481 
+De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
+------------------------------------------------------------------------
+
+Teste de Tukey
+------------------------------------------------------------------------
+Grupos Tratamentos Medias
+a    A3      23.0875 
+ b   A2      19.598 
+  c      A1      17.68 
+------------------------------------------------------------------------</code></pre>
 </div>
-</div>
-<div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualização</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(euca, <span class="fu">aes</span>(Tratamento, Altura_cm, <span class="at">fill =</span> Tratamento)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Eucalyptus grandis — Altura por adubação"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Tratamento"</span>, <span class="at">y =</span> <span class="st">"Altura (cm)"</span>) <span class="sc">+</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d_imp, <span class="fu">aes</span>(Tratamento, Altura_imp, <span class="at">fill =</span> Tratamento)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Altura (cm) após imputação pela média do tratamento"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Altura (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cap03A-anova_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cap10-imput_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Dica
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>✅ Dica prática: Se o p-valor &lt; 0,05, rejeitamos H0 → há evidência de diferença entre os tratamentos. Mas ANOVA não diz quais tratamentos diferem. (isso veremos no Cap. 3B)</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Dica
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>✅ <strong>Dica profissional</strong>: Relacione o resultado ao <strong>custo</strong> e <strong>logística</strong>. Às vezes o ganho de altura é real, mas <strong>não compensa</strong> o custo do insumo no viveiro.</p>
-</div>
-</div>
+<hr>
 </section>
-<section id="outras-respostas-de-interesse" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="outras-respostas-de-interesse"><span class="header-section-number">4.6</span> 🔁 Outras respostas de interesse</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(Diametro_mm <span class="sc">~</span> Tratamento, <span class="at">data =</span> euca))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
-Tratamento   2  2.122  1.0610   4.846 0.0159 *
-Residuals   27  5.912  0.2189                 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-<details class="code-fold">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(Biomassa_g <span class="sc">~</span> Tratamento, <span class="at">data =</span> euca))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Tratamento   2  6.037  3.0183   25.27 6.53e-07 ***
-Residuals   27  3.225  0.1194                     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
 </section>
-<section id="exercícios" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">4.7</span> 📝 Exercícios</h2>
+<section id="atividade-brotos-com-duas-faltas-dic-contagem" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="atividade-brotos-com-duas-faltas-dic-contagem"><span class="header-section-number">12.6</span> 🌿 ATIVIDADE — Brotos com duas faltas (DIC, contagem)</h2>
+<p><strong>Contexto:</strong> cinco bioestimulantes (B1–B5); duas faltas em <strong>B1</strong> por erro de anotação.</p>
+<p>📦 <strong>Dados:</strong> <a href=".\dados/brotos_cedrela_faltante.csv">dados/brotos_cedrela_faltante.csv</a></p>
+<section id="tarefas" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="tarefas"><span class="header-section-number">12.6.1</span> Tarefas</h3>
 <ol type="1">
-<li>Use o dataset crescimento_mudas.csv para:</li>
-</ol>
-<ol type="a">
-<li>Fazer boxplot de Biomassa_g;</li>
-<li>Resumir médias e desvios;</li>
-<li>Aplicar ANOVA e escrever 2 frases de interpretação.</li>
-</ol>
-<ol start="2" type="1">
-<li>Com o conjunto de dados eucalipto_adubacao.csv:</li>
-</ol>
-<ol type="a">
-<li>Aplique ANOVA para Diametro_mm;</li>
-<li>Explique se há diferença significativa;</li>
-<li>Inclua gráficos e interpretação no relatório.</li>
+<li>Detecte as células <strong>NA</strong> e tente rodar <code>dic</code> (deve falhar).<br>
+</li>
+<li>Impute usando <strong>média do tratamento</strong>.<br>
+</li>
+<li>Refaça a ANOVA e o boxplot.</li>
 </ol>
 <hr>
-<p>✅ Síntese</p>
+</section>
+</section>
+<section id="síntese" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="síntese"><span class="header-section-number">12.7</span> ✅ Síntese</h2>
 <ul>
-<li><p>A ANOVA responde: “as médias são todas iguais?”</p></li>
-<li><p>Compara variação entre tratamentos vs.&nbsp;dentro dos tratamentos.</p></li>
-<li><p>Resultado significativo indica diferença, mas não mostra onde (isso será o Cap. 3B).</p></li>
+<li>O <strong>ExpDes.pt</strong> não aceita <strong>NA</strong> — impute de forma <strong>simples e documentada</strong>.<br>
+</li>
+<li>A <strong>média do tratamento</strong> é o caminho didático para faltas pontuais.<br>
+</li>
+<li>Sempre avalie o <strong>impacto</strong> nos resultados e registre a decisão no relatório.</li>
 </ul>
 
 
@@ -934,14 +925,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./cap02-variaveis-fatores.html" class="pagination-link" aria-label="📖 Variáveis, Fatores e Níveis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">📖 Variáveis, Fatores e Níveis</span></span>
+      <a href="./cap09-trans.html" class="pagination-link" aria-label="📖 Transformação de Dados">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">📖 Transformação de Dados</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cap03B-anova2.html" class="pagination-link" aria-label="📖 ANOVA II: Pressupostos e Teste de Médias">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">📖 ANOVA II: Pressupostos e Teste de Médias</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

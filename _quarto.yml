@@ -19,6 +19,8 @@ book:
     - cap06-fatorial.qmd
     - cap07-split.qmd
     - cap08-regre.qmd
+    - cap09-trans.qmd
+    - cap10-imput.qmd
   page-navigation: true
 
 format:

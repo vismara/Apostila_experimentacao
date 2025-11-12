@@ -1,0 +1,131 @@
+---
+title: "📖 Transformação de Dados"
+---
+
+*Módulo 2 – Semana 11*
+
+## 🌱 Contexto aplicado
+
+Durante a análise de experimentos florestais, nem sempre os **dados atendem aos pressupostos da ANOVA**: variâncias podem diferir entre tratamentos (heterocedasticidade), os resíduos podem ser assimétricos ou não normais, e há limites naturais da escala (proporções/contagens) que distorcem a variabilidade. Esses problemas afetam os testes F e t, pois violam as hipóteses de **normalidade e homogeneidade** do erro experimental.
+
+💡 Nesses casos, aplicamos **transformações matemáticas** na variável resposta para aproximar a normalidade e **estabilizar variâncias**, preservando a estrutura experimental e a interpretação do delineamento.
+
+---
+
+## 🎯 Objetivos de aprendizagem
+
+- Verificar **pressupostos** (normalidade e homogeneidade) com testes e gráficos.  
+- Escolher e aplicar **transformações adequadas** (arco seno da raiz, raiz quadrada, log).  
+- Reanalisar com **ExpDes.pt** e interpretar **na escala original**.  
+- Produzir gráficos antes/depois da transformação para comparar distribuições e resíduos.
+
+---
+
+## 🧠 Fundamentação teórica resumida
+
+A ANOVA assume erros $\varepsilon \sim N(0,\,\sigma^2)$ (independentes, variância constante e normalidade). Quando isso **não se sustenta**, utilizamos transformações clássicas:
+
+| Tipo de variável (ou problema) | Transformação sugerida | Expressão | Observações |
+|---|---|---|---|
+| **Proporções/percentuais (0–100%)** | Arco seno da raiz | $y' = \arcsin(\sqrt{y/100})$ | Estabiliza variâncias; interpretar na escala original: $\sin^2(y')\times 100$. |
+| **Contagens (n)** | Raiz quadrada | $y' = \sqrt{y + 0.5} $ | Padrão Poisson-like; “+0.5” evita raiz de zero. |
+| **Assimetria positiva (pesos/tempos)** | Log | $y' = \ln(y) \) ou \( \ln(y+1)$ | Reduz assimetria; cuidado com zeros. |
+| **Variância cresce com a média** | Inversa da raiz | $y' = 1/\sqrt{y}$ | Casos extremos; interpretação menos intuitiva. |
+| **Percentuais muito próximos de 0 ou 100** | Arco seno ajustado | $y' = \arcsin(\sqrt{(y+0.5)/100})$ | Suaviza extremidades (0 e 100). |
+
+::: callout-tip
+**Prática** — Sempre cheque **resíduos x valores ajustados**, **histograma** e **QQ-plot**, antes e depois da transformação.  
+Se homogeneidade e normalidade melhorarem e as conclusões forem coerentes, a transformação foi **bem-sucedida**.
+:::
+
+---
+
+## 🌳 EXEMPLO — Controle de doença (percentual)
+
+**Contexto:** quatro métodos de controle (biológicos e químico) aplicados ao viveiro de *Eucalyptus* para reduzir **incidência de doença (%)**. DIC com 5 repetições por tratamento.
+
+📦 **Dados:** [dados/controle_fungico.csv](/dados/controle_fungico.csv)
+
+### Análise exploratória e pressupostos
+```{r}
+library(readr); library(dplyr); library(ggplot2); library(ExpDes.pt)
+
+dados <- read_csv("dados/controle_fungico.csv", show_col_types = FALSE)
+
+# Boxplot inicial
+ggplot(dados, aes(Tratamento, Incidencia)) +
+  geom_boxplot(alpha=0.5) +
+  labs(title="Incidência (%) por tratamento", y="Incidência (%)") +
+  theme_minimal()
+
+# ANOVA (dados na escala original)
+out0 <- dic(trat = dados$Tratamento, resp = dados$Incidencia, quali = TRUE)
+
+# Pressupostos
+mod0 <- aov(Incidencia ~ Tratamento, data = dados)
+shapiro.test(residuals(mod0))
+bartlett.test(Incidencia ~ Tratamento, data = dados)
+```
+
+### Transformação **arco seno da raiz**
+```{r}
+dados <- dados |>
+  mutate(inc_asin = asin(sqrt(Incidencia/100)))
+
+out1 <- dic(trat = dados$Tratamento, resp = dados$inc_asin, quali = TRUE)
+
+mod1 <- aov(inc_asin ~ Tratamento, data = dados)
+shapiro.test(residuals(mod1))
+bartlett.test(inc_asin ~ Tratamento, data = dados)
+```
+
+### Visualização comparativa
+```{r}
+# Densidade dos resíduos (antes/depois)
+res0 <- data.frame(tipo="Original", res = residuals(mod0))
+res1 <- data.frame(tipo="Transformado", res = residuals(mod1))
+rbind(res0,res1) |>
+  ggplot(aes(res, fill=tipo)) +
+  geom_density(alpha=.4) +
+  labs(title="Resíduos: original vs transformado") +
+  theme_minimal()
+```
+
+### Retradução das médias
+A média transformada $\bar{y}'$ pode ser reescrita como percentual pela regra
+$\hat{p} = [\sin(\bar{y}')]^2\times 100$.
+
+```{r}
+# Médias por tratamento (transformadas e retraduzidas para %)
+medias_inc <- dados |>
+  group_by(Tratamento) |>
+  summarise(med_asin = mean(inc_asin), .groups="drop") |>
+  mutate(media_perc = (sin(med_asin)^2)*100)
+
+medias_inc
+```
+
+---
+
+## 🌿 ATIVIDADE — Número de brotos (contagem)
+
+**Contexto:** cinco bioestimulantes (B1–B5) em mudas de **Cedrela fissilis**; resposta = **número de brotos** por muda. DIC com 6 repetições.
+
+📦 **Dados:** [dados/brotos_cedrela.csv](/dados/brotos_cedrela.csv)
+
+1. Realize a análise, teste os pressupostos e aplique a transformação adequada. Ao final apresente as médias na escala original.   
+
+::: callout-tip
+Com dados de contagem (Poisson) usa-se a transfromação com a raiz quadrada, então para transfromar de volta usa-se $\hat{y} \approx (\bar{y}')^2 - 0.5$
+:::
+
+
+---
+
+## ✅ Síntese
+
+- Transformações **não são truque**, mas um **ajuste de escala** para cumprir pressupostos.  
+- Escolha baseada no **tipo de variável** e no **padrão de heterogeneidade**.  
+- Reavalie sempre **normalidade** e **homogeneidade** após transformar.  
+- Relate as conclusões **na escala original** (com a regra de retradução correspondente).
+

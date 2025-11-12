@@ -788,5 +788,135 @@
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>📖 Fator Quantitativo e Regressão Polinomial</span>"
     ]
+  },
+  {
+    "objectID": "cap09-trans.html",
+    "href": "cap09-trans.html",
+    "title": "11  📖 Transformação de Dados",
+    "section": "",
+    "text": "11.1 🌱 Contexto aplicado\nMódulo 2 – Semana 11\nDurante a análise de experimentos florestais, nem sempre os dados atendem aos pressupostos da ANOVA: variâncias podem diferir entre tratamentos (heterocedasticidade), os resíduos podem ser assimétricos ou não normais, e há limites naturais da escala (proporções/contagens) que distorcem a variabilidade. Esses problemas afetam os testes F e t, pois violam as hipóteses de normalidade e homogeneidade do erro experimental.\n💡 Nesses casos, aplicamos transformações matemáticas na variável resposta para aproximar a normalidade e estabilizar variâncias, preservando a estrutura experimental e a interpretação do delineamento.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>📖 Transformação de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "cap09-trans.html#objetivos-de-aprendizagem",
+    "href": "cap09-trans.html#objetivos-de-aprendizagem",
+    "title": "11  📖 Transformação de Dados",
+    "section": "11.2 🎯 Objetivos de aprendizagem",
+    "text": "11.2 🎯 Objetivos de aprendizagem\n\nVerificar pressupostos (normalidade e homogeneidade) com testes e gráficos.\n\nEscolher e aplicar transformações adequadas (arco seno da raiz, raiz quadrada, log).\n\nReanalisar com ExpDes.pt e interpretar na escala original.\n\nProduzir gráficos antes/depois da transformação para comparar distribuições e resíduos.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>📖 Transformação de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "cap09-trans.html#fundamentação-teórica-resumida",
+    "href": "cap09-trans.html#fundamentação-teórica-resumida",
+    "title": "11  📖 Transformação de Dados",
+    "section": "11.3 🧠 Fundamentação teórica resumida",
+    "text": "11.3 🧠 Fundamentação teórica resumida\nA ANOVA assume erros \\(\\varepsilon \\sim N(0,\\,\\sigma^2)\\) (independentes, variância constante e normalidade). Quando isso não se sustenta, utilizamos transformações clássicas:\n\n\n\n\n\n\n\n\n\nTipo de variável (ou problema)\nTransformação sugerida\nExpressão\nObservações\n\n\n\n\nProporções/percentuais (0–100%)\nArco seno da raiz\n\\(y' = \\arcsin(\\sqrt{y/100})\\)\nEstabiliza variâncias; interpretar na escala original: \\(\\sin^2(y')\\times 100\\).\n\n\nContagens (n)\nRaiz quadrada\n$y’ = $\nPadrão Poisson-like; “+0.5” evita raiz de zero.\n\n\nAssimetria positiva (pesos/tempos)\nLog\n\\(y' = \\ln(y) \\) ou \\( \\ln(y+1)\\)\nReduz assimetria; cuidado com zeros.\n\n\nVariância cresce com a média\nInversa da raiz\n\\(y' = 1/\\sqrt{y}\\)\nCasos extremos; interpretação menos intuitiva.\n\n\nPercentuais muito próximos de 0 ou 100\nArco seno ajustado\n\\(y' = \\arcsin(\\sqrt{(y+0.5)/100})\\)\nSuaviza extremidades (0 e 100).\n\n\n\n\n\n\n\n\n\nDica\n\n\n\nPrática — Sempre cheque resíduos x valores ajustados, histograma e QQ-plot, antes e depois da transformação.\nSe homogeneidade e normalidade melhorarem e as conclusões forem coerentes, a transformação foi bem-sucedida.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>📖 Transformação de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "cap09-trans.html#exemplo-controle-de-doença-percentual",
+    "href": "cap09-trans.html#exemplo-controle-de-doença-percentual",
+    "title": "11  📖 Transformação de Dados",
+    "section": "11.4 🌳 EXEMPLO — Controle de doença (percentual)",
+    "text": "11.4 🌳 EXEMPLO — Controle de doença (percentual)\nContexto: quatro métodos de controle (biológicos e químico) aplicados ao viveiro de Eucalyptus para reduzir incidência de doença (%). DIC com 5 repetições por tratamento.\n📦 Dados: dados/controle_fungico.csv\n\n11.4.1 Análise exploratória e pressupostos\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2); library(ExpDes.pt)\n\ndados &lt;- read_csv(\"dados/controle_fungico.csv\", show_col_types = FALSE)\n\n# Boxplot inicial\nggplot(dados, aes(Tratamento, Incidencia)) +\n  geom_boxplot(alpha=0.5) +\n  labs(title=\"Incidência (%) por tratamento\", y=\"Incidência (%)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nCódigo\n# ANOVA (dados na escala original)\nout0 &lt;- dic(trat = dados$Tratamento, resp = dados$Incidencia, quali = TRUE)\n\n\n------------------------------------------------------------------------\nQuadro da analise de variancia\n------------------------------------------------------------------------\n           GL      SQ     QM     Fc      Pr&gt;Fc\nTratamento  3 1197.85 399.28 14.204 8.9567e-05\nResiduo    16  449.76  28.11                  \nTotal      19 1647.61                         \n------------------------------------------------------------------------\nCV = 24.19 %\n\n------------------------------------------------------------------------\nTeste de normalidade dos residuos ( Shapiro-Wilk ) \nValor-p:  0.8521957 \nDe acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.\n------------------------------------------------------------------------\n\n------------------------------------------------------------------------\nTeste de homogeneidade de variancia \nvalor-p:  0.4642806 \nDe acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.\n------------------------------------------------------------------------\n\nTeste de Tukey\n------------------------------------------------------------------------\nGrupos Tratamentos Medias\na    T4_Testemunha   34.96 \n b   T1_BiologicoA   20.42 \n b   T3_Quimico      16.62 \n b   T2_BiologicoB   15.66 \n------------------------------------------------------------------------\n\n\nCódigo\n# Pressupostos\nmod0 &lt;- aov(Incidencia ~ Tratamento, data = dados)\nshapiro.test(residuals(mod0))\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  residuals(mod0)\nW = 0.97486, p-value = 0.8522\n\n\nCódigo\nbartlett.test(Incidencia ~ Tratamento, data = dados)\n\n\n\n    Bartlett test of homogeneity of variances\n\ndata:  Incidencia by Tratamento\nBartlett's K-squared = 2.5615, df = 3, p-value = 0.4643\n\n\n\n\n11.4.2 Transformação arco seno da raiz\n\n\nCódigo\ndados &lt;- dados |&gt;\n  mutate(inc_asin = asin(sqrt(Incidencia/100)))\n\nout1 &lt;- dic(trat = dados$Tratamento, resp = dados$inc_asin, quali = TRUE)\n\n\n------------------------------------------------------------------------\nQuadro da analise de variancia\n------------------------------------------------------------------------\n           GL       SQ       QM     Fc      Pr&gt;Fc\nTratamento  3 0.162278 0.054093 13.196 0.00013564\nResiduo    16 0.065587 0.004099                  \nTotal      19 0.227865                           \n------------------------------------------------------------------------\nCV = 13.34 %\n\n------------------------------------------------------------------------\nTeste de normalidade dos residuos ( Shapiro-Wilk ) \nValor-p:  0.4745937 \nDe acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.\n------------------------------------------------------------------------\n\n------------------------------------------------------------------------\nTeste de homogeneidade de variancia \nvalor-p:  0.7539271 \nDe acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.\n------------------------------------------------------------------------\n\nTeste de Tukey\n------------------------------------------------------------------------\nGrupos Tratamentos Medias\na    T4_Testemunha   0.6308934 \n b   T1_BiologicoA   0.4658706 \n b   T3_Quimico      0.4183053 \n b   T2_BiologicoB   0.4046276 \n------------------------------------------------------------------------\n\n\nCódigo\nmod1 &lt;- aov(inc_asin ~ Tratamento, data = dados)\nshapiro.test(residuals(mod1))\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  residuals(mod1)\nW = 0.9564, p-value = 0.4746\n\n\nCódigo\nbartlett.test(inc_asin ~ Tratamento, data = dados)\n\n\n\n    Bartlett test of homogeneity of variances\n\ndata:  inc_asin by Tratamento\nBartlett's K-squared = 1.1962, df = 3, p-value = 0.7539\n\n\n\n\n11.4.3 Visualização comparativa\n\n\nCódigo\n# Densidade dos resíduos (antes/depois)\nres0 &lt;- data.frame(tipo=\"Original\", res = residuals(mod0))\nres1 &lt;- data.frame(tipo=\"Transformado\", res = residuals(mod1))\nrbind(res0,res1) |&gt;\n  ggplot(aes(res, fill=tipo)) +\n  geom_density(alpha=.4) +\n  labs(title=\"Resíduos: original vs transformado\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n11.4.4 Retradução das médias\nA média transformada \\(\\bar{y}'\\) pode ser reescrita como percentual pela regra \\(\\hat{p} = [\\sin(\\bar{y}')]^2\\times 100\\).\n\n\nCódigo\n# Médias por tratamento (transformadas e retraduzidas para %)\nmedias_inc &lt;- dados |&gt;\n  group_by(Tratamento) |&gt;\n  summarise(med_asin = mean(inc_asin), .groups=\"drop\") |&gt;\n  mutate(media_perc = (sin(med_asin)^2)*100)\n\nmedias_inc\n\n\n# A tibble: 4 × 3\n  Tratamento    med_asin media_perc\n  &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;\n1 T1_BiologicoA    0.466       20.2\n2 T2_BiologicoB    0.405       15.5\n3 T3_Quimico       0.418       16.5\n4 T4_Testemunha    0.631       34.8",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>📖 Transformação de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "cap09-trans.html#atividade-número-de-brotos-contagem",
+    "href": "cap09-trans.html#atividade-número-de-brotos-contagem",
+    "title": "11  📖 Transformação de Dados",
+    "section": "11.5 🌿 ATIVIDADE — Número de brotos (contagem)",
+    "text": "11.5 🌿 ATIVIDADE — Número de brotos (contagem)\nContexto: cinco bioestimulantes (B1–B5) em mudas de Cedrela fissilis; resposta = número de brotos por muda. DIC com 6 repetições.\n📦 Dados: dados/brotos_cedrela.csv\n\nRealize a análise, teste os pressupostos e aplique a transformação adequada. Ao final apresente as médias na escala original.\n\n\n\n\n\n\n\nDica\n\n\n\nCom dados de contagem (Poisson) usa-se a transfromação com a raiz quadrada, então para transfromar de volta usa-se \\(\\hat{y} \\approx (\\bar{y}')^2 - 0.5\\)",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>📖 Transformação de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "cap09-trans.html#síntese",
+    "href": "cap09-trans.html#síntese",
+    "title": "11  📖 Transformação de Dados",
+    "section": "11.6 ✅ Síntese",
+    "text": "11.6 ✅ Síntese\n\nTransformações não são truque, mas um ajuste de escala para cumprir pressupostos.\n\nEscolha baseada no tipo de variável e no padrão de heterogeneidade.\n\nReavalie sempre normalidade e homogeneidade após transformar.\n\nRelate as conclusões na escala original (com a regra de retradução correspondente).",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>📖 Transformação de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "cap10-imput.html",
+    "href": "cap10-imput.html",
+    "title": "12  📖 Imputação de Valores Perdidos em Experimentos",
+    "section": "",
+    "text": "12.1 🌱 Contexto aplicado\nMódulo 2 – Semana 12\nNa prática experimental, é comum ocorrerem falhas de observação: mudas perdidas, parcelas sem leitura ou erros de anotação. Esses casos geram valores ausentes (NA), inviabilizando a ANOVA clássica e o uso direto do ExpDes.pt.\n💡 A imputação consiste em estimar/substituir valores faltantes de modo coerente com o delineamento, preservando conclusões e permitindo a análise.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>📖 Imputação de Valores Perdidos em Experimentos</span>"
+    ]
+  },
+  {
+    "objectID": "cap10-imput.html#objetivos",
+    "href": "cap10-imput.html#objetivos",
+    "title": "12  📖 Imputação de Valores Perdidos em Experimentos",
+    "section": "12.2 🎯 Objetivos",
+    "text": "12.2 🎯 Objetivos\n\nDiagnosticar valores perdidos e suas causas.\n\nAplicar imputação simples (média do tratamento) de forma transparente.\n\nAvaliar impacto da imputação nas conclusões (ANOVA + gráficos).\n\nPreparar relatórios reprodutíveis.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>📖 Imputação de Valores Perdidos em Experimentos</span>"
+    ]
+  },
+  {
+    "objectID": "cap10-imput.html#tipos-de-ausências",
+    "href": "cap10-imput.html#tipos-de-ausências",
+    "title": "12  📖 Imputação de Valores Perdidos em Experimentos",
+    "section": "12.3 🧠 Tipos de ausências",
+    "text": "12.3 🧠 Tipos de ausências\n\n\n\n\n\n\n\n\nTipo\nDescrição\nExemplo\n\n\n\n\nMCAR\ncompletamente ao acaso\nquebra acidental de etiqueta\n\n\nMAR\ndependente de variável observável\nsensor falha em dias quentes\n\n\nMNAR\ndepende do valor não observado\nparcelas fracas perdem mais dados\n\n\n\nNo ensino e em rotinas simples, assumimos MCAR/MAR e priorizamos imputação parcimoniosa.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>📖 Imputação de Valores Perdidos em Experimentos</span>"
+    ]
+  },
+  {
+    "objectID": "cap10-imput.html#estratégias-práticas-de-imputação",
+    "href": "cap10-imput.html#estratégias-práticas-de-imputação",
+    "title": "12  📖 Imputação de Valores Perdidos em Experimentos",
+    "section": "12.4 🔧 Estratégias práticas de imputação",
+    "text": "12.4 🔧 Estratégias práticas de imputação\n\n\n\n\n\n\n\n\nEstratégia\nQuando usar\nObservações\n\n\n\n\nMédia do tratamento\nfaltas pontuais\npreserva comparabilidade entre tratamentos\n\n\nMédia global\npoucas faltas dispersas\npode subestimar variância\n\n\nRegressão local\nvariável auxiliar confiável\ndemanda ajuste adicional\n\n\nInterpolação\nséries temporais\nmantém tendência\n\n\nAleatória controlada\nsimular variação realista\nusar com cautela\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nSempre documente qual critério foi adotado e quantos valores foram imputados. Se o número de faltas for alto (&gt;10%), reavalie o experimento.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>📖 Imputação de Valores Perdidos em Experimentos</span>"
+    ]
+  },
+  {
+    "objectID": "cap10-imput.html#exemplo-adubação-altura-com-uma-falta-dic",
+    "href": "cap10-imput.html#exemplo-adubação-altura-com-uma-falta-dic",
+    "title": "12  📖 Imputação de Valores Perdidos em Experimentos",
+    "section": "12.5 🌳 EXEMPLO — Adubação × Altura com uma falta (DIC)",
+    "text": "12.5 🌳 EXEMPLO — Adubação × Altura com uma falta (DIC)\nContexto: três adubações (A1, A2, A3), 5 repetições; uma leitura perdida em A3.\n📦 Dados: dados/adubacao_altura_faltante.csv\n\n\nCódigo\nlibrary(readr); library(dplyr); library(ggplot2); library(ExpDes.pt)\n\nd &lt;- read_csv(\"dados/adubacao_altura_faltante.csv\", show_col_types = FALSE)\n\n# Verificação\nsummary(d)\n\n\n  Tratamento            Repet     Altura_cm    \n Length:15          Min.   :1   Min.   :16.04  \n Class :character   1st Qu.:2   1st Qu.:18.20  \n Mode  :character   Median :3   Median :19.27  \n                    Mean   :3   Mean   :19.91  \n                    3rd Qu.:4   3rd Qu.:21.58  \n                    Max.   :5   Max.   :24.16  \n                                NA's   :1      \n\n\nCódigo\nany(is.na(d$Altura_cm))\n\n\n[1] TRUE\n\n\nA função dic falha com NA:\n\n\nCódigo\n# dic(trat = d$Tratamento, resp = d$Altura_cm, quali = TRUE)\n\n\n\n12.5.1 Imputação pela média do tratamento\n\n\nCódigo\nmed &lt;- d |&gt;\n  group_by(Tratamento) |&gt;\n  summarise(media_trat = mean(Altura_cm, na.rm = TRUE), .groups=\"drop\")\n\nd_imp &lt;- d |&gt;\n  left_join(med, by = \"Tratamento\") |&gt;\n  mutate(Altura_imp = ifelse(is.na(Altura_cm), media_trat, Altura_cm)) |&gt;\n  select(-media_trat)\n\nany(is.na(d_imp$Altura_imp))\n\n\n[1] FALSE\n\n\n\n\n12.5.2 ANOVA após imputação + boxplot\n\n\nCódigo\nout &lt;- dic(trat = d_imp$Tratamento, resp = d_imp$Altura_imp, quali = TRUE)\n\n\n------------------------------------------------------------------------\nQuadro da analise de variancia\n------------------------------------------------------------------------\n           GL     SQ     QM     Fc      Pr&gt;Fc\nTratamento  2 75.161 37.580 48.398 1.8005e-06\nResiduo    12  9.318  0.776                  \nTotal      14 84.478                         \n------------------------------------------------------------------------\nCV = 4.38 %\n\n------------------------------------------------------------------------\nTeste de normalidade dos residuos ( Shapiro-Wilk ) \nValor-p:  0.7835557 \nDe acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.\n------------------------------------------------------------------------\n\n------------------------------------------------------------------------\nTeste de homogeneidade de variancia \nvalor-p:  0.6814481 \nDe acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.\n------------------------------------------------------------------------\n\nTeste de Tukey\n------------------------------------------------------------------------\nGrupos Tratamentos Medias\na    A3      23.0875 \n b   A2      19.598 \n  c      A1      17.68 \n------------------------------------------------------------------------\n\n\nCódigo\nggplot(d_imp, aes(Tratamento, Altura_imp, fill = Tratamento)) +\n  geom_boxplot(alpha = .5) +\n  labs(title = \"Altura (cm) após imputação pela média do tratamento\",\n       y = \"Altura (cm)\") +\n  theme_minimal()",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>📖 Imputação de Valores Perdidos em Experimentos</span>"
+    ]
+  },
+  {
+    "objectID": "cap10-imput.html#atividade-brotos-com-duas-faltas-dic-contagem",
+    "href": "cap10-imput.html#atividade-brotos-com-duas-faltas-dic-contagem",
+    "title": "12  📖 Imputação de Valores Perdidos em Experimentos",
+    "section": "12.6 🌿 ATIVIDADE — Brotos com duas faltas (DIC, contagem)",
+    "text": "12.6 🌿 ATIVIDADE — Brotos com duas faltas (DIC, contagem)\nContexto: cinco bioestimulantes (B1–B5); duas faltas em B1 por erro de anotação.\n📦 Dados: dados/brotos_cedrela_faltante.csv\n\n12.6.1 Tarefas\n\nDetecte as células NA e tente rodar dic (deve falhar).\n\nImpute usando média do tratamento.\n\nRefaça a ANOVA e o boxplot.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>📖 Imputação de Valores Perdidos em Experimentos</span>"
+    ]
+  },
+  {
+    "objectID": "cap10-imput.html#síntese",
+    "href": "cap10-imput.html#síntese",
+    "title": "12  📖 Imputação de Valores Perdidos em Experimentos",
+    "section": "12.7 ✅ Síntese",
+    "text": "12.7 ✅ Síntese\n\nO ExpDes.pt não aceita NA — impute de forma simples e documentada.\n\nA média do tratamento é o caminho didático para faltas pontuais.\n\nSempre avalie o impacto nos resultados e registre a decisão no relatório.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>📖 Imputação de Valores Perdidos em Experimentos</span>"
+    ]
   }
 ]

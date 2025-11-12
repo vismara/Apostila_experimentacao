@@ -1,0 +1,116 @@
+---
+title: "📖 Imputação de Valores Perdidos em Experimentos"
+---
+
+*Módulo 2 – Semana 12*
+
+## 🌱 Contexto aplicado
+
+Na prática experimental, é comum ocorrerem **falhas de observação**: mudas perdidas, parcelas sem leitura ou erros de anotação. Esses casos geram **valores ausentes (NA)**, inviabilizando a **ANOVA clássica** e o uso direto do **ExpDes.pt**.
+
+💡 A **imputação** consiste em **estimar/substituir** valores faltantes de modo coerente com o delineamento, preservando conclusões e permitindo a análise.
+
+---
+
+## 🎯 Objetivos
+- Diagnosticar **valores perdidos** e suas causas.  
+- Aplicar **imputação simples** (média do tratamento) de forma transparente.  
+- Avaliar **impacto** da imputação nas conclusões (ANOVA + gráficos).  
+- Preparar **relatórios reprodutíveis**.
+
+---
+
+## 🧠 Tipos de ausências
+| Tipo | Descrição | Exemplo |
+|---|---|---|
+| **MCAR** | completamente ao acaso | quebra acidental de etiqueta |
+| **MAR** | dependente de variável observável | sensor falha em dias quentes |
+| **MNAR** | depende do valor não observado | parcelas fracas perdem mais dados |
+
+No ensino e em rotinas simples, assumimos **MCAR/MAR** e priorizamos **imputação parcimoniosa**.
+
+---
+
+## 🔧 Estratégias práticas de imputação
+| Estratégia | Quando usar | Observações |
+|---|---|---|
+| **Média do tratamento** | faltas pontuais | preserva comparabilidade entre tratamentos |
+| Média global | poucas faltas dispersas | pode subestimar variância |
+| Regressão local | variável auxiliar confiável | demanda ajuste adicional |
+| Interpolação | séries temporais | mantém tendência |
+| Aleatória controlada | simular variação realista | usar com cautela |
+
+::: callout-note
+Sempre **documente** qual critério foi adotado e **quantos valores** foram imputados. Se o número de faltas for alto (>10%), reavalie o experimento.
+:::
+
+---
+
+## 🌳 EXEMPLO — Adubação × Altura com uma falta (DIC)
+
+**Contexto:** três adubações (A1, A2, A3), 5 repetições; uma leitura perdida em **A3**.
+
+📦 **Dados:** [dados/adubacao_altura_faltante.csv](/dados/adubacao_altura_faltante.csv)
+
+```{r}
+library(readr); library(dplyr); library(ggplot2); library(ExpDes.pt)
+
+d <- read_csv("dados/adubacao_altura_faltante.csv", show_col_types = FALSE)
+
+# Verificação
+summary(d)
+any(is.na(d$Altura_cm))
+```
+
+A função `dic` falha com NA:
+```{r}
+# dic(trat = d$Tratamento, resp = d$Altura_cm, quali = TRUE)
+```
+
+### Imputação pela **média do tratamento**
+```{r}
+med <- d |>
+  group_by(Tratamento) |>
+  summarise(media_trat = mean(Altura_cm, na.rm = TRUE), .groups="drop")
+
+d_imp <- d |>
+  left_join(med, by = "Tratamento") |>
+  mutate(Altura_imp = ifelse(is.na(Altura_cm), media_trat, Altura_cm)) |>
+  select(-media_trat)
+
+any(is.na(d_imp$Altura_imp))
+```
+
+### ANOVA após imputação + boxplot
+```{r}
+out <- dic(trat = d_imp$Tratamento, resp = d_imp$Altura_imp, quali = TRUE)
+
+ggplot(d_imp, aes(Tratamento, Altura_imp, fill = Tratamento)) +
+  geom_boxplot(alpha = .5) +
+  labs(title = "Altura (cm) após imputação pela média do tratamento",
+       y = "Altura (cm)") +
+  theme_minimal()
+```
+
+---
+
+## 🌿 ATIVIDADE — Brotos com duas faltas (DIC, contagem)
+
+**Contexto:** cinco bioestimulantes (B1–B5); duas faltas em **B1** por erro de anotação.
+
+📦 **Dados:** [dados/brotos_cedrela_faltante.csv](/dados/brotos_cedrela_faltante.csv)
+
+### Tarefas
+1. Detecte as células **NA** e tente rodar `dic` (deve falhar).  
+2. Impute usando **média do tratamento**.  
+3. Refaça a ANOVA e o boxplot.  
+
+---
+
+## ✅ Síntese
+- O **ExpDes.pt** não aceita **NA** — impute de forma **simples e documentada**.  
+- A **média do tratamento** é o caminho didático para faltas pontuais.  
+- Sempre avalie o **impacto** nos resultados e registre a decisão no relatório.
+
+
+
